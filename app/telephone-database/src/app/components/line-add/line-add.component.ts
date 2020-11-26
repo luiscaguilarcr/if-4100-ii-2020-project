@@ -21,13 +21,13 @@ export class LineAddComponent implements OnInit {
   createForm(): FormGroup {
     /* Create form */
     return this.formBuilder.group({
-      telephoneNumber: [this.line.telephoneNumber, [Validators.required]],
-      customerId: [this.line.customerId, [Validators.required]],
+      telephoneNumber:   [this.line.telephoneNumber,   [Validators.required]],
+      customerId:        [this.line.customerId,        [Validators.required]],
       customerFirstName: [this.line.customerFirstName, [Validators.required]],
-      customerLastName: [this.line.customerLastName, [Validators.required]],
-      customerAddress: [this.line.customerAddress],
-      customerEmail: [this.line.customerEmail, [Validators.required, Validators.email]],
-      type: [this.line.type, [Validators.required]],
+      customerLastName:  [this.line.customerLastName,  [Validators.required]],
+      customerAddress:   [this.line.customerAddress],
+      customerEmail:     [this.line.customerEmail,     [Validators.required, Validators.email]],
+      type:              [this.line.type,              [Validators.required]],
     });
   }
   /**
@@ -35,13 +35,13 @@ export class LineAddComponent implements OnInit {
    */
   private buildLine(): Line {
     const line = new Line();
-    line.telephoneNumber = '';
-    line.customerId = '';
+    line.telephoneNumber   = '';
+    line.customerId        = '';
     line.customerFirstName = '';
-    line.customerLastName = '';
-    line.customerAddress = '';
-    line.customerEmail = '';
-    line.type = '';
+    line.customerLastName  = '';
+    line.customerAddress   = '';
+    line.customerEmail     = '';
+    line.type              = '';
     return line;
   }
   /**
@@ -68,10 +68,12 @@ export class LineAddComponent implements OnInit {
    * @param input input's name.
    */
   invalidInput(input: string): boolean {
-    // if (this.form !=null && this.form.get(input) != null){
-    //   return this.form.get(input).invalid;// && this.form.get(input).touched;
-    // }
-    return false;
+    const control = this.form.get(input);
+    if ( control ) {
+      return control.invalid && control.touched;
+    } else {
+      return true;
+    }
   }
 
 
@@ -79,22 +81,36 @@ export class LineAddComponent implements OnInit {
    * Summit action.
    */
   submit(): void {
-    console.log(this.form);
-    if (this.form.valid){
-      console.log('Is valid');
-    } else {
-      console.log('Invalid');
+    /* Validate inputs */
+    if (this.form.invalid) {
+      return Object.values(this.form.controls)
+        .forEach(control => control.markAsTouched());
     }
-    
+
+    /* Get values */
+    this.loadLineModel();
+    console.log(this.line);
   }
 
+  /**
+   * Load the line model with form's values.
+   */
+  private loadLineModel(): void {
+    let control;
+    control = this.form.get('telephoneNumber');
+    if ( control ) { this.line.telephoneNumber = control.value; }
+    control = this.form.get('customerId');
+    if ( control ) { this.line.customerId = control.value; }
+    control = this.form.get('customerFirstName');
+    if ( control ) { this.line.customerFirstName = control.value; }
+    control = this.form.get('customerLastName');
+    if ( control ) { this.line.customerLastName = control.value; }
+    control = this.form.get('customerAddress');
+    if ( control ) { this.line.customerAddress = control.value; }
+    control = this.form.get('customerEmail');
+    if ( control ) { this.line.customerEmail = control.value; }
+    control = this.form.get('type');
+    if ( control ) { this.line.type = control.value; }
+  }
 
 }
-
-// [class.is-invalid]="invalidInput('telephoneNumber')"
-// [class.is-invalid]="invalidInput('type')"
-// [class.is-invalid]="invalidInput('customerId')"
-// [class.is-invalid]="invalidInput('customerFirstName')"
-// [class.is-invalid]="invalidInput('customerLastName')"
-// [class.is-invalid]="invalidInput('customerEmail')"
-// [class.is-invalid]="invalidInput('customerAddress')"

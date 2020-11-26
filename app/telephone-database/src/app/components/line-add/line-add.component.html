@@ -9,13 +9,13 @@
             <div class="form-row col">
 
                 <div class="col">
-                    <input class="form-control" type="text" formControlName="telephoneNumber">
+                    <input class="form-control" type="text" formControlName="telephoneNumber" [class.is-invalid]="invalidInput('telephoneNumber')">
                 </div>
                 <label class="col-3 col-form-label pl-5 pr-5">Type</label>
 
                 <div class="col">
                     <!-- Line Type -->
-                    <select class="form-control" formControlName="type">
+                    <select class="form-control" formControlName="type" [class.is-invalid]="invalidInput('type')">
                         <option value="" disabled>Choose the line type</option>
                         <option>Basic</option>
                         <option>ADSL</option>
@@ -30,7 +30,7 @@
             <label class="col-2 col-form-label">Customer ID</label>
             <div class="col">
 
-                <input class="form-control" type="text" formControlName="customerId">
+                <input class="form-control" type="text" formControlName="customerId" [class.is-invalid]="invalidInput('customerId')">
             </div>
         </div>
 
@@ -41,13 +41,13 @@
 
                 <div class="col">
 
-                    <input class="form-control" type="text" formControlName="customerFirstName">
+                    <input class="form-control" type="text" formControlName="customerFirstName" [class.is-invalid]="invalidInput('customerFirstName')">
                 </div>
                 <!-- Customer Last_Name -->
                 <label class="col-3 col-form-label pl-5 pr-5">Last Name</label>
 
                 <div class="col">
-                    <input class="form-control" type="text" formControlName="customerLastName">
+                    <input class="form-control" type="text" formControlName="customerLastName" [class.is-invalid]="invalidInput('customerLastName')">
                 </div>
             </div>
         </div>
@@ -57,7 +57,7 @@
             <label class="col-2 col-form-label">Email</label>
             <div class="col">
 
-                <input class="form-control" type="text" formControlName="customerEmail">
+                <input class="form-control" type="text" formControlName="customerEmail" [class.is-invalid]="invalidInput('customerEmail')">
             </div>
         </div>
 
@@ -66,14 +66,14 @@
             <label class="col-2 col-form-label">Address</label>
             <div class="col">
 
-                <input class="form-control" type="text" placeholder="Opcional" formControlName="customerAddress">
+                <input class="form-control" type="text" placeholder="Opcional" formControlName="customerAddress" [class.is-invalid]="invalidInput('customerAddress')">
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-2 col-form-label">&nbsp;</label>
+            <!-- <label class="col-2 col-form-label">&nbsp;</label> -->
             <div class="input-group col">
-                <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                <button type="submit" class="btn btn-primary">Next</button>
             </div>
         </div>
 
