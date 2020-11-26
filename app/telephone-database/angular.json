@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "telephone-database"
+  "defaultProject": "telephone-database",
+  "cli": {
+    "analytics": false
+  }
 }
