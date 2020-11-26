@@ -1,1 +1,81 @@
-<p>Sirve para agregar una nueva línea!</p>
+<div class="mr-xl-5 justify-content-center">
+    <h4>{{ title }}</h4>
+    <hr class="mb-5">
+    <!-- Form -->
+    <form autocomplete="off" (ngSubmit)="submit()" [formGroup]="form">
+        <!-- Telephone number -->
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Telephone</label>
+            <div class="form-row col">
+
+                <div class="col">
+                    <input class="form-control" type="text" formControlName="telephoneNumber">
+                </div>
+                <label class="col-3 col-form-label pl-5 pr-5">Type</label>
+
+                <div class="col">
+                    <!-- Line Type -->
+                    <select class="form-control" formControlName="type">
+                        <option value="" disabled>Choose the line type</option>
+                        <option>Basic</option>
+                        <option>ADSL</option>
+                        <option>RDSI</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <hr class="mt-5 mb-5">
+        <!-- Customer Id -->
+        <div class="form-group row mb-4">
+            <label class="col-2 col-form-label">Customer ID</label>
+            <div class="col">
+
+                <input class="form-control" type="text" formControlName="customerId">
+            </div>
+        </div>
+
+        <!-- Customer First_Name -->
+        <div class="form-group row mb-4">
+            <label class="col-2 col-form-label">First Name</label>
+            <div class="form-row col">
+
+                <div class="col">
+
+                    <input class="form-control" type="text" formControlName="customerFirstName">
+                </div>
+                <!-- Customer Last_Name -->
+                <label class="col-3 col-form-label pl-5 pr-5">Last Name</label>
+
+                <div class="col">
+                    <input class="form-control" type="text" formControlName="customerLastName">
+                </div>
+            </div>
+        </div>
+
+        <!-- Customer Email -->
+        <div class="form-group row mb-4">
+            <label class="col-2 col-form-label">Email</label>
+            <div class="col">
+
+                <input class="form-control" type="text" formControlName="customerEmail">
+            </div>
+        </div>
+
+        <!-- Customer Address -->
+        <div class="form-group row mb-4">
+            <label class="col-2 col-form-label">Address</label>
+            <div class="col">
+
+                <input class="form-control" type="text" placeholder="Opcional" formControlName="customerAddress">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="input-group col">
+                <button type="submit" class="btn btn-outline-primary">Guardar</button>
+            </div>
+        </div>
+
+    </form>
+</div>

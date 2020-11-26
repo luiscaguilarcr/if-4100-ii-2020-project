@@ -9,6 +9,7 @@ import { LineAddComponent } from './components/line-add/line-add.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { LineDeleteComponent } from './components/line-delete/line-delete.component';
 import { LineUpdateComponent } from './components/line-update/line-update.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { LineUpdateComponent } from './components/line-update/line-update.compon
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     RouterModule.forRoot( ROUTES, { useHash: true} )
   ],
   providers: [],
