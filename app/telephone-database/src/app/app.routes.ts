@@ -1,5 +1,7 @@
 
 import { Routes } from '@angular/router';
+
+/* Components */
 import { LineListComponent } from './components/line-list/line-list.component';
 import { LineAddComponent } from './components/line-add/line-add.component';
 import { LineDeleteComponent } from './components/line-delete/line-delete.component';
@@ -13,22 +15,16 @@ import { ServiceListComponent } from './components/service-list/service-list.com
 import { ServiceDeleteComponent } from './components/service-delete/service-delete.component';
 import { ServiceUpdateComponent } from './components/service-update/service-update.component';
 
-
+/* Rutes */
 export const ROUTES: Routes = [
     { path: 'line/insert', component: LineAddComponent },
     { path: 'line/update', component: LineUpdateComponent },
     { path: 'line/delete', component: LineDeleteComponent },
     { path: 'line/list', component: LineListComponent },
-  
-
-
     { path: 'call/insert', component: CallAddComponent },
     { path: 'call/update', component: CallUpdateComponent },
     { path: 'call/delete', component: CallDeleteComponent },
     { path: 'call/list', component: CallListComponent },
- 
-
-    
     { path: 'service/insert', component: ServiceAddComponent },
     { path: 'service/update', component:  ServiceUpdateComponent },
     { path: 'service/delete', component:  ServiceDeleteComponent },
