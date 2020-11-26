@@ -10,6 +10,15 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { LineDeleteComponent } from './components/line-delete/line-delete.component';
 import { LineUpdateComponent } from './components/line-update/line-update.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ServiceAddComponent } from './components/service-add/service-add.component';
+import { ServiceDeleteComponent } from './components/service-delete/service-delete.component';
+import { ServiceListComponent } from './components/service-list/service-list.component';
+import { ServiceUpdateComponent } from './components/service-update/service-update.component';
+import { CallAddComponent } from './components/call-add/call-add.component';
+import { CallDeleteComponent } from './components/call-delete/call-delete.component';
+import { CallUpdateComponent } from './components/call-update/call-update.component';
+import { CallListComponent } from './components/call-list/call-list.component';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +27,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     LineAddComponent,
     NavbarComponent,
     LineDeleteComponent,
-    LineUpdateComponent
+    LineUpdateComponent,
+    ServiceAddComponent,
+    ServiceDeleteComponent,
+    ServiceListComponent,
+    ServiceUpdateComponent,
+    CallAddComponent,
+    CallDeleteComponent,
+    CallUpdateComponent,
+    CallListComponent
   ],
   imports: [
     BrowserModule,
