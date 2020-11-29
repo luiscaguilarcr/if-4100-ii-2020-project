@@ -10,7 +10,7 @@ import { Line } from '../../models/line.model';
 export class LineAddComponent implements OnInit {
 
   form: FormGroup;
-  title = 'Create new line';
+  title = 'Crear una nueva línea';
   line: Line;
 
   constructor( private formBuilder: FormBuilder ) {
