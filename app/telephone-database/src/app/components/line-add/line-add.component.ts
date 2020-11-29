@@ -91,7 +91,6 @@ export class LineAddComponent implements OnInit {
     this.loadLineModel();
     console.log(this.line);
     /* Call service */
-    this.dataService.addLine(this.line);
   }
 
   /**
