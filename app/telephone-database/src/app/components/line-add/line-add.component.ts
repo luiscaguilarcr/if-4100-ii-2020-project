@@ -90,6 +90,8 @@ export class LineAddComponent implements OnInit {
     /* Get values */
     this.loadLineModel();
     console.log(this.line);
+    /* Call service */
+    this.dataService.addLine(this.line);
   }
 
   /**
