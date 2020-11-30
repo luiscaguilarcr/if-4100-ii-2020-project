@@ -8,7 +8,7 @@ import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.util.Utility;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.User;
 
 /**
- * This services is use con validate, store and request for information related with users.
+ * This services is use with validate, store and request for information related with users.
  * <p>
  * Implements the Singleton Pattern.
  */

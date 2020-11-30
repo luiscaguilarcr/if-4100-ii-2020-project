@@ -11,7 +11,7 @@ public interface CallService<E>  {
      * @return {@code Call} if have been found. {@code null} if doesn't exist
      * an Call with the telephone number provided.
      */
-    List<E> get() throws BusinessException, PersistenceException;
+    List<E> get(E call) throws BusinessException, PersistenceException;
 
     /**
      * Inserts a new Call to the repository. This also validates if the
@@ -19,7 +19,7 @@ public interface CallService<E>  {
      *
      * @param call Call to be added.
      */
-    void insert(E call) throws BusinessException, PersistenceException;
+    boolean insert(E call) throws BusinessException, PersistenceException;
 
     /**
      * Update a new Call to the repository. This also validates if the
@@ -28,7 +28,7 @@ public interface CallService<E>  {
      * @param call Call to be updated.
      * @return {@code true} if the User have been added, {@code false} otherwise.
      */
-    void update(E call) throws BusinessException, PersistenceException;
+    boolean update(E call) throws BusinessException, PersistenceException;
 
     /**
      * Delete a Call of the repository.

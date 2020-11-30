@@ -25,6 +25,14 @@ public class BusinessException extends Exception {
     public static final int USER_NEW_PASSWORD_NOT_PROVIDED = 55;
     public static final int USER_NEW_PASSWORD_NOT_SECURE = 55;
     public static final int USER_CREATION_ERROR = 55;
+
+    /* Call exception codes */
+    public static final int CALL_OBJECT_NOT_PROVIDED = 1;
+    public static final int CALL_TELEPHONE_NUMBER_NOT_PROVIDED = 1;
+    public static final int CALL_DESTINATION_TELEPHONE_NUMBER_NOT_PROVIDED = 1;
+    public static final int CALL_END_DATE_NOT_PROVIDED = 1;
+    public static final int CALL_START_DATE_NOT_PROVIDED = 1;
+
     /* RemoteServer exception codes */
     public static final int SERVER_NOT_CREATED = 60;
     public static final int SERVER_NOT_UPDATED = 61;
@@ -41,6 +49,7 @@ public class BusinessException extends Exception {
     public static final int REMOTE_SERVER_USERNAME_NOT_PROVIDED = 73;
     public static final int REMOTE_SERVER_PASSWORD_NOT_PROVIDED = 74;
     public static final int SERVER_ID_NOT_FOUND = 75;
+
     /* Ssh exception codes */
     public static final int INVALID_SSH_TOKEN = 81;
     public static final int SSH_TOKEN_NOT_PROVIDED = 82;
