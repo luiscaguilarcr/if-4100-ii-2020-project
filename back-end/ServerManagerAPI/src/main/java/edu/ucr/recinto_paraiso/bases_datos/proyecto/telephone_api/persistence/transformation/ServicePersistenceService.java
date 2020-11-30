@@ -1,12 +1,11 @@
 package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.transformation;
 
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Line;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.LineBuilder;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Service;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.conectors.DatabaseService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.conectors.UCRDatabaseService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.exceptions.PersistenceException;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.services.interfaces.LineService;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.services.interfaces.ServiceService;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

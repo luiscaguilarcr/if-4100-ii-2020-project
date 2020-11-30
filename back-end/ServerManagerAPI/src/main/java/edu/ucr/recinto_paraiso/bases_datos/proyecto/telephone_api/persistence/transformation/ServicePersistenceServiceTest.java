@@ -10,8 +10,8 @@ import java.util.List;
 public class ServicePersistenceServiceTest {
 
    public static void main(String...args){
-       try {
-           ServicePersistenceService.getInstance().insert(new ServiceBuilder().setService_Code(85426413).setsetName("constestador").setDescription("contestador").setCost(1000).setsetStatus('A').build());
+//       try {
+//           ServicePersistenceService.getInstance().insert(new ServiceBuilder().setService_Code(85426413).setsetName("constestador").setDescription("contestador").setCost(1000).setsetStatus('A').build());
 
            /*System.out.println("Select test");
            List<Line> list = LinePersistenceService.getInstance().get();
@@ -19,9 +19,9 @@ public class ServicePersistenceServiceTest {
                System.out.println(i + ". " + list.get(i));
            }
 */
-
-       } catch (PersistenceException e) {
-           System.err.println(e.getMessage());
-       }
+//
+//       } catch (PersistenceException e) {
+//           System.err.println(e.getMessage());
+//       }
    }
 }
