@@ -9,21 +9,21 @@ import { Service } from '../../models/service.model';
   templateUrl: './service-add.component.html',
   styleUrls: ['./service-add.component.scss']
 })
-export class LineAddComponent implements OnInit {
+export class ServiceAddComponent implements OnInit {
 
   form: FormGroup;
-  title = 'Crear una nueva línea';
+  title = 'Crear un nuevo servicio';
   service: Service;
 
   constructor( private formBuilder: FormBuilder ) {
-    this.service = this.buildLine();
+    this.service = this.buildService();
     this.form = this.createForm();
   }
 
   createForm(): FormGroup {
     /* Create form */
     return this.formBuilder.group({
-      service_code :   [this.service.service_code,   [Validators.required]],
+      serviceCode :   [this.service.serviceCode,   [Validators.required]],
       name :   [this.service.name,   [Validators.required]],
       description:  [this.service.description,   [Validators.required]],
       cost :  [this.service.cost,   [Validators.required]],
@@ -32,11 +32,11 @@ export class LineAddComponent implements OnInit {
   /**
    * Initilize the model to prevent form errors.
    */
-  private buildLine(): Service {
+  private buildService(): Service {
     const service = new Service();
-    service.service_code  = '';
+    service.serviceCode  = '';
     service.name  = '';
-    service.description      = '';
+    service.description= '';
     service.cost = '';
     return service;
   }
@@ -45,7 +45,7 @@ export class LineAddComponent implements OnInit {
    */
   private loadForm(): void {
     this.form.patchValue({
-      service_code: this.service.service_code,
+      serviceCode: this.service.serviceCode,
       name: this.service.name,
       description: this.service.description,
       cost: this.service.cost,
@@ -90,8 +90,8 @@ export class LineAddComponent implements OnInit {
    */
   private loadServiceModel(): void {
     let control;
-    control = this.form.get('service_code');
-    if ( control ) { this.service.service_code = control.value; }
+    control = this.form.get('serviceCode');
+    if ( control ) { this.service.serviceCode = control.value; }
     control = this.form.get('name');
     if ( control ) { this.service.name = control.value; }
     control = this.form.get('description');
