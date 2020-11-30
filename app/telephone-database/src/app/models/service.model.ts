@@ -1,8 +1,8 @@
 
 export class Service {
-    serviceCode = '';
+    serviceCode = -1;
     name = '';
     description = '';
-    cost = '';
-     
+    cost = 0;
+    status = '';
 }

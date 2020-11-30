@@ -12,7 +12,6 @@ import { CallDeleteComponent } from './components/call-delete/call-delete.compon
 import { CallListComponent } from './components/call-list/call-list.component';
 import { ServiceAddComponent } from './components/service-add/service-add.component';
 import { ServiceListComponent } from './components/service-list/service-list.component';
-import { ServiceDeleteComponent } from './components/service-delete/service-delete.component';
 import { ServiceUpdateComponent } from './components/service-update/service-update.component';
 
 /* Rutes */
@@ -27,7 +26,6 @@ export const ROUTES: Routes = [
     { path: 'call/list', component: CallListComponent },
     { path: 'service/insert', component: ServiceAddComponent },
     { path: 'service/update', component:  ServiceUpdateComponent },
-    { path: 'service/delete', component:  ServiceDeleteComponent },
     { path: 'service/list', component:  ServiceListComponent },
     { path: '', pathMatch: 'full', redirectTo: '/' },
     { path: '**', pathMatch: 'full', redirectTo: '/' }

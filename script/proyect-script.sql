@@ -22,7 +22,7 @@ CREATE TABLE [Line_Customer]
     [Telephone_Number] INT NOT NULL,
     [Customer_Id] INT NOT NULL,
     [Customer_First_Name] NVARCHAR(50) NOT NULL,
-    [Customer_LastName_Name] NVARCHAR(50) NOT NULL,
+    [Customer_Last_Name] NVARCHAR(50) NOT NULL,
     [Customer_Address] NVARCHAR(50),
     [Customer_Email] NVARCHAR(50) NOT NULL,
     [Creation_Date] DATETIME DEFAULT SYSDATETIME() NOT NULL,

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Service } from '../../models/service.model';
-
-
+import { ServiceService } from '../../services/service.service';
 
 @Component({
   selector: 'app-service-add',
@@ -10,23 +9,24 @@ import { Service } from '../../models/service.model';
   styleUrls: ['./service-add.component.scss']
 })
 export class ServiceAddComponent implements OnInit {
-
+  /* Variables */
   form: FormGroup;
   title = 'Crear un nuevo servicio';
   service: Service;
-
-  constructor( private formBuilder: FormBuilder ) {
+  /* Constructor */
+  constructor( private formBuilder: FormBuilder, private serviceService: ServiceService ) {
     this.service = this.buildService();
     this.form = this.createForm();
   }
-
+  /**
+   * Create Service form
+   */
   createForm(): FormGroup {
-    /* Create form */
     return this.formBuilder.group({
-      serviceCode :   [this.service.serviceCode,   [Validators.required]],
-      name :   [this.service.name,   [Validators.required]],
-      description:  [this.service.description,   [Validators.required]],
-      cost :  [this.service.cost,   [Validators.required]],
+      serviceCode : [this.service.serviceCode, [Validators.required]],
+      name        : [this.service.name,        [Validators.required]],
+      description : [this.service.description, [Validators.required]],
+      cost        : [this.service.cost,        [Validators.required]],
     });
   }
   /**
@@ -34,10 +34,10 @@ export class ServiceAddComponent implements OnInit {
    */
   private buildService(): Service {
     const service = new Service();
-    service.serviceCode  = '';
+    service.serviceCode  = 0;
     service.name  = '';
-    service.description= '';
-    service.cost = '';
+    service.description = '';
+    service.cost = 0;
     return service;
   }
   /**
@@ -51,11 +51,9 @@ export class ServiceAddComponent implements OnInit {
       cost: this.service.cost,
     });
   }
-
   ngOnInit(): void {
     this.loadForm();
   }
-
   /**
    * Return if the input is valid or not.
    * @param input input's name.
@@ -68,8 +66,6 @@ export class ServiceAddComponent implements OnInit {
       return true;
     }
   }
-
-
   /**
    * Summit action.
    */
@@ -79,10 +75,11 @@ export class ServiceAddComponent implements OnInit {
       return Object.values(this.form.controls)
         .forEach(control => control.markAsTouched());
     }
-
     /* Get values */
     this.loadServiceModel();
     console.log(this.service);
+    /* try add */
+    this.serviceService.add(this.service);
   }
 
   /**

@@ -47,8 +47,6 @@ export class LineAddComponent implements OnInit {
       telephoneNumber: this.line.telephoneNumber,
       pointsQuantity: this.line.pointsQuantity,
       type: this.line.type,
-
-      
     });
   }
 

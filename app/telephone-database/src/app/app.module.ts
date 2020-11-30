@@ -14,7 +14,6 @@ import { LineDeleteComponent } from './components/line-delete/line-delete.compon
 import { LineUpdateComponent } from './components/line-update/line-update.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ServiceAddComponent } from './components/service-add/service-add.component';
-import { ServiceDeleteComponent } from './components/service-delete/service-delete.component';
 import { ServiceListComponent } from './components/service-list/service-list.component';
 import { ServiceUpdateComponent } from './components/service-update/service-update.component';
 import { CallAddComponent } from './components/call-add/call-add.component';
@@ -32,7 +31,6 @@ import { CallListComponent } from './components/call-list/call-list.component';
     LineDeleteComponent,
     LineUpdateComponent,
     ServiceAddComponent,
-    ServiceDeleteComponent,
     ServiceListComponent,
     ServiceUpdateComponent,
     CallAddComponent,
