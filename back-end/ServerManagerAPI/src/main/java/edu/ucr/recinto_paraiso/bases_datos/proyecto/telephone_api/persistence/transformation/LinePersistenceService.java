@@ -90,21 +90,21 @@ public class LinePersistenceService implements LineService<Line> {
      *                              User.
      */
     @Override
-    public void insert(Line line) throws PersistenceException {
+    public void insert(Line line) throws BusinessException, PersistenceException {
         try {
             final String insertStatement = "INSERT INTO [Line] (Telephone_Number, Points_Quantity, Type, Status) values (?,?,?,?);";
             databaseService.connect();
             final PreparedStatement preparedStatement = databaseService.getConnection().prepareStatement(insertStatement);
             /* Add parameters */
-            preparedStatement.setInt(1, line.getTelephone_Number());
-            preparedStatement.setInt(2, line.getPoints_Quantity());
+            preparedStatement.setInt(1, line.getTelephoneNumber());
+            preparedStatement.setInt(2, line.getPointsQuantity());
             preparedStatement.setInt(3, line.getType());
             preparedStatement.setString(4, String.valueOf(line.getStatus()));
             /* Execute statement */
             preparedStatement.execute();
         } catch (SQLException e) {
             if (e.getErrorCode() == 2601 || e.getErrorCode() == 2627) {
-                throw new PersistenceException("Telephone number is already used.", BusinessException.USER_EMAIL_IN_USE);
+                throw new BusinessException("Telephone number is already used.", BusinessException.USER_EMAIL_IN_USE);
             } else {
                 throw new PersistenceException("Error during insert execution. Details: " + e.getMessage(), PersistenceException.DATABASE_CONNECTION_FAILED);
             }
@@ -124,9 +124,10 @@ public class LinePersistenceService implements LineService<Line> {
             databaseService.connect();
             final PreparedStatement preparedStatement = databaseService.getConnection().prepareStatement(insertStatement);
             /* Add parameters */
-            preparedStatement.setInt(1, line.getPoints_Quantity());
+            preparedStatement.setInt(1, line.getPointsQuantity());
             preparedStatement.setInt(2, line.getType());
             preparedStatement.setString(3, line.getStatus());
+            preparedStatement.setInt(4, line.getTelephoneNumber());
             /* Execute statement */
             preparedStatement.execute();
         } catch (SQLException e) {
@@ -154,7 +155,7 @@ public class LinePersistenceService implements LineService<Line> {
             databaseService.connect();
             final PreparedStatement preparedStatement = databaseService.getConnection().prepareStatement(deleteStatement);
             /* Add parameters */
-            preparedStatement.setInt(1, line.getTelephone_Number());
+            preparedStatement.setInt(1, line.getTelephoneNumber());
             return preparedStatement.executeUpdate() == 1;
         } catch (SQLException e) {
             throw new PersistenceException("Error during delete execution. Details: " + e.getMessage(), 0);

@@ -3,35 +3,34 @@ package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain;
 import java.util.Objects;
 
 public class Line {
-    private int telephone_Number;
-    private int points_Quantity;
+    private int telephoneNumber;
+    private int pointsQuantity;
     private int type;
     private String status;
 
-    public Line() {
-    }
+    public Line() { }
 
-    public Line(int telephone_Number, int points_Quantity, int type, String status) {
-        this.telephone_Number = telephone_Number;
-        this.points_Quantity = points_Quantity;
+    public Line(int telephoneNumber, int pointsQuantity, int type, String status) {
+        this.telephoneNumber = telephoneNumber;
+        this.pointsQuantity = pointsQuantity;
         this.type = type;
         this.status = status;
     }
 
-    public int getTelephone_Number() {
-        return telephone_Number;
+    public int getTelephoneNumber() {
+        return telephoneNumber;
     }
 
-    public void setTelephone_Number(int telephone_Number) {
-        this.telephone_Number = telephone_Number;
+    public void setTelephoneNumber(int telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
     }
 
-    public int getPoints_Quantity() {
-        return points_Quantity;
+    public int getPointsQuantity() {
+        return pointsQuantity;
     }
 
-    public void setPoints_Quantity(int points_Quantity) {
-        this.points_Quantity = points_Quantity;
+    public void setPointsQuantity(int pointsQuantity) {
+        this.pointsQuantity = pointsQuantity;
     }
 
     public int getType() {
@@ -55,19 +54,19 @@ public class Line {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Line line = (Line) o;
-        return telephone_Number == line.telephone_Number;
+        return telephoneNumber == line.telephoneNumber;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(telephone_Number);
+        return Objects.hash(telephoneNumber);
     }
 
     @Override
     public String toString() {
         return "Line{" +
-                "telephone_Number='" + telephone_Number + '\'' +
-                ", points_Quantity='" + points_Quantity + '\'' +
+                "telephone_Number='" + telephoneNumber + '\'' +
+                ", points_Quantity='" + pointsQuantity + '\'' +
                 ", type='" + type + '\'' +
                 ", status='" + status + '\'' +
                 '}';
