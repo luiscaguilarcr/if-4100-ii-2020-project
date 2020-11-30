@@ -21,4 +21,5 @@ export class DatabaseService {
   getPool(): any {
     return this.sql.connect(this.config);
   }
+
 }

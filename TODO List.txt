@@ -1,0 +1,8 @@
+Lista
+
+1. UI de app.
+2. Capa de validaciones gráficas.
+3. Conección con BD.
+4. Preparar las sentencias CRUD (Line, Service, Call).
+5. Crear la Vista.
+6. Diccionario.
