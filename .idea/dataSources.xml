@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="B88782_B90127_B90514@163.178.107.10" uuid="0fb6fc47-a5ef-4a18-8668-56cfd1d54c97">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://163.178.107.10:1433;database=B88782_B90127_B90514</jdbc-url>
+    </data-source>
+  </component>
+</project>

@@ -12,13 +12,13 @@ export class LineService {
 
   public addLine(line: Line) {
     
-    this.databaseService.getPool().then((pool: any) => {
-      const insertStatement = 'INSERT INTO [Line] (Telephone_Number, Points_Quantity, Type) values (?,?,?);'
+    return this.databaseService.getPool().then((pool: any) => {
+      const insertStatement = 'INSERT INTO [Line] (Telephone_Number, Points_Quantity, Type) VALUES (@Telephone_Number, @Points_Quantity, @Type);'
 
       return pool.request()
-        .input('Telephone_Number', this.variableTypes.Int(), line.telephoneNumber)
-        .input('Points_Quantity', this.variableTypes.Int(), line.pointsQuantity)
-        .input('Type', this.variableTypes.tinyint(), line.type)
+        .input('Telephone_Number', this.variableTypes.Int, line.telephoneNumber)
+        .input('Points_Quantity', this.variableTypes.Int, line.pointsQuantity)
+        .input('Type', this.variableTypes.tinyint, line.type)
         .query(insertStatement)
     })
     .catch ((error: any) => {
@@ -28,11 +28,10 @@ export class LineService {
   }
 
   public getLine(): Line{
-    this.databaseService.getPool().then((pool: any) => {
+    return this.databaseService.getPool().then((pool: any) => {
       const request = new this.variableTypes.Request()
-      request.query(request.template 'SELECT * FROM mytable'
-          // ... error checks
-          console.dir(result)
+     
+      return pool.request().query('SELECT * FROM mytable;');
       
     })
     .catch ((error: any) => {

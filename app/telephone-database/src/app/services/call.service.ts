@@ -12,15 +12,14 @@ export class CallService {
 
   public addCall(call: Call) {
     
-    this.databaseService.getPool().then((pool: any) => {
-      const insertStatement = 'INSERT INTO [Line] (No_Call, Telephone_Number, Destination_Telephone_Number, Start_Date, End_Date) values (?,?,?,?,?);'
+    return this.databaseService.getPool().then((pool: any) => {
+      const insertStatement = 'INSERT INTO [Call] (Telephone_Number, Destination_Telephone_Number, Start_Date, End_Date) VALUES (@Telephone_Number, @Destination_Telephone_Number, @Start_Date, @End_Date);'
 
       return pool.request()
-        .input('No_Call', this.variableTypes.Int(), call.noCall)
-        .input('Telephone_Number', this.variableTypes.Int(), call.telephoneNumber)
-        .input('Destination_Telephone_Number', this.variableTypes.Int(), call.destinationTelephoneNumber)
-        .input('Start_Date', this.variableTypes.DateTime(), call.startDate)
-        .input('End_Date', this.variableTypes.DateTime(), call.endDate)
+        .input('Telephone_Number', this.variableTypes.Int, call.telephoneNumber)
+        .input('Destination_Telephone_Number', this.variableTypes.Int, call.destinationTelephoneNumber)
+        .input('Start_Date', this.variableTypes.DateTime, call.startDate)
+        .input('End_Date', this.variableTypes.DateTime, call.endDate)
         .query(insertStatement)
     })
     .catch ((error: any) => {
