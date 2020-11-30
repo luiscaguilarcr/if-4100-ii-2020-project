@@ -1,6 +1,6 @@
 
 export class Service {
-    service_code ='';
+    serviceCode ='';
     name = '';
     description = '';
     cost = '';

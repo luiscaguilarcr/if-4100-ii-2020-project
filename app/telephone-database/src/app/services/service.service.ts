@@ -20,7 +20,6 @@ export class ServiceService {
         .input('Name', this.variableTypes.Int(), service.name)
         .input('Description', this.variableTypes.Int(), service.description)
         .input('Cost', this.variableTypes.DateTime(), service.cost)
- 
         .query(insertStatement)
     })
     .catch ((error: any) => {

@@ -26,4 +26,19 @@ export class LineService {
     });
     
   }
+
+  public getLine(): Line{
+    this.databaseService.getPool().then((pool: any) => {
+      const request = new this.variableTypes.Request()
+      request.query(request.template 'SELECT * FROM mytable'
+          // ... error checks
+          console.dir(result)
+      
+    })
+    .catch ((error: any) => {
+        console.log(error);
+    });
+  }
+
+
 }
