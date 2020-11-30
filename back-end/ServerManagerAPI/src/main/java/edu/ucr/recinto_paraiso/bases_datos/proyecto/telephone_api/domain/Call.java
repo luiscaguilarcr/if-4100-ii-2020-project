@@ -6,16 +6,16 @@ public class Call {
     private int telephone_Number;
     private int destination_Telephone_Number;
     private String start_Date;
-    private String end_tDate;
+    private String end_Date;
 
     public Call() {
     }
 
-    public Call(int telephone_Number, int destination_Telephone_Number, String start_Date, String end_tDate) {
+    public Call(int telephone_Number, int destination_Telephone_Number, String start_Date, String end_Date) {
         this.telephone_Number = telephone_Number;
         this.destination_Telephone_Number = destination_Telephone_Number;
         this.start_Date = start_Date;
-        this.end_tDate = end_tDate;
+        this.end_Date = end_Date;
     }
 
     public int getTelephone_Number() {
@@ -42,12 +42,12 @@ public class Call {
         this.start_Date = start_Date;
     }
 
-    public String getEnd_tDate() {
-        return end_tDate;
+    public String getEnd_Date() {
+        return end_Date;
     }
 
     public void setEnd_tDate(String end_tDate) {
-        this.end_tDate = end_tDate;
+        this.end_Date = end_tDate;
     }
 
     @Override
@@ -58,12 +58,12 @@ public class Call {
         return telephone_Number == call.telephone_Number &&
                 destination_Telephone_Number == call.destination_Telephone_Number &&
                 Objects.equals(start_Date, call.start_Date) &&
-                Objects.equals(end_tDate, call.end_tDate);
+                Objects.equals(end_Date, call.end_Date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(telephone_Number, destination_Telephone_Number, start_Date, end_tDate);
+        return Objects.hash(telephone_Number, destination_Telephone_Number, start_Date, end_Date);
     }
 
     @Override
@@ -72,7 +72,7 @@ public class Call {
                 "telephone_Number=" + telephone_Number +
                 ", destination_Telephone_Number=" + destination_Telephone_Number +
                 ", start_Date='" + start_Date + '\'' +
-                ", end_tDate='" + end_tDate + '\'' +
+                ", end_tDate='" + end_Date + '\'' +
                 '}';
     }
 }
