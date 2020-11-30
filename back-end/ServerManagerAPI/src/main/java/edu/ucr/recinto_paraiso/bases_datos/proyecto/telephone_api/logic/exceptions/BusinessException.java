@@ -49,10 +49,23 @@ public class BusinessException extends Exception {
     public static final int END_SSH_SESSION_CONNECTION_FAILED = 86;
     public static final int SSH_SESSION_COMMAND_EXECUTION_FAILED = 87;
 
-    /* Line */
     public static final int JSON_FORMAT_EXCEPTION = 87;
+    /* Line */
     public static final int LINE_TELEPHONE_NUMBER_IN_USE = 54;
     public static final int LINE_NOT_DELETED = 82;
+    public static final int LINE_TELEPHONE_NUMBER_NOT_VALID = 82;
+    public static final int LINE_POINT_QUANTITY_NOT_PROVIDED = 82;
+    public static final int LINE_STATUS_NOT_VALID = 82;
+    public static final int LINE_TYPE_NOT_PROVIDED = 82;
+    /* Line */
+    public static final int LINE_CUSTOMER_TELEPHONE_NUMBER_IN_USE = 54;
+    public static final int LINE_CUSTOMER_NOT_DELETED = 82;
+    public static final int LINE_CUSTOMER_TELEPHONE_NUMBER_NOT_VALID = 82;
+    public static final int LINE_CUSTOMER_ID_NOT_PROVIDED = 82;
+    public static final int LINE_CUSTOMER_FIRST_NAME_NOT_PROVIDED = 82;
+    public static final int LINE_CUSTOMER_LAST_NAME_NOT_PROVIDED = 82;
+    public static final int LINE_CUSTOMER_EMAIL_NOT_PROVIDED = 82;
+    public static final int LINE_CUSTOMER_EMAIL_NOT_VALID = 82;
     private final Integer code;
 
     /**

@@ -3,7 +3,7 @@ package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain;
 import java.util.Objects;
 
 public class LineCustomer {
-     private int telephone_Number;
+     private int telephoneNumber;
      private int id;
      private String firstName;
      private String lastName;
@@ -13,8 +13,8 @@ public class LineCustomer {
     public LineCustomer() {
     }
 
-    public LineCustomer(int telephone_Number, int id, String firstName, String last_Name, String address, String email) {
-        this.telephone_Number = telephone_Number;
+    public LineCustomer(int telephoneNumber, int id, String firstName, String last_Name, String address, String email) {
+        this.telephoneNumber = telephoneNumber;
         this.id = id;
         this.firstName = firstName;
         this.lastName = last_Name;
@@ -22,12 +22,12 @@ public class LineCustomer {
         this.email = email;
     }
 
-    public int getTelephone_Number() {
-        return telephone_Number;
+    public int getTelephoneNumber() {
+        return telephoneNumber;
     }
 
-    public void setTelephone_Number(int telephone_Number) {
-        this.telephone_Number = telephone_Number;
+    public void setTelephoneNumber(int telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
     }
 
     public int getId() {
@@ -86,7 +86,7 @@ public class LineCustomer {
     @Override
     public String toString() {
         return "LineCustomer{" +
-                "telephone_Number=" + telephone_Number +
+                "telephone_Number=" + telephoneNumber +
                 ", id=" + id +
                 ", first_Name='" + firstName + '\'' +
                 ", last_Name='" + lastName + '\'' +

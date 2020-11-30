@@ -8,6 +8,8 @@ import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.services.inter
 
 import java.util.List;
 
+import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException.*;
+
 public class LineBusinessService implements LineService<Line> {
     /* Instance */
     private static LineBusinessService instance;
@@ -68,16 +70,16 @@ public class LineBusinessService implements LineService<Line> {
 
     private void validateLine(Line line) throws BusinessException{
         if (line.getTelephoneNumber() <= 0){
-            throw new BusinessException("Telephone number not valid.", 0);
+            throw new BusinessException("Telephone number not valid.", LINE_TELEPHONE_NUMBER_NOT_VALID);
         }
         if (line.getPointsQuantity() < 0){
-            throw new BusinessException("Line points quantity not valid.", 0);
+            throw new BusinessException("Line points quantity not valid.", LINE_POINT_QUANTITY_NOT_PROVIDED);
         }
         if (!(line.getStatus().equals("A") || line.getStatus().equals("I"))){
-            throw new BusinessException("Line status not valid.", 0);
+            throw new BusinessException("Line status not valid.", LINE_STATUS_NOT_VALID);
         }
         if (line.getType()<0 || line.getType()>255){
-            throw new BusinessException("Line type not valid.", 0);
+            throw new BusinessException("Line type not valid.", LINE_TYPE_NOT_PROVIDED);
         }
     }
 
@@ -90,7 +92,7 @@ public class LineBusinessService implements LineService<Line> {
     @Override
     public boolean delete(Line line) throws BusinessException, PersistenceException {
         if(line.getTelephoneNumber() <= 0){
-            throw new BusinessException("Telephone number not valid.", 0);
+            throw new BusinessException("Telephone number not valid.", LINE_TELEPHONE_NUMBER_NOT_VALID);
         }
         return linePersistenceService.delete(line);
     }
