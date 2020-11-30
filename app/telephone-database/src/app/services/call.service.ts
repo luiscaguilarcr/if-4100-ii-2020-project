@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Line } from '../models/line.model';
+import { Call } from '../models/call.model';
 import { DatabaseService } from './database.service';
 
 @Injectable({
@@ -10,16 +10,16 @@ export class CallService {
 
   constructor(private databaseService: DatabaseService) {this.variableTypes = databaseService.util()}
 
-  public addLine(line: Line) {
+  public addCall(call: Call) {
     
     this.databaseService.getPool().then((pool: any) => {
       const insertStatement = 'INSERT INTO [Line] (Telephone_Number, Points_Quantity, Type, Status) values (?,?,?,?);'
 
       return pool.request()
-        .input('Telephone_Number', this.variableTypes.Nvarchar(), line.telephoneNumber)
-        .input('Points_Quantity', this.variableTypes.Nvarchar(), line.type)
-        .input('Type', this.variableTypes.Nvarchar(), line.type)
-        .input('Status', this.variableTypes.Nvarchar(), line.type)
+        .input('Telephone_Number', this.variableTypes.Nvarchar(), call.telephoneNumber)
+        .input('Points_Quantity', this.variableTypes.Nvarchar(), call.type)
+        .input('Type', this.variableTypes.Nvarchar(), call.type)
+        .input('Status', this.variableTypes.Nvarchar(), call.type)
         .query(insertStatement)
     })
     .catch ((error: any) => {

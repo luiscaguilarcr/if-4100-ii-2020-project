@@ -4,8 +4,4 @@ export class service {
     descrition = '';
     cost = '';
     status = '';
-    creationDate = '';
-    creationUser = '';
-    lastUpdateDate = '';
-    lastUpdateUser = '';
 }

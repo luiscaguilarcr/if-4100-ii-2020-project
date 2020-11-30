@@ -5,8 +5,4 @@ export class Call {
     destinationTelephoneNumber = '';
     startDate = '';
     endDate = '';
-    creationDate = '';
-    creationUser = '';
-    lastUpdateDate = '';
-    lastUpdateUser = '';
 }
