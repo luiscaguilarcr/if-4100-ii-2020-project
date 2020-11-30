@@ -1,26 +1,19 @@
 package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.servlets;
 
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.control.exceptions.SecurityException;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.control.security.LogProcessService;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.control.security.SessionVerification;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.LoginSession;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.RemoteServer;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.SSHConfiguration;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.RemoteServerBuilder;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.SSHConfigurationBuilder;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.bussiness.RemoteServerBusinessService;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.JsonUtil;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseBuilder;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseTemplates;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Line;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.LineBuilder;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.bussiness.LineBusinessService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.exceptions.PersistenceException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.util.Utility;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.HeadersKeys;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseTemplates;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseBuilder;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -29,11 +22,10 @@ import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_res
 import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseTemplates.*;
 
 /**
- * URI end-point: /user/remote_server/
+ * URI end-point: /line/
  */
-public class RemoteServerServlet extends HttpServlet {
-    final String headersKeys = String.join(",", getInformation_headers(), getRemoteServerHeaders());
-
+public class LineServlet extends HttpServlet {
+    final String headersKeys = String.join(",", getInformation_headers());
     /**
      * Use to insert a new remote server.
      *
@@ -44,30 +36,17 @@ public class RemoteServerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         final ResponseBuilder responseBuilder = new ResponseBuilder(resp);
         try {
-            /* Session verification */
-            final LoginSession loginSession = SessionVerification.getInstance().verifySessionToken(req);
             /* Body */
             final Map<String, String> body = Utility.getBodyMap(req.getReader());
-            /* Create remote server */
-            final RemoteServer remoteServer = ProcessRemoteServerRequest.createRemoteServer(body);
-            remoteServer.setAdminId(loginSession.getUserId());
+            /* Create line */
+            final Line line = ProcessLineRequest.createLine(body);
             /* Try insert */
-            if (RemoteServerBusinessService.getInstance().insert(remoteServer)) {
-                /* Remote server created */
-                resourceCreatedResponse(responseBuilder);
-                /* Log */
-                LogProcessService.getInstance().genericRemoteServerLog(session_token, LogProcessService.getInstance().CONFIRMATION, "Servidor \"" + label + "\" agregado.");
-            } else {
-                /* Remote server not created */
-                LogProcessService.getInstance().genericRemoteServerLog(session_token, LogProcessService.getInstance().ERROR, "Servidor \"" + label + "\" no agregado.");
-                throw new BusinessException("Remote Server no added. ", BusinessException.SERVER_NOT_CREATED);
-            }
+            LineBusinessService.getInstance().insert(line);
+            /* Line created */
+            resourceCreatedResponse(responseBuilder);
         } catch (IOException ioException) {
             /* JSON FORMAT EXCEPTION */
             jsonFormatErrorResponse(responseBuilder);
-        } catch (SecurityException exception) {
-            /* Security Exception */
-            ResponseTemplates.securityExceptionResponse(responseBuilder, exception);
         } catch (BusinessException exception) {
             /* Business Exception */
             ResponseTemplates.businessExceptionResponse(responseBuilder, exception);
@@ -85,27 +64,16 @@ public class RemoteServerServlet extends HttpServlet {
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) {
         final ResponseBuilder responseBuilder = new ResponseBuilder(resp);
         try {
-            /* Session verification */
-            final LoginSession loginSession = SessionVerification.getInstance().verifySessionToken(req);
             /* Body */
             final Map<String, String> body = Utility.getBodyMap(req.getReader());
-            /* Create remote server */
-            final RemoteServer remoteServer = ProcessRemoteServerRequest.createRemoteServer(body);
-            remoteServer.setAdminId(loginSession.getUserId());
+            /* Create line */
+            final Line line = ProcessLineRequest.createLine(body);
             /* Try update */
-            if (RemoteServerBusinessService.getInstance().update(remoteServer)){
-                okResponse(responseBuilder);
-                /* Log */
-                LogProcessService.getInstance().genericUserLog(session_token, LogProcessService.getInstance().CONFIRMATION, "Servidor \"" + label + "\" modificado correctamente.");
-            } else {
-                throw new BusinessException("Remote Server no updated. ", BusinessException.SERVER_NOT_UPDATED);
-            }
+            LineBusinessService.getInstance().update(line);
+            okResponse(responseBuilder);
         } catch (IOException ioException) {
             /* JSON FORMAT EXCEPTION */
             jsonFormatErrorResponse(responseBuilder);
-        } catch (SecurityException exception) {
-            /* Security Exception */
-            ResponseTemplates.securityExceptionResponse(responseBuilder, exception);
         } catch (BusinessException exception) {
             /* Business Exception */
             ResponseTemplates.businessExceptionResponse(responseBuilder, exception);
@@ -123,22 +91,12 @@ public class RemoteServerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         final ResponseBuilder responseBuilder = new ResponseBuilder(resp);
         try {
-            /* Session verification */
-            SessionVerification.getInstance().verifySessionToken(req);
-            /* Headers */
-            final Integer userId = req.getIntHeader(user_id);
-            /* Get server list */
-            List<RemoteServer> list = RemoteServerBusinessService.getInstance().getByUserId(userId);
+            JsonUtil jsonUtil = new JsonUtil();
+            /* Get list */
+            List<Line> list = LineBusinessService.getInstance().get();
             /* Parse response */
-            List<String> json = new ArrayList<>(); //TODO modify remote server object to make JSON parse easier
-            for (final RemoteServer i : list) {
-                json.add(i.toJSON());
-            }
-            responseBuilder.setBody("[" + String.join(",", json) + "]");
+            responseBuilder.setBody(jsonUtil.asJson(list));
             okResponse(responseBuilder);
-        } catch (SecurityException exception) {
-            /* Security Exception */
-            ResponseTemplates.securityExceptionResponse(responseBuilder, exception);
         } catch (BusinessException exception) {
             /* Business Exception */
             ResponseTemplates.businessExceptionResponse(responseBuilder, exception);
@@ -156,23 +114,17 @@ public class RemoteServerServlet extends HttpServlet {
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) {
         final ResponseBuilder responseBuilder = new ResponseBuilder(resp);
         try {
-            /* Session verification */
-            SessionVerification.getInstance().verifySessionToken(req);
             /* Headers */
-            final String serverId = req.getHeader(server_id);
+            final String telephoneNumber = req.getHeader(ProcessLineRequest.telephoneNumber);
             /* try delete */
-            if (RemoteServerBusinessService.getInstance().delete(new RemoteServerBuilder()
-                    .setId(Integer.parseInt(serverId))
+            if (LineBusinessService.getInstance().delete(new LineBuilder()
+                    .setTelephone_Number(Integer.parseInt(telephoneNumber))
                     .build())) {
                 okResponse(responseBuilder);
-                /* Log */
-                LogProcessService.getInstance().genericUserLog(session_token, LogProcessService.getInstance().CONFIRMATION, "Servidor con ID \"" + serverId + "\" ha sido eliminado.");
             } else {
-                throw new BusinessException("Remote server have not been deleted. Verify the id.", BusinessException.SERVER_NOT_DELETED);
+                throw new BusinessException("Line with telephone number " + telephoneNumber +
+                        " haven't been deleted. Verify the telephone number.", BusinessException.LINE_NOT_DELETED);
             }
-        } catch (SecurityException exception) {
-            /* Security Exception */
-            ResponseTemplates.securityExceptionResponse(responseBuilder, exception);
         } catch (BusinessException exception) {
             /* Business Exception */
             ResponseTemplates.businessExceptionResponse(responseBuilder, exception);
@@ -191,37 +143,34 @@ public class RemoteServerServlet extends HttpServlet {
         final ResponseBuilder responseBuilder = new ResponseBuilder(resp);
         responseBuilder.setStatus(HttpServletResponse.SC_NO_CONTENT);
         responseBuilder.setAllowMethods(POST, OPTIONS, GET, PUT, DELETE);
-        responseBuilder.setAllowHeaders(String.join(",", Content_type, session_token, user_id, server_id));
+        responseBuilder.setAllowHeaders(String.join(",", Content_type, ProcessLineRequest.getHeaders()));
         responseBuilder.setExposeHeaders(headersKeys);
         responseBuilder.build();
     }
 }
 
-class ProcessRemoteServerRequest{
-    static RemoteServer createRemoteServer(final Map<String, String> body){
-        final String label = body.get(HeadersKeys.label);
-        final String description = body.get(HeadersKeys.description);
-        final String operativeSystem = body.get(operative_system);
-        final String version = body.get(HeadersKeys.version);
-        final String serverAddress = body.get(server_address);
-        final String username = body.get(HeadersKeys.username);
-        final String password = body.get(HeadersKeys.password);
-        final String port = body.get(HeadersKeys.port);
-        final String sessionTime = body.get(session_time);
-        /* Build Remote Server */
-        final SSHConfiguration sshConfiguration = new SSHConfigurationBuilder()
-                .setServerAddress(serverAddress)
-                .setUsername(username)
-                .setPassword(password)
-                .setPort(Integer.parseInt(port))
-                .setSessionTime(Integer.parseInt(sessionTime))
-                .build();
-        return new RemoteServerBuilder()
-                .setLabel(label)
-                .setDescription(description)
-                .setOperativeSystem(operativeSystem)
-                .setVersion(version)
-                .setSshConfiguration(sshConfiguration)
+class ProcessLineRequest{
+    /* Line Headers */
+    static final String telephoneNumber = "telephoneNumber";
+    static final String pointsQuantity = "pointsQuantity";
+    static final String type = "type";
+    static final String status = "status";
+    static String getHeaders(){
+        return String.join(",", ProcessLineRequest.telephoneNumber, ProcessLineRequest.pointsQuantity, ProcessLineRequest.type, ProcessLineRequest.status);
+    }
+
+    static Line createLine(final Map<String, String> body){
+        /* Attributes */
+        final int telephoneNumber = Integer.parseInt(body.get(ProcessLineRequest.telephoneNumber));
+        final int pointsQuantity = Integer.parseInt(body.get(ProcessLineRequest.pointsQuantity));
+        final int type = Integer.parseInt(body.get(ProcessLineRequest.type));
+        final String status = body.get(ProcessLineRequest.status);
+        /* Build */
+        return new LineBuilder()
+                .setTelephone_Number(telephoneNumber)
+                .setPoints_Quantity(pointsQuantity)
+                .setType(type)
+                .setStatus(status)
                 .build();
     }
 }

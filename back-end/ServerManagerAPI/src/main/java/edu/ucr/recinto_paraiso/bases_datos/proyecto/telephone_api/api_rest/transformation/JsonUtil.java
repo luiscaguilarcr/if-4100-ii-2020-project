@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-public class JSONUtil {
+public class JsonUtil {
     private final ObjectMapper mapper = new ObjectMapper();
 
     public <T> String asJson(T value) {
