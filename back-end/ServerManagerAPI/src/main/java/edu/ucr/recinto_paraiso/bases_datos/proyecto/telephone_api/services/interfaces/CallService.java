@@ -31,7 +31,7 @@ public interface CallService<E>  {
     void update(E call) throws BusinessException, PersistenceException;
 
     /**
-     * Deletes an Call of the repository.
+     * Delete a Call of the repository.
      *
      * @param call Call to be deleted.
      * @return {@code true} if the User have been deleted, {@code false} otherwise.

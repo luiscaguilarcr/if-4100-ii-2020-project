@@ -15,6 +15,7 @@ public class BusinessException extends Exception {
     public static final int USER_NEW_EMAIL_NOT_PROVIDED = 54;
     public static final int USER_NEW_EMAIL_NOT_VALID = 54;
     public static final int USER_EMAIL_IN_USE = 54;
+    public static final int USER_CALL_IN_USE = 54;
     public static final int USER_FIRST_NAME_NOT_PROVIDED = 54;
     public static final int USER_LAST_NAME_NOT_PROVIDED = 54;;
     public static final int USER_NEW_FIRST_NAME_NOT_PROVIDED = 54;
