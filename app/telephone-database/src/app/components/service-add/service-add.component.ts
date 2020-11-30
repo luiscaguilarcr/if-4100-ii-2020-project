@@ -23,8 +23,9 @@ export class LineAddComponent implements OnInit {
   createForm(): FormGroup {
     /* Create form */
     return this.formBuilder.group({
+      service_code :   [this.service.service_code,   [Validators.required]],
       name :   [this.service.name,   [Validators.required]],
-      descrition:  [this.service.descrition,   [Validators.required]],
+      description:  [this.service.description,   [Validators.required]],
       cost :  [this.service.cost,   [Validators.required]],
     });
   }
@@ -33,13 +34,10 @@ export class LineAddComponent implements OnInit {
    */
   private buildLine(): Service {
     const service = new Service();
+    service.service_code  = '';
     service.name  = '';
-    service.descrition      = '';
+    service.description      = '';
     service.cost = '';
-    service.customerLastName  = '';
-    service.customerAddress   = '';
-    service.customerEmail     = '';
-    service.type              = '';
     return service;
   }
   /**
@@ -47,13 +45,10 @@ export class LineAddComponent implements OnInit {
    */
   private loadForm(): void {
     this.form.patchValue({
-      telephoneNumber: this.service.telephoneNumber,
-      customerId: this.service.customerId,
-      customerFirstName: this.service.customerFirstName,
-      customerLastName: this.service.customerLastName,
-      customerAddress: this.service.customerAddress,
-      customerEmail: this.service.customerEmail,
-      type: this.service.type,
+      service_code: this.service.service_code,
+      name: this.service.name,
+      description: this.service.description,
+      cost: this.service.cost,
     });
   }
 
@@ -93,22 +88,17 @@ export class LineAddComponent implements OnInit {
   /**
    * Load the line model with form's values.
    */
-  private loadLineModel(): void {
+  private loadServiceModel(): void {
     let control;
-    control = this.form.get('telephoneNumber');
-    if ( control ) { this.service.telephoneNumber = control.value; }
-    control = this.form.get('customerId');
-    if ( control ) { this.service.customerId = control.value; }
-    control = this.form.get('customerFirstName');
-    if ( control ) { this.service.customerFirstName = control.value; }
-    control = this.form.get('customerLastName');
-    if ( control ) { this.service.customerLastName = control.value; }
-    control = this.form.get('customerAddress');
-    if ( control ) { this.service.customerAddress = control.value; }
-    control = this.form.get('customerEmail');
-    if ( control ) { this.service.customerEmail = control.value; }
-    control = this.form.get('type');
-    if ( control ) { this.service.type = control.value; }
+    control = this.form.get('service_code');
+    if ( control ) { this.service.service_code = control.value; }
+    control = this.form.get('name');
+    if ( control ) { this.service.name = control.value; }
+    control = this.form.get('description');
+    if ( control ) { this.service.description = control.value; }
+    control = this.form.get('cost');
+    if ( control ) { this.service.cost = control.value; }
+
   }
 
 }

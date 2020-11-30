@@ -1,7 +1,8 @@
 
-export class service {
+export class Service {
+    service_code ='';
     name = '';
-    descrition = '';
+    description = '';
     cost = '';
    
 }
