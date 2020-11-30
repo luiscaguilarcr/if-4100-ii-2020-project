@@ -13,7 +13,7 @@ export class CallService {
   public addCall(call: Call) {
     
     return this.databaseService.getPool().then((pool: any) => {
-      const insertStatement = 'INSERT INTO [Call] (Telephone_Number, Destination_Telephone_Number, Start_Date, End_Date) values (@Telephone_Number, @Destination_Telephone_Number, @Start_Date, @End_Date);'
+      const insertStatement = 'INSERT INTO [Call] (Telephone_Number, Destination_Telephone_Number, Start_Date, End_Date) VALUES (@Telephone_Number, @Destination_Telephone_Number, @Start_Date, @End_Date);'
 
       return pool.request()
         .input('Telephone_Number', this.variableTypes.Int, call.telephoneNumber)

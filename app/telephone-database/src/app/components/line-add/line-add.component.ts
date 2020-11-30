@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Line } from '../../models/line.model';
+import { LineService } from '../../services/line.service';
 
 @Component({
   selector: 'app-line-add',
@@ -13,7 +14,7 @@ export class LineAddComponent implements OnInit {
   title = 'Crear una nueva línea';
   line: Line;
 
-  constructor( private formBuilder: FormBuilder ) {
+  constructor( private formBuilder: FormBuilder, private lineService : LineService) {
     this. line = this.buildLine();
     this.form = this.createForm();
   }
@@ -33,7 +34,7 @@ export class LineAddComponent implements OnInit {
   private buildLine(): Line {
     const line = new Line();
     line.telephoneNumber   = '';
-    line.pointsQuantity   = '';
+    line.pointsQuantity   = '0';
     line.type   = '';
 
 
@@ -84,6 +85,11 @@ export class LineAddComponent implements OnInit {
     this.loadLineModel();
     console.log(this.line);
     /* Call service */
+
+    return this.lineService.addLine(this.line).then(response => console.log(response))
+    .catch ((error: any) => {
+      console.log(error);
+    });
   }
 
   /**
