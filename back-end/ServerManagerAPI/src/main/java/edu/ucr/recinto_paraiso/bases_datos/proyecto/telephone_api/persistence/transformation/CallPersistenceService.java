@@ -159,6 +159,7 @@ public class CallPersistenceService implements CallService<Call> {
             throw new PersistenceException("Error during delete execution. Details: " + e.getMessage(), 0);
         }
     }
+
 }
 
 /**
