@@ -22,12 +22,9 @@ export class LineAddComponent implements OnInit {
     /* Create form */
     return this.formBuilder.group({
       telephoneNumber:   [this.line.telephoneNumber,   [Validators.required]],
-      customerId:        [this.line.customerId,        [Validators.required]],
-      customerFirstName: [this.line.customerFirstName, [Validators.required]],
-      customerLastName:  [this.line.customerLastName,  [Validators.required]],
-      customerAddress:   [this.line.customerAddress],
-      customerEmail:     [this.line.customerEmail,     [Validators.required, Validators.email]],
-      type:              [this.line.type,              [Validators.required]],
+      pointsQuantity:  [this.line.pointsQuantity,   [Validators.required]],
+      type:  [this.line.type,   [Validators.required]],
+
     });
   }
   /**
@@ -36,12 +33,10 @@ export class LineAddComponent implements OnInit {
   private buildLine(): Line {
     const line = new Line();
     line.telephoneNumber   = '';
-    line.customerId        = '';
-    line.customerFirstName = '';
-    line.customerLastName  = '';
-    line.customerAddress   = '';
-    line.customerEmail     = '';
-    line.type              = '';
+    line.pointsQuantity   = '';
+    line.type   = '';
+
+
     return line;
   }
   /**
@@ -50,12 +45,10 @@ export class LineAddComponent implements OnInit {
   private loadForm(): void {
     this.form.patchValue({
       telephoneNumber: this.line.telephoneNumber,
-      customerId: this.line.customerId,
-      customerFirstName: this.line.customerFirstName,
-      customerLastName: this.line.customerLastName,
-      customerAddress: this.line.customerAddress,
-      customerEmail: this.line.customerEmail,
+      pointsQuantity: this.line.pointsQuantity,
       type: this.line.type,
+
+      
     });
   }
 
@@ -100,18 +93,11 @@ export class LineAddComponent implements OnInit {
     let control;
     control = this.form.get('telephoneNumber');
     if ( control ) { this.line.telephoneNumber = control.value; }
-    control = this.form.get('customerId');
-    if ( control ) { this.line.customerId = control.value; }
-    control = this.form.get('customerFirstName');
-    if ( control ) { this.line.customerFirstName = control.value; }
-    control = this.form.get('customerLastName');
-    if ( control ) { this.line.customerLastName = control.value; }
-    control = this.form.get('customerAddress');
-    if ( control ) { this.line.customerAddress = control.value; }
-    control = this.form.get('customerEmail');
-    if ( control ) { this.line.customerEmail = control.value; }
+    control = this.form.get('pointsQuantity');
+    if ( control ) { this.line.pointsQuantity = control.value; }
     control = this.form.get('type');
     if ( control ) { this.line.type = control.value; }
+
   }
 
 }

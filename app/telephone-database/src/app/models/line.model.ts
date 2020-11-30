@@ -1,10 +1,6 @@
 
 export class Line {
     telephoneNumber = '';
-    customerId = '';
-    customerFirstName = '';
-    customerLastName = '';
-    customerAddress = '';
-    customerEmail = '';
+    pointsQuantity = '';
     type = '';
 }

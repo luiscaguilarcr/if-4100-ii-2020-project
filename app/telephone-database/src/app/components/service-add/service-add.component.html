@@ -1,1 +1,64 @@
-<p>service-add works!</p>
+<div class="mr-xl-5 justify-content-center">
+    <h4>{{ title }}</h4>
+    <hr class="mb-5">
+    <!-- Form -->
+    <form autocomplete="off" (ngSubmit)="submit()" [formGroup]="form">
+        <!-- service code -->
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Código de servicio</label>
+            <div class="form-row col">
+
+                <div class="col">
+                    <input class="form-control" type="text" formControlName="serviceCode" [class.is-invalid]="invalidInput('serviceCode')">
+                </div>
+             </div>
+        </div>
+
+
+
+        <hr class="mt-5 mb-5">
+        <!-- Name -->
+        <div class="form-group row mb-4">
+            <label class="col-2 col-form-label">Nombre</label>
+            <div class="col">
+
+                <input class="form-control" type="text" formControlName="name" [class.is-invalid]="invalidInput('name')">
+            </div>
+        </div>
+
+        <!-- Descripción -->
+        <div class="form-group row mb-4">
+            <label class="col-2 col-form-label">Descripción</label>
+            <div class="form-row col">
+
+                <div class="col">
+
+                    <input class="form-control" type="text" formControlName="description" [class.is-invalid]="invalidInput('description')">
+                </div>
+               
+            </div>
+        </div>
+
+         <!-- Costo -->
+         <div class="form-group row mb-4">
+            <label class="col-2 col-form-label">Costo</label>
+            <div class="form-row col">
+
+                <div class="col">
+
+                    <input class="form-control" type="text" formControlName="cost" [class.is-invalid]="invalidInput('cost')">
+                </div>
+               
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <!-- <label class="col-2 col-form-label">&nbsp;</label> -->
+            <div class="input-group col">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+
+
+    </form>
+</div>

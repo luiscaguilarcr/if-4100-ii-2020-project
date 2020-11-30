@@ -17,9 +17,10 @@ export class DatabaseService {
   constructor() {
   }
 
-
   getPool(): any {
     return this.sql.connect(this.config);
   }
-
+  util(): any {
+    return this.sql;
+  }
 }
