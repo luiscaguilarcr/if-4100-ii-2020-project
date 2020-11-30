@@ -5,7 +5,7 @@ import { DatabaseService } from './database.service';
 @Injectable({
   providedIn: 'root'
 })
-export class LineService {
+export class CallService {
   variableTypes : any;
 
   constructor(private databaseService: DatabaseService) {this.variableTypes = databaseService.util()}
