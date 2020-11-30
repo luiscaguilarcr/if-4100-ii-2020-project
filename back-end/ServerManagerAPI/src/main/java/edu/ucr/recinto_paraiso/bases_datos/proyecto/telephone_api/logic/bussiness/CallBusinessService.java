@@ -44,8 +44,8 @@ public class CallBusinessService implements CallService<Call> {
      *                              occurs while is trying to get the Call.
      */
     @Override
-    public List<Call> get(Call call) throws BusinessException, PersistenceException {
-        return callPersistenceService.get(call);
+    public List<Call> get() throws BusinessException, PersistenceException {
+        return callPersistenceService.get();
     }
 
     /**

@@ -52,7 +52,7 @@ public class CallPersistenceService implements CallService<Call> {
      *                              occurs while is trying to get the Call.
      */
     @Override
-    public List<Call> get(Call call) throws PersistenceException {
+    public List<Call> get() throws PersistenceException {
         ResultSet resultSet;
         final List<Call> list = new ArrayList<>();
         try {

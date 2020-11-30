@@ -11,7 +11,7 @@ public interface CallService<E>  {
      * @return {@code Call} if have been found. {@code null} if doesn't exist
      * an Call with the telephone number provided.
      */
-    List<E> get(E call) throws BusinessException, PersistenceException;
+    List<E> get() throws BusinessException, PersistenceException;
 
     /**
      * Inserts a new Call to the repository. This also validates if the

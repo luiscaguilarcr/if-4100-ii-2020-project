@@ -33,6 +33,9 @@ public class BusinessException extends Exception {
     public static final int CALL_END_DATE_NOT_PROVIDED = 1;
     public static final int CALL_START_DATE_NOT_PROVIDED = 1;
 
+    /* CallServlet exception codes */
+    public static final int CALL_NOT_DELETED = 1;
+    
     /* RemoteServer exception codes */
     public static final int SERVER_NOT_CREATED = 60;
     public static final int SERVER_NOT_UPDATED = 61;
