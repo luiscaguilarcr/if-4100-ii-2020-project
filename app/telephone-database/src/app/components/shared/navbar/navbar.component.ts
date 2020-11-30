@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  title = 'Telephone Company';
+  title = 'Compañia Telefónica';
 
   constructor( private router: Router) { } /* String name    name: string*/
 

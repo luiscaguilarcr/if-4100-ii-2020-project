@@ -5,13 +5,13 @@
     <form autocomplete="off" (ngSubmit)="submit()" [formGroup]="form">
         <!-- Telephone number -->
         <div class="form-group row">
-            <label class="col-2 col-form-label">Telephone</label>
+            <label class="col-2 col-form-label">Teléfono</label>
             <div class="form-row col">
 
                 <div class="col">
                     <input class="form-control" type="text" formControlName="telephoneNumber" [class.is-invalid]="invalidInput('telephoneNumber')">
                 </div>
-                <label class="col-3 col-form-label pl-5 pr-5">Type</label>
+                <label class="col-3 col-form-label pl-5 pr-5">Tipo</label>
 
                 <div class="col">
                     <!-- Line Type -->
@@ -27,7 +27,7 @@
         <hr class="mt-5 mb-5">
         <!-- Customer Id -->
         <div class="form-group row mb-4">
-            <label class="col-2 col-form-label">Customer ID</label>
+            <label class="col-2 col-form-label">Identificación</label>
             <div class="col">
 
                 <input class="form-control" type="text" formControlName="customerId" [class.is-invalid]="invalidInput('customerId')">
@@ -36,7 +36,7 @@
 
         <!-- Customer First_Name -->
         <div class="form-group row mb-4">
-            <label class="col-2 col-form-label">First Name</label>
+            <label class="col-2 col-form-label">Nombre</label>
             <div class="form-row col">
 
                 <div class="col">
@@ -44,7 +44,7 @@
                     <input class="form-control" type="text" formControlName="customerFirstName" [class.is-invalid]="invalidInput('customerFirstName')">
                 </div>
                 <!-- Customer Last_Name -->
-                <label class="col-3 col-form-label pl-5 pr-5">Last Name</label>
+                <label class="col-3 col-form-label pl-5 pr-5">Apellido</label>
 
                 <div class="col">
                     <input class="form-control" type="text" formControlName="customerLastName" [class.is-invalid]="invalidInput('customerLastName')">
@@ -54,7 +54,7 @@
 
         <!-- Customer Email -->
         <div class="form-group row mb-4">
-            <label class="col-2 col-form-label">Email</label>
+            <label class="col-2 col-form-label">Correo electrónico</label>
             <div class="col">
 
                 <input class="form-control" type="text" formControlName="customerEmail" [class.is-invalid]="invalidInput('customerEmail')">
@@ -63,7 +63,7 @@
 
         <!-- Customer Address -->
         <div class="form-group row mb-4">
-            <label class="col-2 col-form-label">Address</label>
+            <label class="col-2 col-form-label">Dirección</label>
             <div class="col">
 
                 <input class="form-control" type="text" placeholder="Opcional" formControlName="customerAddress" [class.is-invalid]="invalidInput('customerAddress')">
@@ -73,7 +73,7 @@
         <div class="form-group row">
             <!-- <label class="col-2 col-form-label">&nbsp;</label> -->
             <div class="input-group col">
-                <button type="submit" class="btn btn-primary">Next</button>
+                <button type="submit" class="btn btn-primary">Siguiente</button>
             </div>
         </div>
 
