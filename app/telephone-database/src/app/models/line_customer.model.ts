@@ -2,7 +2,7 @@ export class LineCustomer {
     telephoneNumber = '';
     customerId = '';
     customerFirstName = '';
-    customerLastNameName = '';
+    customerLastName = '';
     customerAddress = '';
     customerEmail = '';
 }
