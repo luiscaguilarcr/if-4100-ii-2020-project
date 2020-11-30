@@ -13,7 +13,7 @@ export class LineService {
   public addLine(line: Line) {
     
     return this.databaseService.getPool().then((pool: any) => {
-      const insertStatement = 'INSERT INTO [Line] (Telephone_Number, Points_Quantity, Type) values (?,?,?);'
+      const insertStatement = 'INSERT INTO [Line] (Telephone_Number, Points_Quantity, Type) values (@Telephone_Number, @Points_Quantity, @Type);'
 
       return pool.request()
         .input('Telephone_Number', this.variableTypes.Int, line.telephoneNumber)

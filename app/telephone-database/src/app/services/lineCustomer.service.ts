@@ -19,7 +19,7 @@ export class LineCustomerService {
         .input('Telephone_Number', this.variableTypes.Int, lineCustomer.telephoneNumber)
         .input('Customer_Id', this.variableTypes.Int, lineCustomer.customerId)
         .input('Customer_First_Name', this.variableTypes.tinyint, lineCustomer.customerFirstName)
-        .input('Customer_Last_Name', this.variableTypes.tinyint, lineCustomer.customerLastNameName)
+        .input('Customer_Last_Name', this.variableTypes.tinyint, lineCustomer.customerLastName)
         .input('Customer_Address', this.variableTypes.tinyint, lineCustomer.customerAddress)
         .input('Customer_Email', this.variableTypes.tinyint, lineCustomer.customerEmail)
 
