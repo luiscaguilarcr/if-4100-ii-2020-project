@@ -22,7 +22,9 @@ export class LineAddComponent implements OnInit {
     /* Create form */
     return this.formBuilder.group({
       telephoneNumber:   [this.line.telephoneNumber,   [Validators.required]],
-      pointsQuantity:  [this.line.pointsQuantity,   [Validators.required]],
+      //pointsQuantity:  [this.line.pointsQuantity,   [Validators.required]],
+      pointsQuantity: '0',
+
       type:  [this.line.type,   [Validators.required]],
 
     });
@@ -33,7 +35,7 @@ export class LineAddComponent implements OnInit {
   private buildLine(): Line {
     const line = new Line();
     line.telephoneNumber   = '';
-    line.pointsQuantity   = '';
+    line.pointsQuantity   = '0';
     line.type   = '';
 
 
@@ -45,7 +47,9 @@ export class LineAddComponent implements OnInit {
   private loadForm(): void {
     this.form.patchValue({
       telephoneNumber: this.line.telephoneNumber,
-      pointsQuantity: this.line.pointsQuantity,
+     // pointsQuantity: this.line.pointsQuantity,
+      pointsQuantity: '0',
+
       type: this.line.type,
 
       
@@ -94,7 +98,7 @@ export class LineAddComponent implements OnInit {
     control = this.form.get('telephoneNumber');
     if ( control ) { this.line.telephoneNumber = control.value; }
     control = this.form.get('pointsQuantity');
-    if ( control ) { this.line.pointsQuantity = control.value; }
+    if ( control ) { this.line.pointsQuantity ='0'; }
     control = this.form.get('type');
     if ( control ) { this.line.type = control.value; }
 
