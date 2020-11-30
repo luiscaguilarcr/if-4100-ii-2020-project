@@ -3,29 +3,44 @@
     <hr class="mb-5">
     <!-- Form -->
     <form autocomplete="off" (ngSubmit)="submit()" [formGroup]="form">
-        <!-- Service Code -->
+        <!-- service code -->
         <div class="form-group row">
             <label class="col-2 col-form-label">Código de servicio</label>
             <div class="form-row col">
 
                 <div class="col">
-                    <input class="form-control" type="text" formControlName="service_code" [class.is-invalid]="invalidInput('service_code')">
+                    <input class="form-control" type="text" formControlName="serviceCode" [class.is-invalid]="invalidInput('serviceCode')">
                 </div>
-                <label class="col-3 col-form-label pl-5 pr-5">Nombre</label>
+             </div>
+        </div>
 
-         
+
+
         <hr class="mt-5 mb-5">
-        <!-- Customer Id -->
+        <!-- Name -->
         <div class="form-group row mb-4">
-            <label class="col-2 col-form-label">Descripción</label>
+            <label class="col-2 col-form-label">Nombre</label>
             <div class="col">
 
-                <input class="form-control" type="text" formControlName="description" [class.is-invalid]="invalidInput('description')">
+                <input class="form-control" type="text" formControlName="name" [class.is-invalid]="invalidInput('name')">
             </div>
         </div>
 
-        <!-- Customer First_Name -->
+        <!-- Descripción -->
         <div class="form-group row mb-4">
+            <label class="col-2 col-form-label">Descripción</label>
+            <div class="form-row col">
+
+                <div class="col">
+
+                    <input class="form-control" type="text" formControlName="description" [class.is-invalid]="invalidInput('description')">
+                </div>
+               
+            </div>
+        </div>
+
+         <!-- Costo -->
+         <div class="form-group row mb-4">
             <label class="col-2 col-form-label">Costo</label>
             <div class="form-row col">
 
@@ -33,15 +48,17 @@
 
                     <input class="form-control" type="text" formControlName="cost" [class.is-invalid]="invalidInput('cost')">
                 </div>
-          
-     
+               
+            </div>
+        </div>
 
         <div class="form-group row">
             <!-- <label class="col-2 col-form-label">&nbsp;</label> -->
             <div class="input-group col">
-                <button type="submit" class="btn btn-primary">Siguiente</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
         </div>
+
 
     </form>
 </div>
