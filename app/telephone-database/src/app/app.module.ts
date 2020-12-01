@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 /* Services */
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
-
+import { HttpClientModule } from '@angular/common/http';
 /* Components */
 import { AppComponent } from './app.component';
 import { LineListComponent } from './components/line-list/line-list.component';
@@ -44,6 +44,7 @@ import { CallListComponent } from './components/call-list/call-list.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot( ROUTES, { useHash: true} )
   ],
   providers: [],

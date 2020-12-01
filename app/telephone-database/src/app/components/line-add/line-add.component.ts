@@ -88,10 +88,10 @@ export class LineAddComponent implements OnInit {
     console.log(this.line);
     /* Call service */
 
-    return this.lineService.addLine(this.line).then(response => console.log(response))
-    .catch ((error: any) => {
-      console.log(error);
-    });
+    // return this.lineService.addLine(this.line).then(response => console.log(response))
+    // .catch ((error: any) => {
+    //   console.log(error);
+    // });
   }
 
   /**
