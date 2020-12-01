@@ -4,7 +4,6 @@ import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.trans
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseBuilder;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseTemplates;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.LineCustomer;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.LineCustomer;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.LineCustomerBuilder;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.bussiness.LineCustomerBusinessService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException;
@@ -153,20 +152,22 @@ class ProcessLineCustomerRequest{
     /* LineCustomer Headers */
     static final String telephoneNumber = "telephoneNumber";
     static final String destinationTelephoneNumber = "destinationTelephoneNumber";
-    static final String startDate = "startDate";
-    static final String endDate = "endDate";
+    static final String firstName = "firstName";
+    static final String lastName = "lastName";
+    static final String address = "address";
+    static final String email = "email";
     static String getHeaders(){
-        return String.join(",", ProcessLineCustomerRequest.telephoneNumber, ProcessLineCustomerRequest.destinationTelephoneNumber, ProcessLineCustomerRequest.startDate, ProcessLineCustomerRequest.endDate);
+        return String.join(",", ProcessLineCustomerRequest.telephoneNumber, ProcessLineCustomerRequest.destinationTelephoneNumber, ProcessLineCustomerRequest.firstName, ProcessLineCustomerRequest.lastName, ProcessLineCustomerRequest.address, ProcessLineCustomerRequest.email);
     }
 
     static LineCustomer createLineCustomer(final Map<String, String> body){
         /* Attributes */
         final int telephoneNumber = Integer.parseInt(body.get(ProcessLineCustomerRequest.telephoneNumber));
         final int destinationTelephoneNumber = Integer.parseInt(body.get(ProcessLineCustomerRequest.destinationTelephoneNumber));
-        final String firstName = body.get(ProcessLineCustomerRequest.startDate);
-        final String lastName = body.get(ProcessLineCustomerRequest.startDate);
-        final String address = body.get(ProcessLineCustomerRequest.endDate);
-        final String email = body.get(ProcessLineCustomerRequest.endDate);
+        final String firstName = body.get(ProcessLineCustomerRequest.firstName);
+        final String lastName = body.get(ProcessLineCustomerRequest.lastName);
+        final String address = body.get(ProcessLineCustomerRequest.address);
+        final String email = body.get(ProcessLineCustomerRequest.email);
         /* Build */
         return new LineCustomerBuilder()
                 .setTelephone_Number(telephoneNumber)
