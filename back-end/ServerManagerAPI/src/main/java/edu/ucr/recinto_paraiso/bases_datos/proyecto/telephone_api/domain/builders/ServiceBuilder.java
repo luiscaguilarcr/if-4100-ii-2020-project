@@ -11,24 +11,29 @@ public class ServiceBuilder {
     private  int cost ;
     private  String status;
 
-    public void setService_Code(int service_Code) {
+    public ServiceBuilder setService_Code(int service_Code) {
         this.service_Code = service_Code;
+        return this;
     }
 
-    public void setName(String name) {
+    public ServiceBuilder setName(String name) {
         this.name = name;
+        return this;
     }
 
-    public void setDescription(String description) {
+    public ServiceBuilder setDescription(String description) {
         this.description = description;
+        return this;
     }
 
-    public void setCost(int cost) {
+    public ServiceBuilder setCost(int cost) {
         this.cost = cost;
+        return this;
     }
 
-    public void setStatus(String status) {
+    public ServiceBuilder setStatus(String status) {
         this.status = status;
+        return this;
     }
 
     public Service build(){

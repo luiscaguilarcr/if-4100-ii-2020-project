@@ -8,12 +8,18 @@ package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.excepti
  * Use null as default or unknown error.
  */
 public class BusinessException extends Exception {
-    /* Call exception codes */
+    /* Call service exception codes */
     public static final int CALL_OBJECT_NOT_PROVIDED = 1;
+    public static final int CALL_NUMBER_IN_USE = 1;
     public static final int CALL_TELEPHONE_NUMBER_NOT_PROVIDED = 1;
     public static final int CALL_DESTINATION_TELEPHONE_NUMBER_NOT_PROVIDED = 1;
     public static final int CALL_END_DATE_NOT_PROVIDED = 1;
     public static final int CALL_START_DATE_NOT_PROVIDED = 1;
+
+    /* Service service exception codes */
+    public static final int SERVICE_CODE_IN_USE = 1;
+
+
     /* CallServlet exception codes */
     public static final int CALL_NOT_DELETED = 1;
     /* Json format */

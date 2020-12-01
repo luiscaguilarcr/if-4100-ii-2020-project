@@ -1,21 +1,11 @@
 package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.transformation;
 
-<<<<<<< HEAD
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Line;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Service;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.LineBuilder;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.ServiceBuilder;
-=======
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Service;
->>>>>>> ce1a96164cbd1c563a06ac2f8aa04699f0aa106b
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.conectors.DatabaseService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.conectors.UCRDatabaseService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.exceptions.PersistenceException;
-<<<<<<< HEAD
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.services.interfaces.LineService;
-=======
->>>>>>> ce1a96164cbd1c563a06ac2f8aa04699f0aa106b
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.services.interfaces.ServiceService;
 
 import java.sql.PreparedStatement;
@@ -80,7 +70,7 @@ public class ServicePersistenceService implements ServiceService<Service> {
                 final Service service = new ServiceBuilder()
                         .setService_Code(resultSet.getInt(ServiceColumnLabel.service_Code))
                         .setName(resultSet.getString(ServiceColumnLabel.name))
-                        .setDescription(resultSet.getInt(ServiceColumnLabel.description))
+                        .setDescription(resultSet.getString(ServiceColumnLabel.description))
                         .setCost(resultSet.getInt(ServiceColumnLabel.cost))
                         .setStatus(resultSet.getString(ServiceColumnLabel.status))
                         .build();
@@ -103,20 +93,19 @@ public class ServicePersistenceService implements ServiceService<Service> {
     @Override
     public void insert(Service service) throws PersistenceException {
         try {
-            final String insertStatement = "INSERT INTO [Service] (Service_Code, Name, Description,Cost, Status) values (?,?,?,?,?);";
+            final String insertStatement = "INSERT INTO [Service] (Name, Description,Cost, Status) values (?,?,?,?);";
             databaseService.connect();
             final PreparedStatement preparedStatement = databaseService.getConnection().prepareStatement(insertStatement);
             /* Add parameters */
-            preparedStatement.setInt(1, service.getService_Code());
-            preparedStatement.setString(2, service.getName());
-            preparedStatement.setString(3, service.getDescription());
-            preparedStatement.setInt(4, service.getCost());
-            preparedStatement.setString(5, String.valueOf(service.getStatus()));
+            preparedStatement.setString(1, service.getName());
+            preparedStatement.setString(2, service.getDescription());
+            preparedStatement.setInt(3, service.getCost());
+            preparedStatement.setString(4, String.valueOf(service.getStatus()));
             /* Execute statement */
             preparedStatement.execute();
         } catch (SQLException e) {
             if (e.getErrorCode() == 2601 || e.getErrorCode() == 2627) {
-                throw new PersistenceException("Telephone number is already used.", BusinessException.USER_EMAIL_IN_USE);
+                throw new PersistenceException("Service code is already used.", BusinessException.SERVICE_CODE_IN_USE);
             } else {
                 throw new PersistenceException("Error during insert execution. Details: " + e.getMessage(), PersistenceException.DATABASE_CONNECTION_FAILED);
             }
@@ -136,15 +125,16 @@ public class ServicePersistenceService implements ServiceService<Service> {
             databaseService.connect();
             final PreparedStatement preparedStatement = databaseService.getConnection().prepareStatement(insertStatement);
             /* Add parameters */
-           preparedStatement.setString(2, service.getName());
-            preparedStatement.setString(3, service.getDescription());
-            preparedStatement.setInt(4, service.getCost());
-            preparedStatement.setString(5, String.valueOf(service.getStatus()));
+            preparedStatement.setString(1, service.getName());
+            preparedStatement.setString(2, service.getDescription());
+            preparedStatement.setInt(3, service.getCost());
+            preparedStatement.setString(4, String.valueOf(service.getStatus()));
+            preparedStatement.setInt(5, service.getService_Code());
             /* Execute statement */
             preparedStatement.execute();
         } catch (SQLException e) {
             if (e.getErrorCode() == 2601 || e.getErrorCode() == 2627) {
-                throw new PersistenceException("Telephone number is already used.", BusinessException.USER_EMAIL_IN_USE);
+                throw new PersistenceException("Service code is already used.", BusinessException.SERVICE_CODE_IN_USE);
             } else {
                 throw new PersistenceException("Error during insert execution. Details: " + e.getMessage(), PersistenceException.DATABASE_CONNECTION_FAILED);
             }

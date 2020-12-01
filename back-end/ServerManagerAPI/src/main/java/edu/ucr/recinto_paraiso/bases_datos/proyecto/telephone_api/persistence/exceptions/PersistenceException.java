@@ -3,6 +3,7 @@ package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.e
 public class PersistenceException extends Exception{
     /* Database exception codes */
     public static final int DATABASE_CONNECTION_FAILED = 55;
+
     /* code */
     private final int code;
     /**

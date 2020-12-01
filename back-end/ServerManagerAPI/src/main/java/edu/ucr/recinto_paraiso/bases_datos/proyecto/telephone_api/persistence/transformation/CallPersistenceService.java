@@ -104,7 +104,7 @@ public class CallPersistenceService implements CallService<Call> {
             preparedStatement.execute();
         } catch (SQLException e) {
             if (e.getErrorCode() == 2601 || e.getErrorCode() == 2627) {
-                throw new PersistenceException("Telephone number is already used.", BusinessException.USER_CALL_IN_USE);
+                throw new PersistenceException("Telephone number is already used.", BusinessException.CALL_NUMBER_IN_USE);
             } else {
                 throw new PersistenceException("Error during insert execution. Details: " + e.getMessage(), PersistenceException.DATABASE_CONNECTION_FAILED);
             }
@@ -132,7 +132,7 @@ public class CallPersistenceService implements CallService<Call> {
             preparedStatement.execute();
         } catch (SQLException e) {
             if (e.getErrorCode() == 2601 || e.getErrorCode() == 2627) {
-                throw new PersistenceException("Telephone number is already used.", BusinessException.USER_EMAIL_IN_USE);
+                throw new PersistenceException("Telephone number is already used.", BusinessException.CALL_NUMBER_IN_USE);
             } else {
                 throw new PersistenceException("Error during insert execution. Details: " + e.getMessage(), PersistenceException.DATABASE_CONNECTION_FAILED);
             }
