@@ -29,10 +29,9 @@ import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_res
  * URI end-point: /service/
  */
 public class ServiceServlet extends HttpServlet {
-    final String headersKeys = String.join(",", getInformation_headers());
+    final String headersKeys = String.join(",", getInformation_headers(),ProcessServiceRequest.getHeaders());
     /**
      * Use to insert a new remote server.
-     *
      * @param req  request.
      * @param resp response.
      */
@@ -42,11 +41,11 @@ public class ServiceServlet extends HttpServlet {
         try {
             /* Body */
             final Map<String, String> body = Utility.getBodyMap(req.getReader());
-            /* Create line */
+            /* Create service */
             final Service service = ProcessServiceRequest.createService(body);
             /* Try insert */
             ServiceBusinessService.getInstance().insert(service);
-            /* Line created */
+            /* service created */
             resourceCreatedResponse(responseBuilder);
         } catch (IOException ioException) {
             /* JSON FORMAT EXCEPTION */
@@ -70,7 +69,7 @@ public class ServiceServlet extends HttpServlet {
         try {
             /* Body */
             final Map<String, String> body = Utility.getBodyMap(req.getReader());
-            /* Create line */
+            /* Create service */
             final Service service = ProcessServiceRequest.createService(body);
             /* Try update */
             ServiceBusinessService.getInstance().update(service);

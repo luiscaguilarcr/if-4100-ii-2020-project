@@ -3,9 +3,10 @@ package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.serv
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.JsonUtil;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseBuilder;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseTemplates;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Call;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.CallBuilder;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.bussiness.CallBusinessService;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.LineCustomer;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.LineCustomer;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.LineCustomerBuilder;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.bussiness.LineCustomerBusinessService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.exceptions.PersistenceException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.util.Utility;
@@ -23,8 +24,8 @@ import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_res
 import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseTemplates.*;
 import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseTemplates.okResponse;
 
-public class CallServlet extends HttpServlet {
-    final String headersKeys = String.join(",", getInformation_headers(), ProcessLineRequest.getHeaders());
+public class LineCustomerServlet extends HttpServlet {
+    final String headersKeys = String.join(",", getInformation_headers(), ProcessLineCustomerRequest.getHeaders());
     /**
      * Use to insert a new remote server.
      *
@@ -37,11 +38,11 @@ public class CallServlet extends HttpServlet {
         try {
             /* Body */
             final Map<String, String> body = Utility.getBodyMap(req.getReader());
-            /* Create Call */
-            final Call call = ProcessCallRequest.createCall(body);
+            /* Create LineCustomer */
+            final LineCustomer lineCustomer = ProcessLineCustomerRequest.createLineCustomer(body);
             /* Try insert */
-            CallBusinessService.getInstance().insert(call);
-            /* Call created */
+            LineCustomerBusinessService.getInstance().insert(lineCustomer);
+            /* LineCustomer created */
             resourceCreatedResponse(responseBuilder);
         } catch (IOException ioException) {
             /* JSON FORMAT EXCEPTION */
@@ -65,10 +66,10 @@ public class CallServlet extends HttpServlet {
         try {
             /* Body */
             final Map<String, String> body = Utility.getBodyMap(req.getReader());
-            /* Create Call */
-            final Call call = ProcessCallRequest.createCall(body);
+            /* Create LineCustomer */
+            final LineCustomer lineCustomer = ProcessLineCustomerRequest.createLineCustomer(body);
             /* Try update */
-            CallBusinessService.getInstance().update(call);
+            LineCustomerBusinessService.getInstance().update(lineCustomer);
             okResponse(responseBuilder);
         } catch (IOException ioException) {
             /* JSON FORMAT EXCEPTION */
@@ -92,7 +93,7 @@ public class CallServlet extends HttpServlet {
         try {
             JsonUtil jsonUtil = new JsonUtil();
             /* Get list */
-            List<Call> list = CallBusinessService.getInstance().get();
+            List<LineCustomer> list = LineCustomerBusinessService.getInstance().get();
             /* Parse response */
             responseBuilder.setBody(jsonUtil.asJson(list));
             okResponse(responseBuilder);
@@ -114,16 +115,15 @@ public class CallServlet extends HttpServlet {
         final ResponseBuilder responseBuilder = new ResponseBuilder(resp);
         try {
             /* Headers */
-            final String telephoneNumber = req.getHeader(ProcessCallRequest.telephoneNumber);
+            final String telephoneNumber = req.getHeader(ProcessLineCustomerRequest.telephoneNumber);
             /* try delete */
-
-            if (CallBusinessService.getInstance().delete(new CallBuilder()
+            if (LineCustomerBusinessService.getInstance().delete(new LineCustomerBuilder()
                     .setTelephone_Number(Integer.parseInt(telephoneNumber))
                     .build())) {
                 okResponse(responseBuilder);
             } else {
-                throw new BusinessException("Call with telephone number " + telephoneNumber +
-                        " haven't been deleted. Verify the telephone number.", BusinessException.CALL_NOT_DELETED);
+                throw new BusinessException("LineCustomer with telephone number " + telephoneNumber +
+                        " haven't been deleted. Verify the telephone number.", BusinessException.LineCustomer_NOT_DELETED);
             }
         } catch (BusinessException exception) {
             /* Business Exception */
@@ -143,30 +143,30 @@ public class CallServlet extends HttpServlet {
         final ResponseBuilder responseBuilder = new ResponseBuilder(resp);
         responseBuilder.setStatus(HttpServletResponse.SC_NO_CONTENT);
         responseBuilder.setAllowMethods(POST, OPTIONS, GET, PUT, DELETE);
-        responseBuilder.setAllowHeaders(String.join(",", Content_type, ProcessCallRequest.getHeaders()));
+        responseBuilder.setAllowHeaders(String.join(",", Content_type, ProcessLineCustomerRequest.getHeaders()));
         responseBuilder.setExposeHeaders(headersKeys);
         responseBuilder.build();
     }
 }
 
-class ProcessCallRequest{
-    /* Call Headers */
+class ProcessLineCustomerRequest{
+    /* LineCustomer Headers */
     static final String telephoneNumber = "telephoneNumber";
     static final String destinationTelephoneNumber = "destinationTelephoneNumber";
     static final String startDate = "startDate";
     static final String endDate = "endDate";
     static String getHeaders(){
-        return String.join(",", ProcessCallRequest.telephoneNumber, ProcessCallRequest.destinationTelephoneNumber, ProcessCallRequest.startDate, ProcessCallRequest.endDate);
+        return String.join(",", ProcessLineCustomerRequest.telephoneNumber, ProcessLineCustomerRequest.destinationTelephoneNumber, ProcessLineCustomerRequest.startDate, ProcessLineCustomerRequest.endDate);
     }
 
-    static Call createCall(final Map<String, String> body){
+    static LineCustomer createLineCustomer(final Map<String, String> body){
         /* Attributes */
-        final int telephoneNumber = Integer.parseInt(body.get(ProcessCallRequest.telephoneNumber));
-        final int destinationTelephone_Number = Integer.parseInt(body.get(ProcessCallRequest.destinationTelephoneNumber));
-        final String startDate = body.get(ProcessCallRequest.startDate);
-        final String endDate = body.get(ProcessCallRequest.endDate);
+        final int telephoneNumber = Integer.parseInt(body.get(ProcessLineCustomerRequest.telephoneNumber));
+        final int destinationTelephone_Number = Integer.parseInt(body.get(ProcessLineCustomerRequest.destinationTelephoneNumber));
+        final String startDate = body.get(ProcessLineCustomerRequest.startDate);
+        final String endDate = body.get(ProcessLineCustomerRequest.endDate);
         /* Build */
-        return new CallBuilder()
+        return new LineCustomerBuilder()
                 .setTelephone_Number(telephoneNumber)
                 .setDestination_Telephone_Number(destinationTelephone_Number)
                 .setStart_Date(startDate)

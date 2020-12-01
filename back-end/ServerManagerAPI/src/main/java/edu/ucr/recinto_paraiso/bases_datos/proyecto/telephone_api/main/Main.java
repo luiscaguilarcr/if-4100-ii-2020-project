@@ -19,6 +19,9 @@ public class Main {
         /* Register Servlet's URI path. */
         server.registerServlet(DefaultServlet.class, "/");
         server.registerServlet(LineServlet.class, "/line");
+        server.registerServlet(CallServlet.class, "/call");
+        server.registerServlet(ServiceServlet.class, "/service");
+        server.registerServlet(LineCustomerServlet.class, "/line_customer");
         /* Start Http API */
         server.start();
 
