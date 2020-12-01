@@ -1,7 +1,8 @@
 
 export class Call {
-    telephoneNumber = '';
-    destinationTelephoneNumber = '';
+    noCall= -1;
+    telephoneNumber = -1;
+    destinationTelephoneNumber = -1;
     startDate = '';
     endDate = '';
 }
