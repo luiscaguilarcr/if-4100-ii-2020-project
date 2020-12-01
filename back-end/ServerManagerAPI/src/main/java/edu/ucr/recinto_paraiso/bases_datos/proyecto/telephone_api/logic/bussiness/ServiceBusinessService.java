@@ -1,34 +1,37 @@
 package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.bussiness;
 
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Line;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Service;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.exceptions.PersistenceException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.transformation.LinePersistenceService;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.transformation.ServicePersistenceService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.services.interfaces.LineService;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.services.interfaces.ServiceService;
 
 import java.util.List;
 
 import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException.*;
 
-public class LineBusinessService implements LineService<Line> {
+public class ServiceBusinessService implements ServiceService<Service> {
     /* Instance */
-    private static LineBusinessService instance;
-    private LineService<Line> linePersistenceService;
+    private static ServiceBusinessService instance;
+    private ServiceService<Service> servicePersistenceService;
     /**
      * Constructor of the class. Receives an injection of the database connector that manages the data of the
      * ServerAdministrator.
      */
-    private LineBusinessService( final LineService<Line> linePersistenceService) {
-        this.linePersistenceService = linePersistenceService;
+    private ServiceBusinessService(final ServiceService<Service> servicePersistenceService) {
+        this.servicePersistenceService = servicePersistenceService;
     }
     /**
      * Get the instance of the User Persistence Service.
      *
      * @return {@code UserPersistenceService} instance of the service.
      */
-    public static LineBusinessService getInstance() {
+    public static ServiceBusinessService getInstance() {
         if (instance == null) {
-            instance = new LineBusinessService(LinePersistenceService.getInstance());
+            instance = new ServiceBusinessService(ServicePersistenceService.getInstance());
         }
         return instance;
     }
@@ -39,61 +42,59 @@ public class LineBusinessService implements LineService<Line> {
      * an User with the username provided.
      */
     @Override
-    public List<Line> get() throws BusinessException, PersistenceException {
-        return linePersistenceService.get();
+    public List<Service> get() throws BusinessException, PersistenceException {
+        return servicePersistenceService.get();
     }
 
     /**
      * Inserts a new User to the repository. This also validates if the
      * User is valid.
      *
-     * @param line Line.
+     * @param service Service.
      */
     @Override
-    public void insert(Line line) throws BusinessException, PersistenceException {
-        validateLine(line);
-        linePersistenceService.insert(line);
+    public void insert(Service service) throws BusinessException, PersistenceException {
+        validateLine(service);
+        servicePersistenceService.insert(service);
     }
 
     /**
      * Inserts a new User to the repository. This also validates if the
      * User is valid.
      *
-     * @param line Line.
+     * @param service Service.
      * @return {@code true} if the User have been added, {@code false} otherwise.
      */
     @Override
-    public void update(Line line) throws BusinessException, PersistenceException {
-        validateLine(line);
-        linePersistenceService.update(line);
+    public void update(Service service) throws BusinessException, PersistenceException {
+        validateLine(service);
+        servicePersistenceService.update(service);
     }
 
-    private void validateLine(Line line) throws BusinessException{
-        if (line.getTelephoneNumber() <= 0){
-            throw new BusinessException("Telephone number not valid.", LINE_TELEPHONE_NUMBER_NOT_VALID);
+    private void validateLine(Service service) throws BusinessException{
+        if (service.getService_Code() <= 0){
+            throw new BusinessException("Code number not valid.", SERVICE_CODE_NOT_VALID);
         }
-        if (line.getPointsQuantity() < 0){
-            throw new BusinessException("Line points quantity not valid.", LINE_POINT_QUANTITY_NOT_PROVIDED);
+        if (service.getCost() < 0){
+            throw new BusinessException("Cost not valid.", SERVICE_COST_NOT_PROVIDED);
         }
-        if (!(line.getStatus().equals("A") || line.getStatus().equals("I"))){
-            throw new BusinessException("Line status not valid.", LINE_STATUS_NOT_VALID);
+        if (!(service.getStatus().equals("A") || service.getStatus().equals("I"))){
+            throw new BusinessException("Line status not valid.", SERVICE_CODE_NOT_VALID);
         }
-        if (line.getType()<0 || line.getType()>255){
-            throw new BusinessException("Line type not valid.", LINE_TYPE_NOT_PROVIDED);
-        }
+
     }
 
     /**
      * Deletes an User of the repository.
      *
-     * @param line User to be deleted.
+     * @param service User to be deleted.
      * @return {@code true} if the User have been deleted, {@code false} otherwise.
      */
     @Override
-    public boolean delete(Line line) throws BusinessException, PersistenceException {
-        if(line.getTelephoneNumber() <= 0){
-            throw new BusinessException("Telephone number not valid.", LINE_TELEPHONE_NUMBER_NOT_VALID);
+    public boolean delete(Service service) throws BusinessException, PersistenceException {
+        if(service.getService_Code() <= 0){
+            throw new BusinessException("Code number not valid.", SERVICE_CODE_NOT_VALID);
         }
-        return linePersistenceService.delete(line);
+        return servicePersistenceService.delete(service);
     }
 }

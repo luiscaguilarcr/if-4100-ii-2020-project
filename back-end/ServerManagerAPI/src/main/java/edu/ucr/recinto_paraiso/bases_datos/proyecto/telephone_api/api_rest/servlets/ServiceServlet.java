@@ -4,8 +4,11 @@ import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.trans
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseBuilder;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseTemplates;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Line;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Service;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.LineBuilder;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.ServiceBuilder;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.bussiness.LineBusinessService;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.bussiness.ServiceBusinessService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.exceptions.PersistenceException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.util.Utility;
@@ -17,14 +20,15 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.HeadersKeys.*;
+import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.HeadersKeys.Content_type;
+import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.HeadersKeys.getInformation_headers;
 import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.HttpMethodsKeys.*;
 import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseTemplates.*;
 
 /**
- * URI end-point: /line/
+ * URI end-point: /service/
  */
-public class LineServlet extends HttpServlet {
+public class ServiceServlet extends HttpServlet {
     final String headersKeys = String.join(",", getInformation_headers());
     /**
      * Use to insert a new remote server.
@@ -39,9 +43,9 @@ public class LineServlet extends HttpServlet {
             /* Body */
             final Map<String, String> body = Utility.getBodyMap(req.getReader());
             /* Create line */
-            final Line line = ProcessLineRequest.createLine(body);
+            final Service service = ProcessServiceRequest.createService(body);
             /* Try insert */
-            LineBusinessService.getInstance().insert(line);
+            ServiceBusinessService.getInstance().insert(service);
             /* Line created */
             resourceCreatedResponse(responseBuilder);
         } catch (IOException ioException) {
@@ -67,9 +71,9 @@ public class LineServlet extends HttpServlet {
             /* Body */
             final Map<String, String> body = Utility.getBodyMap(req.getReader());
             /* Create line */
-            final Line line = ProcessLineRequest.createLine(body);
+            final Service service = ProcessServiceRequest.createService(body);
             /* Try update */
-            LineBusinessService.getInstance().update(line);
+            ServiceBusinessService.getInstance().update(service);
             okResponse(responseBuilder);
         } catch (IOException ioException) {
             /* JSON FORMAT EXCEPTION */
@@ -93,7 +97,7 @@ public class LineServlet extends HttpServlet {
         try {
             JsonUtil jsonUtil = new JsonUtil();
             /* Get list */
-            List<Line> list = LineBusinessService.getInstance().get();
+            List<Service> list = ServiceBusinessService.getInstance().get();
             /* Parse response */
             responseBuilder.setBody(jsonUtil.asJson(list));
             okResponse(responseBuilder);
@@ -115,15 +119,15 @@ public class LineServlet extends HttpServlet {
         final ResponseBuilder responseBuilder = new ResponseBuilder(resp);
         try {
             /* Headers */
-            final String telephoneNumber = req.getHeader(ProcessLineRequest.telephoneNumber);
+            final String serviceCode = req.getHeader(ProcessServiceRequest.serviceCode);
             /* try delete */
-            if (LineBusinessService.getInstance().delete(new LineBuilder()
-                    .setTelephone_Number(Integer.parseInt(telephoneNumber))
+            if (ServiceBusinessService.getInstance().delete(new ServiceBuilder()
+                    .setService_Code(Integer.parseInt(serviceCode))
                     .build())) {
                 okResponse(responseBuilder);
             } else {
-                throw new BusinessException("Line with telephone number " + telephoneNumber +
-                        " haven't been deleted. Verify the telephone number.", BusinessException.LINE_NOT_DELETED);
+                throw new BusinessException("Service with code " + serviceCode +
+                        " haven't been deleted. Verify the service code.", BusinessException.SERVICE_CODE_NOT_DELETED);
             }
         } catch (BusinessException exception) {
             /* Business Exception */
@@ -149,27 +153,37 @@ public class LineServlet extends HttpServlet {
     }
 }
 
-class ProcessLineRequest{
+class ProcessServiceRequest{
     /* Line Headers */
-    static final String telephoneNumber = "telephoneNumber";
-    static final String pointsQuantity = "pointsQuantity";
-    static final String type = "type";
-    static final String status = "status";
+    static final  String serviceCode= "serviceCode" ;
+    static final  String name = "name" ;
+    static final  String description = "description" ;
+    static final  String cost = "cost" ;
+    static final  String status = "status" ;
+
+
     static String getHeaders(){
-        return String.join(",", ProcessLineRequest.telephoneNumber, ProcessLineRequest.pointsQuantity, ProcessLineRequest.type, ProcessLineRequest.status);
+        return String.join(",", ProcessServiceRequest.serviceCode,ProcessServiceRequest.name,ProcessServiceRequest.description,
+                ProcessServiceRequest.cost,ProcessServiceRequest.status);
     }
 
-    static Line createLine(final Map<String, String> body){
+    static Service createService(final Map<String, String> body){
         /* Attributes */
-        final int telephoneNumber = Integer.parseInt(body.get(ProcessLineRequest.telephoneNumber));
-        final int pointsQuantity = Integer.parseInt(body.get(ProcessLineRequest.pointsQuantity));
-        final int type = Integer.parseInt(body.get(ProcessLineRequest.type));
-        final String status = body.get(ProcessLineRequest.status);
+
+        final  int serviceCode = Integer.parseInt(body.get(ProcessServiceRequest.serviceCode));
+        final  String name = body.get(ProcessServiceRequest.name);
+        final  String description= body.get(ProcessServiceRequest.description);
+        final  int cost  = Integer.parseInt(body.get(ProcessServiceRequest.cost)) ;
+        final  String status = body.get(ProcessServiceRequest.status);
+
+
+
         /* Build */
-        return new LineBuilder()
-                .setTelephone_Number(telephoneNumber)
-                .setPoints_Quantity(pointsQuantity)
-                .setType(type)
+        return new ServiceBuilder()
+                .setService_Code(serviceCode)
+                .setName(name)
+                .setDescription(description)
+                .setCost(cost)
                 .setStatus(status)
                 .build();
     }

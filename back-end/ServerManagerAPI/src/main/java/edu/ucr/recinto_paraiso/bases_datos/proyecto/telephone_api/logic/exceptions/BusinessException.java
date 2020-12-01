@@ -18,7 +18,9 @@ public class BusinessException extends Exception {
 
     /* Service service exception codes */
     public static final int SERVICE_CODE_IN_USE = 1;
-
+    public static final int SERVICE_CODE_NOT_VALID = 1;
+    public static final int SERVICE_CODE_NOT_DELETED = 82;
+    public static final int SERVICE_COST_NOT_PROVIDED = 82;
 
     /* CallServlet exception codes */
     public static final int CALL_NOT_DELETED = 1;
