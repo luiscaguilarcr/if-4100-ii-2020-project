@@ -123,7 +123,7 @@ public class LineCustomerServlet extends HttpServlet {
                 okResponse(responseBuilder);
             } else {
                 throw new BusinessException("LineCustomer with telephone number " + telephoneNumber +
-                        " haven't been deleted. Verify the telephone number.", BusinessException.LineCustomer_NOT_DELETED);
+                        " haven't been deleted. Verify the telephone number.", BusinessException.LINE_CUSTOMER_NOT_DELETED);
             }
         } catch (BusinessException exception) {
             /* Business Exception */
@@ -162,15 +162,19 @@ class ProcessLineCustomerRequest{
     static LineCustomer createLineCustomer(final Map<String, String> body){
         /* Attributes */
         final int telephoneNumber = Integer.parseInt(body.get(ProcessLineCustomerRequest.telephoneNumber));
-        final int destinationTelephone_Number = Integer.parseInt(body.get(ProcessLineCustomerRequest.destinationTelephoneNumber));
-        final String startDate = body.get(ProcessLineCustomerRequest.startDate);
-        final String endDate = body.get(ProcessLineCustomerRequest.endDate);
+        final int destinationTelephoneNumber = Integer.parseInt(body.get(ProcessLineCustomerRequest.destinationTelephoneNumber));
+        final String firstName = body.get(ProcessLineCustomerRequest.startDate);
+        final String lastName = body.get(ProcessLineCustomerRequest.startDate);
+        final String address = body.get(ProcessLineCustomerRequest.endDate);
+        final String email = body.get(ProcessLineCustomerRequest.endDate);
         /* Build */
         return new LineCustomerBuilder()
                 .setTelephone_Number(telephoneNumber)
-                .setDestination_Telephone_Number(destinationTelephone_Number)
-                .setStart_Date(startDate)
-                .setEnd_Date(endDate)
+                .setId(destinationTelephoneNumber)
+                .setFirst_Name(firstName)
+                .setLast_Name(lastName)
+                .setAddress(address)
+                .setEmail(email)
                 .build();
     }
 }
