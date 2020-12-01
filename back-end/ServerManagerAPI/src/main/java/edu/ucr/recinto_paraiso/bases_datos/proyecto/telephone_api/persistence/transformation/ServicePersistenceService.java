@@ -129,7 +129,7 @@ public class ServicePersistenceService implements ServiceService<Service> {
             preparedStatement.setString(2, service.getDescription());
             preparedStatement.setInt(3, service.getCost());
             preparedStatement.setString(4, String.valueOf(service.getStatus()));
-            preparedStatement.setInt(5, service.getService_Code());
+            preparedStatement.setInt(5, service.getServiceCode());
             /* Execute statement */
             preparedStatement.execute();
         } catch (SQLException e) {
@@ -157,7 +157,7 @@ public class ServicePersistenceService implements ServiceService<Service> {
             databaseService.connect();
             final PreparedStatement preparedStatement = databaseService.getConnection().prepareStatement(deleteStatement);
             /* Add parameters */
-            preparedStatement.setInt(1, service.getService_Code());
+            preparedStatement.setInt(1, service.getServiceCode());
             return preparedStatement.executeUpdate() == 1;
         } catch (SQLException e) {
             throw new PersistenceException("Error during delete execution. Details: " + e.getMessage(), 0);

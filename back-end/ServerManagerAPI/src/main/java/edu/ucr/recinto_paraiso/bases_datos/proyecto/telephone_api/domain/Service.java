@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Service {
 
-    private  int service_Code ;
+    private  int serviceCode;
     private  String name ;
     private  String description ;
     private  int cost ;
@@ -14,20 +14,20 @@ public class Service {
     public Service() {
     }
 
-    public Service(int service_Code, String name, String description, int cost, String status) {
-        this.service_Code = service_Code;
+    public Service(int serviceCode, String name, String description, int cost, String status) {
+        this.serviceCode = serviceCode;
         this.name = name;
         this.description = description;
         this.cost = cost;
         this.status = status;
     }
 
-    public int getService_Code() {
-        return service_Code;
+    public int getServiceCode() {
+        return serviceCode;
     }
 
-    public void setService_Code(int service_Code) {
-        this.service_Code = service_Code;
+    public void setServiceCode(int serviceCode) {
+        this.serviceCode = serviceCode;
     }
 
     public String getName() {
@@ -67,18 +67,18 @@ public class Service {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Service service = (Service) o;
-        return service_Code == service.service_Code;
+        return serviceCode == service.serviceCode;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(service_Code);
+        return Objects.hash(serviceCode);
     }
 
     @Override
     public String toString() {
         return "Service{" +
-                "service_Code='" + service_Code + '\'' +
+                "service_Code='" + serviceCode + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", cost='" + cost + '\'' +

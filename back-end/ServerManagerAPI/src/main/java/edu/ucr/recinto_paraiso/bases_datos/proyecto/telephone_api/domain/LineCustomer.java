@@ -13,11 +13,11 @@ public class LineCustomer {
     public LineCustomer() {
     }
 
-    public LineCustomer(int telephoneNumber, int id, String firstName, String last_Name, String address, String email) {
+    public LineCustomer(int telephoneNumber, int id, String firstName, String lastName, String address, String email) {
         this.telephoneNumber = telephoneNumber;
         this.id = id;
         this.firstName = firstName;
-        this.lastName = last_Name;
+        this.lastName = lastName;
         this.address = address;
         this.email = email;
     }
@@ -86,7 +86,7 @@ public class LineCustomer {
     @Override
     public String toString() {
         return "LineCustomer{" +
-                "telephone_Number=" + telephoneNumber +
+                "telephoneNumber=" + telephoneNumber +
                 ", id=" + id +
                 ", first_Name='" + firstName + '\'' +
                 ", last_Name='" + lastName + '\'' +

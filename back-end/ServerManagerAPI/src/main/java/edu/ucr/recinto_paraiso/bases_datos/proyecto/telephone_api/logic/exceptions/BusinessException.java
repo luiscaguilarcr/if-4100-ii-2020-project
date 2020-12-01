@@ -37,6 +37,7 @@ public class BusinessException extends Exception {
     public static final int LINE_CUSTOMER_TELEPHONE_NUMBER_IN_USE = 54;
     public static final int LINE_CUSTOMER_NOT_DELETED = 82;
     public static final int LINE_CUSTOMER_TELEPHONE_NUMBER_NOT_VALID = 82;
+    public static final int LINE_CUSTOMER_TELEPHONE_NUMBER_NOT_PROVIDED = 82;
     public static final int LINE_CUSTOMER_ID_NOT_PROVIDED = 82;
     public static final int LINE_CUSTOMER_FIRST_NAME_NOT_PROVIDED = 82;
     public static final int LINE_CUSTOMER_LAST_NAME_NOT_PROVIDED = 82;

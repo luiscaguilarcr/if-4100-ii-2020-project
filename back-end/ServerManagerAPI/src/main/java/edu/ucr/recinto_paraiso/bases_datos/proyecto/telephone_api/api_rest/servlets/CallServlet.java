@@ -132,7 +132,7 @@ public class CallServlet extends HttpServlet {
             /* Persistence Exception */
             ResponseTemplates.persistenceExceptionResponse(responseBuilder, exception);
         } finally {
-            responseBuilder.setAllowMethods(GET);
+            responseBuilder.setAllowMethods(DELETE);
             responseBuilder.setAllowHeaders(headersKeys);
             responseBuilder.setExposeHeaders(headersKeys);
             responseBuilder.build();
@@ -161,14 +161,14 @@ class ProcessCallRequest{
 
     static Call createCall(final Map<String, String> body){
         /* Attributes */
-        final int telephoneNumber = Integer.parseInt(body.get(ProcessCallRequest.telephoneNumber));
-        final int destinationTelephoneNumber = Integer.parseInt(body.get(ProcessCallRequest.destinationTelephoneNumber));
+        int telephoneNumber= -1; try {  telephoneNumber = Integer.parseInt(body.get(ProcessCallRequest.telephoneNumber)); } catch (Exception ignored){}
+        int destinationTelephone = -1; try {  destinationTelephone = Integer.parseInt(body.get(ProcessCallRequest.destinationTelephoneNumber)); } catch (Exception ignored){}
         final String startDate = body.get(ProcessCallRequest.startDate);
         final String endDate = body.get(ProcessCallRequest.endDate);
         /* Build */
         return new CallBuilder()
                 .setTelephone_Number(telephoneNumber)
-                .setDestination_Telephone_Number(destinationTelephoneNumber)
+                .setDestination_Telephone_Number(destinationTelephone)
                 .setStart_Date(startDate)
                 .setEnd_Date(endDate)
                 .build();

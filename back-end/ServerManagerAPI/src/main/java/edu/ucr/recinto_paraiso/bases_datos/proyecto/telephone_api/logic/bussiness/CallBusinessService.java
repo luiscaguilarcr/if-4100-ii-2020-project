@@ -103,13 +103,13 @@ public class CallBusinessService implements CallService<Call> {
         if (Call.getTelephone_Number() < 0) {
             throw new BusinessException("Call's email not provided.", BusinessException.CALL_TELEPHONE_NUMBER_NOT_PROVIDED);
         }
-        if (Call.getDestination_Telephone_Number() < 0) {
+        if (Call.getDestinationTelephoneNumber() < 0) {
             throw new BusinessException("Call's email not provided.", BusinessException.CALL_DESTINATION_TELEPHONE_NUMBER_NOT_PROVIDED);
         }
-        if (Call.getEnd_Date().equals("")) {
+        if (Call.getEndDate().equals("")) {
             throw new BusinessException("Call's first name not provided.", BusinessException.CALL_END_DATE_NOT_PROVIDED);
         }
-        if (Call.getStart_Date().equals("")) {
+        if (Call.getStartDate().equals("")) {
             throw new BusinessException("Call's last name not provided.", BusinessException.CALL_START_DATE_NOT_PROVIDED);
         }
     }

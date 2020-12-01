@@ -132,7 +132,7 @@ public class LineServlet extends HttpServlet {
             /* Persistence Exception */
             ResponseTemplates.persistenceExceptionResponse(responseBuilder, exception);
         } finally {
-            responseBuilder.setAllowMethods(GET);
+            responseBuilder.setAllowMethods(DELETE);
             responseBuilder.setAllowHeaders(headersKeys);
             responseBuilder.setExposeHeaders(headersKeys);
             responseBuilder.build();
@@ -161,9 +161,9 @@ class ProcessLineRequest{
 
     static Line createLine(final Map<String, String> body){
         /* Attributes */
-        final int telephoneNumber = Integer.parseInt(body.get(ProcessLineRequest.telephoneNumber));
-        final int pointsQuantity = Integer.parseInt(body.get(ProcessLineRequest.pointsQuantity));
-        final int type = Integer.parseInt(body.get(ProcessLineRequest.type));
+        int telephoneNumber = 0; try { telephoneNumber = Integer.parseInt(body.get(ProcessLineRequest.telephoneNumber)); }catch (Exception e) {};
+        int pointsQuantity = -1; try { pointsQuantity = Integer.parseInt(body.get(ProcessLineRequest.pointsQuantity)); }catch (Exception e) {};
+        int type = -1; try { type = Integer.parseInt(body.get(ProcessLineRequest.type)); }catch (Exception e) {};
         final String status = body.get(ProcessLineRequest.status);
         /* Build */
         return new LineBuilder()

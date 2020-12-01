@@ -138,7 +138,7 @@ public class LineCustomerPersistenceService implements LineCustomerService<LineC
      *                              User.
      */
     @Override
-    public void insert(LineCustomer lineCustomer) throws PersistenceException {
+    public void insert(LineCustomer lineCustomer) throws BusinessException, PersistenceException {
         try {
             final String insertStatement = "INSERT INTO [Line_Customer] ([Telephone_Number], [Customer_Id], [Customer_First_Name], [Customer_Last_Name], [Customer_Address], [Customer_Email]) values (?,?,?,?,?,?);";
             databaseService.connect();
@@ -154,7 +154,7 @@ public class LineCustomerPersistenceService implements LineCustomerService<LineC
             preparedStatement.execute();
         } catch (SQLException e) {
             if (e.getErrorCode() == 2601 || e.getErrorCode() == 2627) {
-                throw new PersistenceException("Telephone number is already used.", BusinessException. LINE_CUSTOMER_TELEPHONE_NUMBER_IN_USE);
+                throw new BusinessException("Telephone number is already used.", BusinessException.LINE_CUSTOMER_TELEPHONE_NUMBER_IN_USE);
             } else {
                 throw new PersistenceException("Error during insert execution. Details: " + e.getMessage(), PersistenceException.DATABASE_CONNECTION_FAILED);
             }
@@ -200,13 +200,13 @@ public class LineCustomerPersistenceService implements LineCustomerService<LineC
      *                              User.
      */
     @Override
-    public boolean delete(LineCustomer lineCustomer) throws PersistenceException {
+    public boolean deleteByTelephoneNumber(LineCustomer lineCustomer) throws PersistenceException {
         try {
-            final String deleteStatement = "DELETE FROM [Line_Customer] WHERE [Customer_Id] = ?;";
+            final String deleteStatement = "DELETE FROM [Line_Customer] WHERE [Telephone_Number] = ?;";
             databaseService.connect();
             final PreparedStatement preparedStatement = databaseService.getConnection().prepareStatement(deleteStatement);
             /* Add parameters */
-            preparedStatement.setInt(1, lineCustomer.getId());
+            preparedStatement.setInt(1, lineCustomer.getTelephoneNumber());
             return preparedStatement.executeUpdate() == 1;
         } catch (SQLException e) {
             throw new PersistenceException("Error during delete execution. Details: " + e.getMessage(), PersistenceException.DATABASE_CONNECTION_FAILED);

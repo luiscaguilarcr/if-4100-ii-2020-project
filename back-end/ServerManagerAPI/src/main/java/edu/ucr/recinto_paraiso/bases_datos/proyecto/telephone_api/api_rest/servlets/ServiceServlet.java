@@ -135,7 +135,7 @@ public class ServiceServlet extends HttpServlet {
             /* Persistence Exception */
             ResponseTemplates.persistenceExceptionResponse(responseBuilder, exception);
         } finally {
-            responseBuilder.setAllowMethods(GET);
+            responseBuilder.setAllowMethods(DELETE);
             responseBuilder.setAllowHeaders(headersKeys);
             responseBuilder.setExposeHeaders(headersKeys);
             responseBuilder.build();
@@ -165,10 +165,10 @@ class ProcessServiceRequest{
     }
     static Service createService(final Map<String, String> body){
         /* Attributes */
-        final  int serviceCode = Integer.parseInt(body.get(ProcessServiceRequest.serviceCode));
+        int serviceCode = 0; try { serviceCode = Integer.parseInt(body.get(ProcessServiceRequest.serviceCode)); } catch (Exception exception){};
         final  String name = body.get(ProcessServiceRequest.name);
         final  String description= body.get(ProcessServiceRequest.description);
-        final  int cost  = Integer.parseInt(body.get(ProcessServiceRequest.cost)) ;
+        int cost = -1; try { cost = Integer.parseInt(body.get(ProcessServiceRequest.cost)); } catch (Exception exception){};
         final  String status = body.get(ProcessServiceRequest.status);
         /* Build */
         return new ServiceBuilder()

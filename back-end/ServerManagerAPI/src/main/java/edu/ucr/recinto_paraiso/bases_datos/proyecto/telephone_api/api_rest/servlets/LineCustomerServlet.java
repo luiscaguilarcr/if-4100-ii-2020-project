@@ -116,13 +116,17 @@ public class LineCustomerServlet extends HttpServlet {
             /* Headers */
             final String telephoneNumber = req.getHeader(ProcessLineCustomerRequest.telephoneNumber);
             /* try delete */
-            if (LineCustomerBusinessService.getInstance().delete(new LineCustomerBuilder()
-                    .setTelephone_Number(Integer.parseInt(telephoneNumber))
-                    .build())) {
-                okResponse(responseBuilder);
-            } else {
-                throw new BusinessException("LineCustomer with telephone number " + telephoneNumber +
-                        " haven't been deleted. Verify the telephone number.", BusinessException.LINE_CUSTOMER_NOT_DELETED);
+            try {
+                if (LineCustomerBusinessService.getInstance().deleteByTelephoneNumber(new LineCustomerBuilder()
+                        .setTelephone_Number(Integer.parseInt(telephoneNumber))
+                        .build())) {
+                    okResponse(responseBuilder);
+                } else {
+                    throw new BusinessException("LineCustomer with telephone number " + telephoneNumber +
+                            " haven't been deleted. Verify the telephone number.", BusinessException.LINE_CUSTOMER_NOT_DELETED);
+                }
+            }catch (NullPointerException exception){
+                throw new BusinessException("Line customer telephone number not provided", BusinessException.LINE_CUSTOMER_TELEPHONE_NUMBER_NOT_PROVIDED);
             }
         } catch (BusinessException exception) {
             /* Business Exception */
@@ -131,7 +135,7 @@ public class LineCustomerServlet extends HttpServlet {
             /* Persistence Exception */
             ResponseTemplates.persistenceExceptionResponse(responseBuilder, exception);
         } finally {
-            responseBuilder.setAllowMethods(GET);
+            responseBuilder.setAllowMethods(DELETE);
             responseBuilder.setAllowHeaders(headersKeys);
             responseBuilder.setExposeHeaders(headersKeys);
             responseBuilder.build();
@@ -151,27 +155,27 @@ public class LineCustomerServlet extends HttpServlet {
 class ProcessLineCustomerRequest{
     /* LineCustomer Headers */
     static final String telephoneNumber = "telephoneNumber";
-    static final String destinationTelephoneNumber = "destinationTelephoneNumber";
+    static final String id = "id";
     static final String firstName = "firstName";
     static final String lastName = "lastName";
     static final String address = "address";
     static final String email = "email";
     static String getHeaders(){
-        return String.join(",", ProcessLineCustomerRequest.telephoneNumber, ProcessLineCustomerRequest.destinationTelephoneNumber, ProcessLineCustomerRequest.firstName, ProcessLineCustomerRequest.lastName, ProcessLineCustomerRequest.address, ProcessLineCustomerRequest.email);
+        return String.join(",", ProcessLineCustomerRequest.telephoneNumber, ProcessLineCustomerRequest.id, ProcessLineCustomerRequest.firstName, ProcessLineCustomerRequest.lastName, ProcessLineCustomerRequest.address, ProcessLineCustomerRequest.email);
     }
 
     static LineCustomer createLineCustomer(final Map<String, String> body){
         /* Attributes */
-        final int telephoneNumber = Integer.parseInt(body.get(ProcessLineCustomerRequest.telephoneNumber));
-        final int destinationTelephoneNumber = Integer.parseInt(body.get(ProcessLineCustomerRequest.destinationTelephoneNumber));
+        int telephoneNumber = -1; try { telephoneNumber = Integer.parseInt(body.get(ProcessLineCustomerRequest.telephoneNumber)); }catch (Exception ignored){}
+        int id = -1; try { id = Integer.parseInt(body.get(ProcessLineCustomerRequest.id)); }catch (Exception ignored){}
         final String firstName = body.get(ProcessLineCustomerRequest.firstName);
         final String lastName = body.get(ProcessLineCustomerRequest.lastName);
         final String address = body.get(ProcessLineCustomerRequest.address);
         final String email = body.get(ProcessLineCustomerRequest.email);
         /* Build */
         return new LineCustomerBuilder()
+                .setId(id)
                 .setTelephone_Number(telephoneNumber)
-                .setId(destinationTelephoneNumber)
                 .setFirst_Name(firstName)
                 .setLast_Name(lastName)
                 .setAddress(address)
