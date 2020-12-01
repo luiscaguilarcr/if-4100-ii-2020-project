@@ -4,17 +4,17 @@ import java.util.Objects;
 
 public class Service {
 
-    private Int service_Code ;
-    private String name ;
+    private  int service_Code ;
+    private  String name ;
     private  String description ;
-    private  Int cost ;
+    private  int cost ;
     private  String status;
 
 
     public Service() {
     }
 
-    public Service(Int service_Code, String name, String description, Int cost, String status) {
+    public Service(int service_Code, String name, String description, int cost, String status) {
         this.service_Code = service_Code;
         this.name = name;
         this.description = description;
@@ -22,11 +22,11 @@ public class Service {
         this.status = status;
     }
 
-    public Int getService_Code() {
+    public int getService_Code() {
         return service_Code;
     }
 
-    public void setService_Code(Int service_Code) {
+    public void setService_Code(int service_Code) {
         this.service_Code = service_Code;
     }
 
@@ -46,11 +46,11 @@ public class Service {
         this.description = description;
     }
 
-    public Int getCost() {
+    public int getCost() {
         return cost;
     }
 
-    public void setCost(Int cost) {
+    public void setCost(int cost) {
         this.cost = cost;
     }
 

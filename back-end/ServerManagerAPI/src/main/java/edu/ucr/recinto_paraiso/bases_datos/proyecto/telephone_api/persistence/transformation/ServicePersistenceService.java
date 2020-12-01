@@ -1,12 +1,15 @@
 package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.transformation;
 
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Line;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Service;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.LineBuilder;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.ServiceBuilder;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.conectors.DatabaseService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.conectors.UCRDatabaseService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.exceptions.PersistenceException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.services.interfaces.LineService;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.services.interfaces.ServiceService;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -53,7 +56,7 @@ public class ServicePersistenceService implements ServiceService<Service> {
      *                              occurs while is trying to get the User.
      */
     @Override
-    public Service<Service> get() throws PersistenceException {
+    public List<Service> get() throws PersistenceException {
         ResultSet resultSet;
         final List<Service> list = new ArrayList<>();
         try {
@@ -68,10 +71,10 @@ public class ServicePersistenceService implements ServiceService<Service> {
             while (resultSet.next()) {
                 /* Create a User */
                 final Service service = new ServiceBuilder()
-                        .setService_Code(resultSet.getInt(ServiceColumnLabel.Service_Code))
-                        .setName(resultSet.getInt(ServiceColumnLabel.Name))
-                        .setDescription(resultSet.getInt(ServiceColumnLabel.Description))
-                        .setCost(resultSet.getInt(ServiceColumnLabel.Cost))
+                        .setService_Code(resultSet.getInt(ServiceColumnLabel.service_Code))
+                        .setName(resultSet.getString(ServiceColumnLabel.name))
+                        .setDescription(resultSet.getInt(ServiceColumnLabel.description))
+                        .setCost(resultSet.getInt(ServiceColumnLabel.cost))
                         .setStatus(resultSet.getString(ServiceColumnLabel.status))
                         .build();
                 list.add(service);
@@ -85,7 +88,7 @@ public class ServicePersistenceService implements ServiceService<Service> {
      * Inserts a new User to the repository. This also validates if the
      * User is valid.
      *
-     * @param line User to be added.
+     * @param service User to be added.
      * @throws PersistenceException Exception threw if an ServiceException
      *                              occurs while is trying to insert the
      *                              User.
@@ -117,7 +120,7 @@ public class ServicePersistenceService implements ServiceService<Service> {
      * Inserts a new User to the repository. This also validates if the
      * User is valid.
      *
-     * @param line Line.
+     * @param service Service.
      */
     @Override
     public void update(Service service) throws PersistenceException {
@@ -144,7 +147,7 @@ public class ServicePersistenceService implements ServiceService<Service> {
     /**
      * Deletes an User of the repository.
      *
-     * @param line User to be deleted.
+     * @param service User to be deleted.
      * @return {@code true} if the User have been deleted, {@code false} otherwise.
      * @throws PersistenceException Exception threw if an ServiceException
      *                              occurs while is trying to delete the
@@ -170,10 +173,10 @@ public class ServicePersistenceService implements ServiceService<Service> {
  */
 class ServiceColumnLabel {
     /* Columns */
-    static final Int service_Code = "Service_Code";
-    static final String name = "Name";
-    static final String description = "Description";
-    static final Int cost = "Cost";
+    static final String service_Code = "Service_Code";
+    static final String name  = "Name";
+    static final String description  = "Description";
+    static final String cost  = "Cost";
     static final String status = "Status";
 
 
