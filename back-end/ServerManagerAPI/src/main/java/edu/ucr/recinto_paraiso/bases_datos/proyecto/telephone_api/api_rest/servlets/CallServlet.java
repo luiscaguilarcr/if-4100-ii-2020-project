@@ -162,13 +162,13 @@ class ProcessCallRequest{
     static Call createCall(final Map<String, String> body){
         /* Attributes */
         final int telephoneNumber = Integer.parseInt(body.get(ProcessCallRequest.telephoneNumber));
-        final int destinationTelephone_Number = Integer.parseInt(body.get(ProcessCallRequest.destinationTelephoneNumber));
+        final int destinationTelephoneNumber = Integer.parseInt(body.get(ProcessCallRequest.destinationTelephoneNumber));
         final String startDate = body.get(ProcessCallRequest.startDate);
         final String endDate = body.get(ProcessCallRequest.endDate);
         /* Build */
         return new CallBuilder()
                 .setTelephone_Number(telephoneNumber)
-                .setDestination_Telephone_Number(destinationTelephone_Number)
+                .setDestination_Telephone_Number(destinationTelephoneNumber)
                 .setStart_Date(startDate)
                 .setEnd_Date(endDate)
                 .build();
