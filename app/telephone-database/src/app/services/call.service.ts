@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
 
 
 export class CallService {
-  url = 'http://localhost:2525/call';
+  // url = 'http://localhost:2525/call';
+  url = 'http://186.176.127.9:2525/call';
   constructor(private http: HttpClient) {}
 
   add(call: Call): Observable<any> {

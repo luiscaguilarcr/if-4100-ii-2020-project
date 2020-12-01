@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LineService {
-  url = 'http://localhost:2525/line';
+  url = 'http://186.176.127.9:2525/line';
 
   constructor(private http: HttpClient) {}
 
