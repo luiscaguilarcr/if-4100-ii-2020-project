@@ -160,24 +160,17 @@ class ProcessServiceRequest{
     static final  String description = "description" ;
     static final  String cost = "cost" ;
     static final  String status = "status" ;
-
-
     static String getHeaders(){
         return String.join(",", ProcessServiceRequest.serviceCode,ProcessServiceRequest.name,ProcessServiceRequest.description,
                 ProcessServiceRequest.cost,ProcessServiceRequest.status);
     }
-
     static Service createService(final Map<String, String> body){
         /* Attributes */
-
         final  int serviceCode = Integer.parseInt(body.get(ProcessServiceRequest.serviceCode));
         final  String name = body.get(ProcessServiceRequest.name);
         final  String description= body.get(ProcessServiceRequest.description);
         final  int cost  = Integer.parseInt(body.get(ProcessServiceRequest.cost)) ;
         final  String status = body.get(ProcessServiceRequest.status);
-
-
-
         /* Build */
         return new ServiceBuilder()
                 .setService_Code(serviceCode)

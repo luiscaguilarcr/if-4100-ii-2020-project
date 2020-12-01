@@ -24,7 +24,7 @@ import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_res
 import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseTemplates.okResponse;
 
 public class CallServlet extends HttpServlet {
-    final String headersKeys = String.join(",", getInformation_headers());
+    final String headersKeys = String.join(",", getInformation_headers(), ProcessLineRequest.getHeaders());
     /**
      * Use to insert a new remote server.
      *
