@@ -1,7 +1,6 @@
 package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders;
 
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Call;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Line;
 
 public class CallBuilder {
     private int telephone_Number;

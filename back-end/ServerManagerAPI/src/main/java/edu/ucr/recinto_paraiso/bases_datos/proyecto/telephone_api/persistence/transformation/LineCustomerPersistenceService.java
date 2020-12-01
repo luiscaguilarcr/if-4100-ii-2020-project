@@ -144,7 +144,7 @@ public class LineCustomerPersistenceService implements LineCustomerService<LineC
             databaseService.connect();
             final PreparedStatement preparedStatement = databaseService.getConnection().prepareStatement(insertStatement);
             /* Add parameters */
-            preparedStatement.setInt(1, lineCustomer.getTelephone_Number());
+            preparedStatement.setInt(1, lineCustomer.getTelephoneNumber());
             preparedStatement.setInt(2, lineCustomer.getId());
             preparedStatement.setString(3, lineCustomer.getFirstName());
             preparedStatement.setString(4, lineCustomer.getLastName());
@@ -154,7 +154,7 @@ public class LineCustomerPersistenceService implements LineCustomerService<LineC
             preparedStatement.execute();
         } catch (SQLException e) {
             if (e.getErrorCode() == 2601 || e.getErrorCode() == 2627) {
-                throw new PersistenceException("Telephone number is already used.", BusinessException. LINE_TELEPHONE_NUMBER_IN_USE);
+                throw new PersistenceException("Telephone number is already used.", BusinessException. LINE_CUSTOMER_TELEPHONE_NUMBER_IN_USE);
             } else {
                 throw new PersistenceException("Error during insert execution. Details: " + e.getMessage(), PersistenceException.DATABASE_CONNECTION_FAILED);
             }
@@ -183,7 +183,7 @@ public class LineCustomerPersistenceService implements LineCustomerService<LineC
             preparedStatement.execute();
         } catch (SQLException e) {
             if (e.getErrorCode() == 2601 || e.getErrorCode() == 2627) {
-                throw new PersistenceException("Telephone number is already used.", BusinessException.LINE_TELEPHONE_NUMBER_IN_USE);
+                throw new PersistenceException("Telephone number is already used.", BusinessException.LINE_CUSTOMER_TELEPHONE_NUMBER_IN_USE);
             } else {
                 throw new PersistenceException("Error during insert execution. Details: " + e.getMessage(), PersistenceException.DATABASE_CONNECTION_FAILED);
             }
@@ -209,7 +209,7 @@ public class LineCustomerPersistenceService implements LineCustomerService<LineC
             preparedStatement.setInt(1, lineCustomer.getId());
             return preparedStatement.executeUpdate() == 1;
         } catch (SQLException e) {
-            throw new PersistenceException("Error during delete execution. Details: " + e.getMessage(), 0);
+            throw new PersistenceException("Error during delete execution. Details: " + e.getMessage(), PersistenceException.DATABASE_CONNECTION_FAILED);
         }
     }
 }

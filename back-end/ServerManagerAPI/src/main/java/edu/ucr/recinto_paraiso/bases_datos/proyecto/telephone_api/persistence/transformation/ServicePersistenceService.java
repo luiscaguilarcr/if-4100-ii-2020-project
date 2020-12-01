@@ -1,14 +1,21 @@
 package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.transformation;
 
+<<<<<<< HEAD
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Line;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Service;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.LineBuilder;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.ServiceBuilder;
+=======
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Service;
+>>>>>>> ce1a96164cbd1c563a06ac2f8aa04699f0aa106b
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.conectors.DatabaseService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.conectors.UCRDatabaseService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.exceptions.PersistenceException;
+<<<<<<< HEAD
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.services.interfaces.LineService;
+=======
+>>>>>>> ce1a96164cbd1c563a06ac2f8aa04699f0aa106b
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.services.interfaces.ServiceService;
 
 import java.sql.PreparedStatement;

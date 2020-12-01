@@ -66,19 +66,20 @@ public class CallPersistenceService implements CallService<Call> {
             /* Read all rows (prevent null) */
             while (resultSet.next()) {
                 /* Create a User */
-                final Call call = new CallBuilder()
+                final Call newCall = new CallBuilder()
                         .setTelephone_Number(resultSet.getInt(CallColumnLabel.telephone_Number))
                         .setDestination_Telephone_Number(resultSet.getInt(CallColumnLabel.destination_Telephone_Number))
                         .setStart_Date(resultSet.getString(CallColumnLabel.start_Date))
                         .setEnd_Date(resultSet.getString(CallColumnLabel.end_Date))
                         .build();
-                list.add(call);
+                list.add(newCall);
             }
             return list;
         } catch (SQLException e) {
             throw new PersistenceException("Can't get the call information from database. Details: " + e.getMessage(), PersistenceException.DATABASE_CONNECTION_FAILED);
         }
     }
+
     /**
      * Inserts a new Call to the repository. This also validates if the
      * Call is valid.
@@ -89,7 +90,7 @@ public class CallPersistenceService implements CallService<Call> {
      *                              Call.
      */
     @Override
-    public void insert(Call call) throws PersistenceException {
+    public boolean insert(Call call) throws PersistenceException {
         try {
             final String insertStatement = "INSERT INTO [call] (Telephone_Number, destination_Telephone_Number, start_Date, end_Date) values (?,?,?,?);";
             databaseService.connect();
@@ -98,7 +99,7 @@ public class CallPersistenceService implements CallService<Call> {
             preparedStatement.setInt(1, call.getTelephone_Number());
             preparedStatement.setInt(2, call.getDestination_Telephone_Number());
             preparedStatement.setString(3, String.valueOf(call.getStart_Date()));
-            preparedStatement.setString(4, String.valueOf(call.getEnd_tDate()));
+            preparedStatement.setString(4, String.valueOf(call.getEnd_Date()));
             /* Execute statement */
             preparedStatement.execute();
         } catch (SQLException e) {
@@ -108,6 +109,7 @@ public class CallPersistenceService implements CallService<Call> {
                 throw new PersistenceException("Error during insert execution. Details: " + e.getMessage(), PersistenceException.DATABASE_CONNECTION_FAILED);
             }
         }
+        return true;
     }
 
     /**
@@ -117,7 +119,7 @@ public class CallPersistenceService implements CallService<Call> {
      * @param call Call to be updated.
      */
     @Override
-    public void update(Call call) throws PersistenceException {
+    public boolean update(Call call) throws PersistenceException {
         try {
             final String insertStatement = "UPDATE [Call] SET [Destination_Telephone_Number] = ?, [Start_Date] = ?, [End_Date] = ? WHERE [Telephone_Number] = ?";
             databaseService.connect();
@@ -125,7 +127,7 @@ public class CallPersistenceService implements CallService<Call> {
             /* Add parameters */
             preparedStatement.setInt(1, call.getDestination_Telephone_Number());
             preparedStatement.setString(2, call.getStart_Date());
-            preparedStatement.setString(3, call.getEnd_tDate());
+            preparedStatement.setString(3, call.getEnd_Date());
             /* Execute statement */
             preparedStatement.execute();
         } catch (SQLException e) {
@@ -135,6 +137,7 @@ public class CallPersistenceService implements CallService<Call> {
                 throw new PersistenceException("Error during insert execution. Details: " + e.getMessage(), PersistenceException.DATABASE_CONNECTION_FAILED);
             }
         }
+        return true;
     }
 
     /**
