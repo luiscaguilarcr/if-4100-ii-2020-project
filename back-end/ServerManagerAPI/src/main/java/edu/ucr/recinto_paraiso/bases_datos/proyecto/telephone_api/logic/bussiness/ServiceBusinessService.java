@@ -36,9 +36,9 @@ public class ServiceBusinessService implements ServiceService<Service> {
         return instance;
     }
     /**
-     * Search and returns an User by it's username.
+     * Search and returns an service by it's service code.
      *
-     * @return {@code User} if have been found. {@code null} if doesn't exist
+     * @return {@code service} if have been found. {@code null} if doesn't exist
      * an User with the username provided.
      */
     @Override
@@ -47,8 +47,8 @@ public class ServiceBusinessService implements ServiceService<Service> {
     }
 
     /**
-     * Inserts a new User to the repository. This also validates if the
-     * User is valid.
+     * Inserts a new service to the repository. This also validates if the
+     * service is valid.
      *
      * @param service Service.
      */
@@ -59,8 +59,8 @@ public class ServiceBusinessService implements ServiceService<Service> {
     }
 
     /**
-     * Inserts a new User to the repository. This also validates if the
-     * User is valid.
+     * Inserts a new service to the repository. This also validates if the
+     * service is valid.
      *
      * @param service Service.
      * @return {@code true} if the User have been added, {@code false} otherwise.
@@ -79,13 +79,13 @@ public class ServiceBusinessService implements ServiceService<Service> {
             throw new BusinessException("Cost not valid.", SERVICE_COST_NOT_PROVIDED);
         }
         if (!(service.getStatus().equals("A") || service.getStatus().equals("I"))){
-            throw new BusinessException("Line status not valid.", SERVICE_CODE_NOT_VALID);
+            throw new BusinessException("Service status not valid.", SERVICE_CODE_NOT_VALID);
         }
 
     }
 
     /**
-     * Deletes an User of the repository.
+     * Deletes an service of the repository.
      *
      * @param service User to be deleted.
      * @return {@code true} if the User have been deleted, {@code false} otherwise.
