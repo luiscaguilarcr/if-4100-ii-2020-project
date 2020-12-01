@@ -4,6 +4,9 @@ public class PersistenceException extends Exception{
     /* Database exception codes */
     public static final int DATABASE_CONNECTION_FAILED = 55;
 
+    /* CallPersistenceService */
+    public static final int DATABASE_EXECUTION_FAILED = 55;
+
     /* code */
     private final int code;
     /**

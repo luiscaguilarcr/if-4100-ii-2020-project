@@ -103,11 +103,7 @@ public class CallPersistenceService implements CallService<Call> {
             /* Execute statement */
             preparedStatement.execute();
         } catch (SQLException e) {
-            if (e.getErrorCode() == 2601 || e.getErrorCode() == 2627) {
-                throw new PersistenceException("Telephone number is already used.", BusinessException.CALL_NUMBER_IN_USE);
-            } else {
-                throw new PersistenceException("Error during insert execution. Details: " + e.getMessage(), PersistenceException.DATABASE_CONNECTION_FAILED);
-            }
+            throw new PersistenceException("Error during insert execution. Details: " + e.getMessage(), PersistenceException.DATABASE_EXECUTION_FAILED);
         }
         return true;
     }
@@ -131,11 +127,7 @@ public class CallPersistenceService implements CallService<Call> {
             /* Execute statement */
             preparedStatement.execute();
         } catch (SQLException e) {
-            if (e.getErrorCode() == 2601 || e.getErrorCode() == 2627) {
-                throw new PersistenceException("Telephone number is already used.", BusinessException.CALL_NUMBER_IN_USE);
-            } else {
-                throw new PersistenceException("Error during insert execution. Details: " + e.getMessage(), PersistenceException.DATABASE_CONNECTION_FAILED);
-            }
+            throw new PersistenceException("Error during update execution. Details: " + e.getMessage(), PersistenceException.DATABASE_EXECUTION_FAILED);
         }
         return true;
     }
@@ -159,7 +151,7 @@ public class CallPersistenceService implements CallService<Call> {
             preparedStatement.setInt(1, call.getTelephone_Number());
             return preparedStatement.executeUpdate() == 1;
         } catch (SQLException e) {
-            throw new PersistenceException("Error during delete execution. Details: " + e.getMessage(), 0);
+            throw new PersistenceException("Error during delete execution. Details: " + e.getMessage(), PersistenceException.DATABASE_EXECUTION_FAILED);
         }
     }
 

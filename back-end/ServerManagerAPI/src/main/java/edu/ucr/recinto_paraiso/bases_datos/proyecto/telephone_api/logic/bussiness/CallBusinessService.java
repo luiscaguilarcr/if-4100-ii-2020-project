@@ -81,7 +81,12 @@ public class CallBusinessService implements CallService<Call> {
      */
     @Override
     public boolean delete(Call Call) throws BusinessException, PersistenceException {
-        validateCall(Call);
+        if (Call == null) {
+            throw new BusinessException("Call not provided.", BusinessException.CALL_OBJECT_NOT_PROVIDED);
+        }
+        if (Call.getTelephone_Number() < 0) {
+            throw new BusinessException("Call's email not provided.", BusinessException.CALL_TELEPHONE_NUMBER_NOT_PROVIDED);
+        }
         return callPersistenceService.delete(Call);
     }
 
