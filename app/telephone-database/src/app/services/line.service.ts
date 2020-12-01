@@ -1,21 +1,35 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Line } from '../models/line.model';
-import { DataService } from './data.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LineService {
+  url = 'http://localhost:2525/line';
 
-  constructor(private dataService: DataService) {}
+  constructor(private http: HttpClient) {}
 
-  public addLine(line: Line) {
-
+  add(line: Line): Observable<any> {
+    return this.http.post(this.url, line);
+  }
+  update(line: Line): Observable<any> {
+    return this.http.put(this.url, line);
   }
 
-  public getLine(): Line{
-    return new Line();
+  getList(): Observable<any>{
+    return this.http.get(this.url);
   }
-
+  delete(line: Line): Observable<any>{
+    return this.http.delete(this.url, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json; charset=utf-8',
+      })
+      .append('telephoneNumber', line.telephoneNumber.toString()),
+      observe: 'response',
+      responseType: 'json'
+    });
+  }
 
 }

@@ -14,20 +14,15 @@ export class LineAddComponent implements OnInit {
   title = 'Crear una nueva línea';
   line: Line;
 
-  constructor( private formBuilder: FormBuilder, private lineService : LineService) {
+  constructor( private formBuilder: FormBuilder, private lineService: LineService) {
     this. line = this.buildLine();
     this.form = this.createForm();
   }
-
   createForm(): FormGroup {
     /* Create form */
     return this.formBuilder.group({
       telephoneNumber:   [this.line.telephoneNumber,   [Validators.required]],
-      //pointsQuantity:  [this.line.pointsQuantity,   [Validators.required]],
-      pointsQuantity: '0',
-
       type:  [this.line.type,   [Validators.required]],
-
     });
   }
   /**
@@ -35,11 +30,10 @@ export class LineAddComponent implements OnInit {
    */
   private buildLine(): Line {
     const line = new Line();
-    line.telephoneNumber   = '';
-    line.pointsQuantity   = '0';
-    line.type   = '';
-
-
+    line.telephoneNumber = -1;
+    line.pointsQuantity  = 0;
+    line.type            = -1;
+    line.status          = 'A';
     return line;
   }
   /**
@@ -48,17 +42,12 @@ export class LineAddComponent implements OnInit {
   private loadForm(): void {
     this.form.patchValue({
       telephoneNumber: this.line.telephoneNumber,
-     // pointsQuantity: this.line.pointsQuantity,
-      pointsQuantity: '0',
-
       type: this.line.type,
     });
   }
-
   ngOnInit(): void {
     this.loadForm();
   }
-
   /**
    * Return if the input is valid or not.
    * @param input input's name.
@@ -71,29 +60,24 @@ export class LineAddComponent implements OnInit {
       return true;
     }
   }
-
-
   /**
    * Summit action.
    */
-  submit(): void {
+  submit() {
     /* Validate inputs */
     if (this.form.invalid) {
       return Object.values(this.form.controls)
         .forEach(control => control.markAsTouched());
     }
-
     /* Get values */
     this.loadLineModel();
+    this.line.status = 'A';
+    this.line.pointsQuantity = 0;
     console.log(this.line);
-    /* Call service */
-
-    // return this.lineService.addLine(this.line).then(response => console.log(response))
-    // .catch ((error: any) => {
-    //   console.log(error);
-    // });
+    console.log('Doing post request to /line');
+    /* Do request */
+    return this.lineService.add(this.line).subscribe(response => console.log(response));
   }
-
   /**
    * Load the line model with form's values.
    */
@@ -101,11 +85,7 @@ export class LineAddComponent implements OnInit {
     let control;
     control = this.form.get('telephoneNumber');
     if ( control ) { this.line.telephoneNumber = control.value; }
-    control = this.form.get('pointsQuantity');
-    if ( control ) { this.line.pointsQuantity ='0'; }
     control = this.form.get('type');
     if ( control ) { this.line.type = control.value; }
-
   }
-
 }

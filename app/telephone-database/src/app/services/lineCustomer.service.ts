@@ -6,7 +6,7 @@ import { DataService } from './data.service';
   providedIn: 'root'
 })
 export class LineCustomerService {
-
+  endpoint = 'https://localhost:2525/line_customer';
   constructor(private DataService: DataService) { }
 
   public addLine(lineCustomer: LineCustomer) {

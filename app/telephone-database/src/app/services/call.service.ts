@@ -6,7 +6,7 @@ import { DataService } from './data.service';
   providedIn: 'root'
 })
 export class CallService {
-
+  endpoint = 'http://localhost:2525/call';
   constructor(private dataService: DataService) {
 
   }

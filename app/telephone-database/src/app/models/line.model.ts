@@ -1,6 +1,7 @@
 
 export class Line {
-    telephoneNumber = '';
-    pointsQuantity = '';
-    type = '';
+    telephoneNumber = -1;
+    pointsQuantity = -1;
+    type = -1;
+    status = '';
 }

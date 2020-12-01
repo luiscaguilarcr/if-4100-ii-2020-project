@@ -1,1 +1,58 @@
-<p>line-update works!</p>
+<div class="mr-xl-5 justify-content-center">
+    <h4>{{ title }}</h4>
+    <hr class="mb-5">
+    <!-- Form -->
+    <form autocomplete="off" (ngSubmit)="submit()" [formGroup]="form">
+        <!-- Telephone number -->
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Teléfono</label>
+            <div class="form-row col">
+
+                <div class="col">
+                    <input class="form-control" type="text" formControlName="telephoneNumber" [class.is-invalid]="invalidInput('telephoneNumber')">
+                </div>
+                <label class="col-3 col-form-label pl-5 pr-5">Tipo</label>
+
+                <div class="col">
+                    <!-- Line Type -->
+                    <select class="form-control" formControlName="type" [class.is-invalid]="invalidInput('type')">
+                        <option value="" disabled>Seleccione una opción</option>
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <hr class="mt-5 mb-5">
+        <!-- Points Quantity -->
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Puntos Obtenidos</label>
+            <div class="form-row col">
+
+                <div class="col">
+                    <input class="form-control" type="text" formControlName="pointsQuantity" [class.is-invalid]="invalidInput('pointsQuantity')">
+                </div>
+                <label class="col-3 col-form-label pl-5 pr-5">Estado</label>
+
+                <div class="col">
+                    <!-- Line Status -->
+                    <select class="form-control" formControlName="status" [class.is-invalid]="invalidInput('status')">
+                        <option value="" disabled>Seleccione una opción</option>
+                        <option>I</option>
+                        <option>A</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <hr class="mt-5 mb-5">
+
+
+        <div class="form-group row">
+            <div class="input-group col">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+
+    </form>
+</div>
