@@ -87,7 +87,6 @@ export class LineCustomerAddComponent implements OnInit {
       return Object.values(this.form.controls)
         .forEach(control => control.markAsTouched());
     }
-    
     /* Get values */
     this.loadLineCustomerModel();
     console.log(this.lineCustomer);

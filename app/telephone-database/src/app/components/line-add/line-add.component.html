@@ -9,7 +9,7 @@
             <div class="form-row col">
 
                 <div class="col">
-                    <input class="form-control" type="text" formControlName="telephoneNumber" [class.is-invalid]="invalidInput('telephoneNumber')">
+                    <input class="form-control" type="number" formControlName="telephoneNumber" maxlength="8" [class.is-invalid]="invalidInput('telephoneNumber')">
                 </div>
                 <label class="col-3 col-form-label pl-5 pr-5">Tipo</label>
 

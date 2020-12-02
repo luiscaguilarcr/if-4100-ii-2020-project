@@ -67,7 +67,6 @@ export class LineAddComponent implements OnInit {
     console.log(this.line);
     /* Do request */
     return this.lineService.add(this.line).subscribe(response => {
-      console.log(response);
       Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -76,6 +75,23 @@ export class LineAddComponent implements OnInit {
         timer: 1500
       });
       this.router.navigateByUrl('/line/list');
+     }, err => {
+      if (err.status === 400 ){
+        /* Bad request */
+        console.log(err.headers.get('error_code'));
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `Hubo un problema al agregar la línea. Código de error: ${err.headers.get('error_code') }!`,
+        });
+      } else if (err.status >= 500){
+        /* Server error */
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Hubo un problema al agregar la línea. Intenta más tarde!',
+        });
+      }
      });
   }
   /**

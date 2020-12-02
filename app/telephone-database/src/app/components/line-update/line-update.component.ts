@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Line } from '../../models/line.model';
 import { LineService } from '../../services/line.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-line-update',
@@ -14,7 +16,7 @@ export class LineUpdateComponent implements OnInit {
   line: Line;
   private list = ['ADSL', 'Básica', 'RDSI'];
 
-  constructor( private formBuilder: FormBuilder, private lineService: LineService) {
+  constructor( private formBuilder: FormBuilder, private lineService: LineService, private router: Router) {
     this. line = this.buildLine();
     this.form = this.createForm();
   }
@@ -46,11 +48,14 @@ export class LineUpdateComponent implements OnInit {
       telephoneNumber : this.line.telephoneNumber,
       type            : this.list[this.line.type],
       pointsQuantity  : this.line.pointsQuantity,
-      status          : this.line.status
+      status          : this.line.status === 'I' ? 'Inactiva' : 'Activa',
     });
   }
   ngOnInit(): void {
     this.line = this.lineService.getLineSelected();
+    if (this.line.telephoneNumber === undefined){
+      this.router.navigateByUrl('/line/list');
+    }
     this.loadForm();
   }
   /**
@@ -79,7 +84,33 @@ export class LineUpdateComponent implements OnInit {
     console.log(this.line);
     console.log('Doing put request to /line');
     /* Do request */
-    return this.lineService.update(this.line).subscribe(response => console.log(response));
+    return this.lineService.update(this.line).subscribe(response => {
+      console.log(response);
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Línea modificada exitosamente',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }, err => {
+      console.log(err);
+      if (err.status === 400 ){
+        /* Bad request */
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `Hubo un problema al agregar la línea. Código de error: ${err.headers.get('error_code') }, ${err.headers.get('error_message')}!`,
+        });
+      } else if (err.status >= 500){
+        /* Server error */
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Hubo un problema al agregar la línea. Intenta más tarde!',
+        });
+      }
+     });
   }
   /**
    * Load the line model with form's values.
@@ -93,6 +124,6 @@ export class LineUpdateComponent implements OnInit {
     control = this.form.get('pointsQuantity');
     if ( control ) { this.line.pointsQuantity = control.value; }
     control = this.form.get('status');
-    if ( control ) { this.line.status = control.value; }
+    if ( control ) { this.line.status = control.value === 'Inactiva' ? 'I' : 'A'; }
   }
 }
