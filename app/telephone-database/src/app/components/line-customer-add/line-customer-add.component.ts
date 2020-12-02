@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 import { LineCustomer } from '../../models/line_customer.model';
 
 @Component({
@@ -26,7 +27,7 @@ export class LineCustomerAddComponent implements OnInit {
     customerFirstName : [this.lineCustomer.customerFirstName,   [Validators.required]],
     customerLastName : [this.lineCustomer.customerLastName,   [Validators.required]],
     customerAddress : [this.lineCustomer.customerAddress,   [Validators.required]],
-    customerEmail :  [this.lineCustomer.customerEmail,   [Validators.required]],  
+    customerEmail :  [this.lineCustomer.customerEmail,   [Validators.required]],
 
     });
   }
@@ -51,14 +52,11 @@ export class LineCustomerAddComponent implements OnInit {
   private loadForm(): void {
     this.form.patchValue({
       telephoneNumber: '0',
-    
      customerId :  this.lineCustomer.customerId,
      customerFirstName : this.lineCustomer.customerFirstName,
      customerLastName :  this.lineCustomer.customerLastName,
      customerAddress :  this.lineCustomer.customerAddress,
      customerEmail :  this.lineCustomer.customerEmail,
-
-      
     });
   }
 
@@ -89,7 +87,7 @@ export class LineCustomerAddComponent implements OnInit {
       return Object.values(this.form.controls)
         .forEach(control => control.markAsTouched());
     }
-
+    
     /* Get values */
     this.loadLineCustomerModel();
     console.log(this.lineCustomer);

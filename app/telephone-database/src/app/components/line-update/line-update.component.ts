@@ -10,8 +10,9 @@ import { LineService } from '../../services/line.service';
 })
 export class LineUpdateComponent implements OnInit {
   form: FormGroup;
-title = 'Actualizar información de la línea';
+  title = 'Actualizar información de la línea';
   line: Line;
+  private list = ['ADSL', 'Básica', 'RDSI'];
 
   constructor( private formBuilder: FormBuilder, private lineService: LineService) {
     this. line = this.buildLine();
@@ -43,12 +44,13 @@ title = 'Actualizar información de la línea';
   private loadForm(): void {
     this.form.patchValue({
       telephoneNumber : this.line.telephoneNumber,
-      type            : this.line.type,
+      type            : this.list[this.line.type],
       pointsQuantity  : this.line.pointsQuantity,
       status          : this.line.status
     });
   }
   ngOnInit(): void {
+    this.line = this.lineService.getLineSelected();
     this.loadForm();
   }
   /**
@@ -87,7 +89,7 @@ title = 'Actualizar información de la línea';
     control = this.form.get('telephoneNumber');
     if ( control ) { this.line.telephoneNumber = control.value; }
     control = this.form.get('type');
-    if ( control ) { this.line.type = control.value; }
+    if ( control ) { this.line.type = this.list.indexOf(control.value); }
     control = this.form.get('pointsQuantity');
     if ( control ) { this.line.pointsQuantity = control.value; }
     control = this.form.get('status');

@@ -8,11 +8,11 @@ import { Observable } from 'rxjs';
 })
 export class LineService {
   url = 'http://186.176.127.9:2525/line';
-
+  private lineSelected: Line = new Line();
   constructor(private http: HttpClient) {}
 
   add(line: Line): Observable<any> {
-    return this.http.post(this.url, line);
+    return this.http.post(this.url, JSON.stringify(line));
   }
   update(line: Line): Observable<any> {
     return this.http.put(this.url, line);
@@ -21,9 +21,17 @@ export class LineService {
   getList(): Observable<any>{
     return this.http.get(this.url);
   }
+
+  getLineSelected(): Line{
+    return this.lineSelected;
+  }
+  setLineSelected(line: Line): void{
+    this.lineSelected = line;
+  }
+
   delete(line: Line): Observable<any>{
-    return this.http.delete(this.url, {
-      headers: new HttpHeaders({
+      return this.http.delete(this.url, {
+        headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=utf-8',
       })
       .append('telephoneNumber', line.telephoneNumber.toString()),

@@ -16,7 +16,7 @@
                 <tbody>
                     <tr *ngFor="let i of list">
                         <td class="m-2 mr-md-5">{{ i.telephoneNumber }}</td>
-                        <td class="m-2 mr-md-2">{{ i.type }}</td>
+                        <td class="m-2 mr-md-2">{{ i.type | lineCode }}</td>
                         <td class="m-2 ml-xl-5">
                             <div class="row">
                                 <div class="col-4">

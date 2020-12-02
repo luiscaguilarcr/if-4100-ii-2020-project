@@ -1,7 +1,7 @@
 
 export class Line {
-    telephoneNumber = -1;
-    pointsQuantity = -1;
-    type = -1;
+    telephoneNumber: number | undefined;
+    pointsQuantity: number | undefined;
+    type: number | undefined;
     status = '';
 }

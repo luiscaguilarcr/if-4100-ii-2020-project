@@ -21,6 +21,7 @@ import { CallUpdateComponent } from './components/call-update/call-update.compon
 import { CallListComponent } from './components/call-list/call-list.component';
 import { LineUpdateComponent } from './components/line-update/line-update.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { LineCodePipe } from './line-code.pipe';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CallDeleteComponent,
     CallUpdateComponent,
     CallListComponent,
-    LineUpdateComponent
+    LineUpdateComponent,
+    LineCodePipe
   ],
   imports: [
     BrowserModule,
