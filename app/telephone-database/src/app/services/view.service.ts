@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ViewService {
-  url = 'http://186.176.127.9:2525/view';
+  url = 'http://127.0.0.1:2525/view';
   private viewSelected: View = new View();
   constructor(private http: HttpClient) {}
 

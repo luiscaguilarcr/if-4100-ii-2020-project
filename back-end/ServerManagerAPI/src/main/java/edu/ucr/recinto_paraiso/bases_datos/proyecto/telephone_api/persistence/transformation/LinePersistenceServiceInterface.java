@@ -170,7 +170,7 @@ public class LinePersistenceServiceInterface implements LineServiceInterface<Lin
         final List<LineCallServiceCustomer> list = new ArrayList<>();
         try {
             /* Create statement */
-            final String getStatement = "SELECT [Telephone_Number], [Customer_Id], [Customer_First_Name], [Customer_Last_Name], [Status], [Name] FROM [Service_Line_Call];";
+            final String getStatement = "SELECT [Telephone_Number], [Customer_Id], [Customer_First_Name], [Customer_Last_Name], [Status], [Name] FROM [Line_Call_Service_Customer];";
             /* Establish connection */
             databaseService.connect();
             final PreparedStatement preparedStatement = databaseService.getConnection().prepareStatement(getStatement);
