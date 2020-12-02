@@ -373,14 +373,3 @@ SELECT * FROM [dbo].[Line_Call_Service_Customer]
 WHERE [Name] = 'contestador'
 AND [Status] = 'A'
 
-
-DROP VIEW Line_Call_Service_Customer
-
-INSERT INTO [dbo].[Line_Service] ([Telephone_Number], [Service_Code]) VALUES (11111111, 1)
-INSERT INTO [dbo].[Line_Service] ([Telephone_Number], [Service_Code]) VALUES (8747445, 5)
-INSERT INTO [dbo].[Line_Service] ([Telephone_Number], [Service_Code]) VALUES (11111111, 1)
-INSERT INTO [dbo].[Line_Service] ([Telephone_Number], [Service_Code]) VALUES (11111111, 1)
-
-SELECT * FROM [dbo].[Line_Service]
-
-SELECT * FROM [dbo].[Line_Service]
