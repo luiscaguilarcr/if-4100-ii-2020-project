@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class ServiceService {
 
   url = 'http://186.176.127.9:2525/service';
-
+  private serviceSelected: Service = new Service();
   constructor(private http: HttpClient) { }
 
  add(service: Service): Observable<any> {
@@ -22,6 +22,14 @@ export class ServiceService {
   getList(): Observable<any>{
     return this.http.get(this.url);
   }
+
+  getServiceSelected(): Service{
+    return this.serviceSelected;
+  }
+  setServiceSelected(service: Service): void{
+    this.serviceSelected = service;
+  }
+
   delete(service: Service): Observable<any>{
     return this.http.delete(this.url, {
       headers: new HttpHeaders({

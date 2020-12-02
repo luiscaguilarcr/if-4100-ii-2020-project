@@ -53,6 +53,7 @@ import { ServiceService } from '../../services/service.service';
     });
   }
   ngOnInit(): void {
+    this.service = this.serviceService.getServiceSelected();
     this.loadForm();
   }
   /**
@@ -79,8 +80,11 @@ import { ServiceService } from '../../services/service.service';
     /* Get values */
     this.loadServiceModel();
     console.log(this.service);
-    /* try add */
-    this.serviceService.add(this.service);
+    console.log('Doing put request to /service');
+    
+    return this.serviceService.update(this.service).subscribe(response => console.log(response));
+   
+
   }
 
   /**
