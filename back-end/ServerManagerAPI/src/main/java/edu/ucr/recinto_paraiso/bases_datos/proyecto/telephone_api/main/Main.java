@@ -22,6 +22,7 @@ public class Main {
         server.registerServlet(CallServlet.class, "/call");
         server.registerServlet(ServiceServlet.class, "/service");
         server.registerServlet(LineCustomerServlet.class, "/line_customer");
+        server.registerServlet(LineCallServiceCustomerServlet.class, "/view");
         /* Start Http API */
         server.start();
 

@@ -1,0 +1,45 @@
+<div class="container-sm">
+    <h4>{{ title }}</h4>
+    <hr class="mb-5" />
+    <div class="row m-5">
+        <div class="col">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Número telefónico</th>
+                        <th scope="col">Identifición Cliente</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Servicio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of list">
+                        <td class="m-2 mr-md-5">{{ i.telephoneNumber }}</td>
+                        <td class="m-2 mr-md-2">{{ i.customerId }}</td>
+                        <td class="m-2 mr-md-2">{{ i.customerFirstName }}</td>
+                        <td class="m-2 mr-md-2">{{ i.customerLastName }}</td>
+                        <td class="m-2 ml-xl-5">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div [ngSwitch]="i.status">
+                                        <span *ngSwitchCase="'A'" class="badge badge-pill badge-success">Activa</span>
+                                        <span *ngSwitchCase="'I'" class="badge badge-pill badge-danger">Inactiva</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="m-2 mr-md-2">{{ i.name }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- using online scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpatsh.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>

@@ -11,7 +11,7 @@ import { CallListComponent } from './components/call-list/call-list.component';
 import { ServiceAddComponent } from './components/service-add/service-add.component';
 import { ServiceListComponent } from './components/service-list/service-list.component';
 import { ServiceUpdateComponent } from './components/service-update/service-update.component';
-
+import { ViewComponent } from './components/view/view.component';
 /* Rutes */
 export const ROUTES: Routes = [
     { path: 'line/insert', component: LineAddComponent },
@@ -23,6 +23,7 @@ export const ROUTES: Routes = [
     { path: 'service/insert', component: ServiceAddComponent },
     { path: 'service/update', component:  ServiceUpdateComponent },
     { path: 'service/list', component:  ServiceListComponent },
+    { path: 'view/view', component:  ViewComponent },
     { path: '', pathMatch: 'full', redirectTo: '/' },
     { path: '**', pathMatch: 'full', redirectTo: '/' }
 ];

@@ -15,13 +15,11 @@ public class BusinessException extends Exception {
     public static final int CALL_DESTINATION_TELEPHONE_NUMBER_NOT_PROVIDED = 1;
     public static final int CALL_END_DATE_NOT_PROVIDED = 1;
     public static final int CALL_START_DATE_NOT_PROVIDED = 1;
-
     /* Service service exception codes */
     public static final int SERVICE_CODE_IN_USE = 1;
     public static final int SERVICE_CODE_NOT_VALID = 1;
     public static final int SERVICE_CODE_NOT_DELETED = 82;
     public static final int SERVICE_COST_NOT_PROVIDED = 82;
-
     /* CallServlet exception codes */
     public static final int CALL_NOT_DELETED = 1;
     /* Json format */
@@ -44,6 +42,10 @@ public class BusinessException extends Exception {
     public static final int LINE_CUSTOMER_EMAIL_NOT_PROVIDED = 82;
     public static final int LINE_CUSTOMER_EMAIL_NOT_VALID = 82;
     private final Integer code;
+    /* LineCallServiceCustomerBuilder */
+    public static final int LINE_CALL_SERVICE_CUSTOMER_STATUS_NOT_VALID = 74;
+    public static final int LINE_CALL_SERVICE_CUSTOMER_STATUS_IS_EMPTY= 74;
+    public static final int LINE_CALL_SERVICE_CUSTOMER_SERVICE_IS_EMPTY= 74;
 
     /**
      * Creates a new Service Exception object.

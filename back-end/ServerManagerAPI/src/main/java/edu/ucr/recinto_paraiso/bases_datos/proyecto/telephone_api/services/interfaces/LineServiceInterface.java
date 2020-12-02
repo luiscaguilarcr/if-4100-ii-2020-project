@@ -1,5 +1,6 @@
 package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.services.interfaces;
 
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.LineCallServiceCustomer;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.exceptions.PersistenceException;
 
@@ -8,7 +9,7 @@ import java.util.List;
 /**
  * This is an line interface, that defines the schema required to work with user objects.
  */
-public interface LineService<E> {
+public interface LineServiceInterface<E> extends LineCallServiceCustomerInterface<LineCallServiceCustomer, String, String> {
     /**
      * Search and returns an User by it's username.
      *

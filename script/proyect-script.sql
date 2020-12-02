@@ -360,14 +360,27 @@ SELECT * FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS where CONSTRAINT_TYPE = 'CHEC
 
 -- Add View --
 -- Call, Service and Line -- 
-CREATE VIEW Service_Line_Call 
+CREATE VIEW Line_Call_Service_Customer 
 AS 
-SELECT L.[Telephone_Number] AS 'Telephone Number', LC.Customer_Id AS 'Customer ID', LC.Customer_First_Name+' '+LC.Customer_Last_Name AS 'Customer name', L.[Status] AS 'Status', S.[Name] AS 'Service Name'
-FROM [dbo].[Line] L, [dbo].[Call] C , [dbo].[Service] S, [dbo].[Line_Customer] LC
-WHERE L.[Telephone_Number] = C.[Telephone_Number]
-AND L.[Telephone_Number] = LC.[Telephone_Number]
+SELECT L.[Telephone_Number] AS 'Telephone_Number', LC.[Customer_Id] AS 'Customer_ID', LC.[Customer_First_Name] AS 'Customer_First_Name', LC.[Customer_Last_Name] AS 'Customer_Last_Name', L.[Status] AS 'Status', S.[Name] AS 'Name'
+FROM [dbo].[Line] L, [dbo].[Call] C , [dbo].[Service] S, [dbo].[Line_Customer] LC, [dbo].[Line_Service] LS
+WHERE L.[Telephone_Number] = LS.[Telephone_Number]
+AND LS.[Service_Code] = S.[Service_Code]
+AND L.Telephone_Number = LC.Telephone_Number
 GO
 
-SELECT * FROM [dbo].[Service_Line_Call]
-WHERE [Service Name] = 'contestador'
+SELECT * FROM [dbo].[Line_Call_Service_Customer]
+WHERE [Name] = 'contestador'
 AND [Status] = 'A'
+
+
+DROP VIEW Line_Call_Service_Customer
+
+INSERT INTO [dbo].[Line_Service] ([Telephone_Number], [Service_Code]) VALUES (11111111, 1)
+INSERT INTO [dbo].[Line_Service] ([Telephone_Number], [Service_Code]) VALUES (8747445, 5)
+INSERT INTO [dbo].[Line_Service] ([Telephone_Number], [Service_Code]) VALUES (11111111, 1)
+INSERT INTO [dbo].[Line_Service] ([Telephone_Number], [Service_Code]) VALUES (11111111, 1)
+
+SELECT * FROM [dbo].[Line_Service]
+
+SELECT * FROM [dbo].[Line_Service]
