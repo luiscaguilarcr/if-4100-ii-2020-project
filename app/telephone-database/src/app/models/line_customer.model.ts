@@ -1,8 +1,8 @@
 export class LineCustomer {
     telephoneNumber = '';
-    customerId = '';
-    customerFirstName = '';
-    customerLastName = '';
-    customerAddress = '';
-    customerEmail = '';
+    id = '';
+    firstName = '';
+    lastName = '';
+    address = '';
+    email = '';
 }

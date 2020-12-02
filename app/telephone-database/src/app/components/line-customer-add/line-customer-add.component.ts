@@ -23,11 +23,11 @@ export class LineCustomerAddComponent implements OnInit {
     /* Create form */
     return this.formBuilder.group({
     telephoneNumber:   [this.lineCustomer.telephoneNumber,   [Validators.required]],
-    customerId : [this.lineCustomer.customerId,   [Validators.required]],
-    customerFirstName : [this.lineCustomer.customerFirstName,   [Validators.required]],
-    customerLastName : [this.lineCustomer.customerLastName,   [Validators.required]],
-    customerAddress : [this.lineCustomer.customerAddress,   [Validators.required]],
-    customerEmail :  [this.lineCustomer.customerEmail,   [Validators.required]],
+    customerId : [this.lineCustomer.id,   [Validators.required]],
+    customerFirstName : [this.lineCustomer.firstName,   [Validators.required]],
+    customerLastName : [this.lineCustomer.lastName,   [Validators.required]],
+    customerAddress : [this.lineCustomer.address,   [Validators.required]],
+    customerEmail :  [this.lineCustomer.email,   [Validators.required]],
 
     });
   }
@@ -37,11 +37,11 @@ export class LineCustomerAddComponent implements OnInit {
   private buildLineCustomer(): LineCustomer {
     const lineCustomer = new LineCustomer();
     lineCustomer.telephoneNumber   = '0';
-    lineCustomer.customerId = '';
-    lineCustomer.customerFirstName = '';
-    lineCustomer.customerLastName= '';
-    lineCustomer.customerAddress = '';
-    lineCustomer.customerEmail = '';
+    lineCustomer.id = '';
+    lineCustomer.firstName = '';
+    lineCustomer.lastName = '';
+    lineCustomer.address = '';
+    lineCustomer.email = '';
 
 
     return lineCustomer;
@@ -52,11 +52,11 @@ export class LineCustomerAddComponent implements OnInit {
   private loadForm(): void {
     this.form.patchValue({
       telephoneNumber: '0',
-     customerId :  this.lineCustomer.customerId,
-     customerFirstName : this.lineCustomer.customerFirstName,
-     customerLastName :  this.lineCustomer.customerLastName,
-     customerAddress :  this.lineCustomer.customerAddress,
-     customerEmail :  this.lineCustomer.customerEmail,
+     customerId :  this.lineCustomer.id,
+     customerFirstName : this.lineCustomer.firstName,
+     customerLastName :  this.lineCustomer.lastName,
+     customerAddress :  this.lineCustomer.address,
+     customerEmail :  this.lineCustomer.email,
     });
   }
 
@@ -101,15 +101,15 @@ export class LineCustomerAddComponent implements OnInit {
     control = this.form.get('telephoneNumber');
     if ( control ) { this.lineCustomer.telephoneNumber = '0'; }
     control = this.form.get('customerId');
-    if ( control ) { this.lineCustomer.customerId = control.value;}
+    if ( control ) { this.lineCustomer.id = control.value; }
     control = this.form.get('customerFirstName');
-    if ( control ) { this.lineCustomer.customerFirstName = control.value;}
+    if ( control ) { this.lineCustomer.firstName = control.value; }
     control = this.form.get('customerLastName');
-    if ( control ) { this.lineCustomer.customerLastName = control.value;}
+    if ( control ) { this.lineCustomer.lastName = control.value; }
     control = this.form.get('customerEmail');
-    if ( control ) { this.lineCustomer.customerEmail = control.value;}
+    if ( control ) { this.lineCustomer.email = control.value; }
     control = this.form.get('customerAddress');
-    if ( control ) { this.lineCustomer.customerAddress = control.value;}
+    if ( control ) { this.lineCustomer.address = control.value; }
   }
 
 }
