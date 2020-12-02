@@ -154,8 +154,8 @@ public class LineCustomerServlet extends HttpServlet {
 class ProcessLineCustomerRequest{
     private static final JsonUtil jsonUtil = new JsonUtil();
     /* LineCustomer Headers */
-    static final String id = "id";
     static final String telephoneNumber = "telephoneNumber";
+    static final String id = "id";
     static final String firstName = "firstName";
     static final String lastName = "lastName";
     static final String address = "address";
