@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/persistence/transformation/RemoteServerPersistenceService.java" dialect="GenericSQL" />
-    <file url="file://$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/persistence/transformation/UserPersistenceService.java" dialect="GenericSQL" />
     <file url="PROJECT" dialect="TSQL" />
   </component>
 </project>

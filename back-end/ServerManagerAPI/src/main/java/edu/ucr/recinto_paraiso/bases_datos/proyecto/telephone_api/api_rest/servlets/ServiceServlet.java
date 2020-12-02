@@ -5,9 +5,7 @@ import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.trans
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseTemplates;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Line;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Service;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.LineBuilder;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.ServiceBuilder;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.bussiness.LineBusinessService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.bussiness.ServiceBusinessService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.exceptions.PersistenceException;
@@ -40,7 +38,7 @@ public class ServiceServlet extends HttpServlet {
         final ResponseBuilder responseBuilder = new ResponseBuilder(resp);
         try {
             /* Body */
-            final Map<String, String> body = Utility.getBodyMap(req.getReader());
+            final String body = Utility.getBody(req.getReader());
             /* Create service */
             final Service service = ProcessServiceRequest.createService(body);
             /* Try insert */
@@ -68,7 +66,7 @@ public class ServiceServlet extends HttpServlet {
         final ResponseBuilder responseBuilder = new ResponseBuilder(resp);
         try {
             /* Body */
-            final Map<String, String> body = Utility.getBodyMap(req.getReader());
+            final String body = Utility.getBody(req.getReader());
             /* Create service */
             final Service service = ProcessServiceRequest.createService(body);
             /* Try update */
@@ -153,6 +151,7 @@ public class ServiceServlet extends HttpServlet {
 }
 
 class ProcessServiceRequest{
+    private static final JsonUtil jsonUtil = new JsonUtil();
     /* Line Headers */
     static final  String serviceCode= "serviceCode" ;
     static final  String name = "name" ;
@@ -163,20 +162,7 @@ class ProcessServiceRequest{
         return String.join(",", ProcessServiceRequest.serviceCode,ProcessServiceRequest.name,ProcessServiceRequest.description,
                 ProcessServiceRequest.cost,ProcessServiceRequest.status);
     }
-    static Service createService(final Map<String, String> body){
-        /* Attributes */
-        int serviceCode = 0; try { serviceCode = Integer.parseInt(body.get(ProcessServiceRequest.serviceCode)); } catch (Exception exception){};
-        final  String name = body.get(ProcessServiceRequest.name);
-        final  String description= body.get(ProcessServiceRequest.description);
-        int cost = -1; try { cost = Integer.parseInt(body.get(ProcessServiceRequest.cost)); } catch (Exception exception){};
-        final  String status = body.get(ProcessServiceRequest.status);
-        /* Build */
-        return new ServiceBuilder()
-                .setService_Code(serviceCode)
-                .setName(name)
-                .setDescription(description)
-                .setCost(cost)
-                .setStatus(status)
-                .build();
+    static Service createService(final String body){
+        return jsonUtil.asObject(body, Service.class);
     }
 }

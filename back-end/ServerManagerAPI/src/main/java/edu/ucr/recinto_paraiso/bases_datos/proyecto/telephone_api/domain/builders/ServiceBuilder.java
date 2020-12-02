@@ -1,6 +1,5 @@
 package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders;
 
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Line;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Service;
 
 public class ServiceBuilder {

@@ -23,158 +23,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a786389-b440-4bf2-8610-954f9fd39fae" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/api_rest/servlets/LogServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/api_rest/servlets/LogoutServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/control/exceptions/SecurityException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/control/security/ApiClientVerification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/control/security/LogProcessService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/control/security/SessionVerification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/control/security/TokenService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/Log.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/logic/bussiness/UserBusinessService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/persistence/exceptions/PersistenceException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/interfaces/LogService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7bcd3728-99a7-45b3-b9cc-70a05b2e0138.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7bcd3728-99a7-45b3-b9cc-70a05b2e0138.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7bcd3728-99a7-45b3-b9cc-70a05b2e0138/storage_v2/_src_/database/if4001_b90514_database.FvAUXw/schema/dbo.sYMBAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7bcd3728-99a7-45b3-b9cc-70a05b2e0138/storage_v2/_src_/database/if4001_b90514_database.FvAUXw/schema/dbo.sYMBAA.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../app/telephone-database/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../app/telephone-database/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../app/telephone-database/src/app/components/line-add/line-add.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../app/telephone-database/src/app/components/line-add/line-add.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../app/telephone-database/src/app/components/line-customer-add/line-customer-add.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../app/telephone-database/src/app/components/line-customer-add/line-customer-add.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../app/telephone-database/src/app/components/line-list/line-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../app/telephone-database/src/app/components/line-list/line-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../app/telephone-database/src/app/components/line-list/line-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../app/telephone-database/src/app/components/line-list/line-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../app/telephone-database/src/app/components/line-update/line-update.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../app/telephone-database/src/app/components/line-update/line-update.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../app/telephone-database/src/app/components/shared/navbar/navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../app/telephone-database/src/app/components/shared/navbar/navbar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../app/telephone-database/src/app/models/line.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../app/telephone-database/src/app/models/line.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../app/telephone-database/src/app/services/line.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../app/telephone-database/src/app/services/line.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../app/telephone-database/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../app/telephone-database/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/command/Commands.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/command/LinuxCommands.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/command/OperativeSystem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/command/WindowsCommands.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/login/LoginSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/LoginSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/server/RemoteServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/RemoteServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/ssh/SSHConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/SSHConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/ssh/SSHSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/SSHSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/ssh_command/CommandType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/ssh_command/ResponseCommandType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/ssh_command/SSHCommandRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/SSHCommandRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/server/JettyServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/api_rest/server/ApiServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/ErrorCodes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/ServiceException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/logic/exceptions/BusinessException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/database/exception_database/DatabaseServiceException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/database/implementation_database/UCRDatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/persistence/conectors/UCRDatabaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/database/interface_database/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/persistence/conectors/DatabaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/login/exception/LoginServiceException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/login/implementation_login/LoginInternalService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/login/implementation_login/LoginPersistenceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/control/security/LoginProcessService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/login/interface_login/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/interfaces/LoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/remote_server/exception_remote_server/RemoteServerServiceException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/remote_server/implementation_remote_server/RemoteServerInternalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/logic/bussiness/RemoteServerBusinessService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/remote_server/implementation_remote_server/RemoteServerPersistenceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/persistence/transformation/RemoteServerPersistenceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/remote_server/interface_remote_server/RemoteServerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/interfaces/RemoteServerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/ssh/exception_ssh/SSHServiceException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/ssh/implementation_ssh/SSHInternalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/logic/bussiness/SshBusinessService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/ssh/implementation_ssh/SSHPersistenceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/persistence/transformation/SshPersistenceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/ssh/interface_ssh/SSHService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/interfaces/SshService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/token/TokenService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/user/exception_user/UserServiceException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/user/implementation_user/ServerAdministratorPersistenceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/persistence/transformation/UserPersistenceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/user/implementation_user/ServerAdministratorService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/user/interface_user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/interfaces/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/login/ChangeUserEmailServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/api_rest/servlets/ChangeUserEmailServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/login/ChangeUserNameServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/api_rest/servlets/ChangeUserNameServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/login/ChangeUserPasswordServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/api_rest/servlets/ChangeUserPasswordServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/login/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/api_rest/servlets/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/login/LogoutServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/login/RegisterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/api_rest/servlets/RegisterServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/remote_server/RemoteServerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/api_rest/servlets/RemoteServerServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/ssh_connection/ExecuteSSHCommandServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/api_rest/servlets/ExecuteSSHCommandServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/ssh_connection/FinishSSHServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/api_rest/servlets/FinishSSHServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/ssh_connection/InitializeSSHServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/api_rest/servlets/InitializeSSHServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/util/AuthorizationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/api_rest/servlets/AuthorizationServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/util/HeadersKeys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/api_rest/transformation/HeadersKeys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/util/HttpMethodsKeys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/api_rest/transformation/HttpMethodsKeys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/util/ResponseTemplates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/api_rest/transformation/ResponseTemplates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/JSONUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/api_rest/transformation/JSONUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/Utility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/builder/RemoteServerBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/builders/RemoteServerBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/builder/ResponseBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/api_rest/transformation/ResponseBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/builder/SSHConfigurationBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/builders/SSHConfigurationBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/builder/UserBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/builders/UserBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/connectors/database/DatabaseConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/persistence/conectors/DatabaseConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/connectors/database/MSQLSConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/persistence/conectors/MSQLSConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/connectors/database/UCRDatabaseConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/persistence/conectors/UCRConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/RemoteServerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/login/implementation_login/LoginInternalServiceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/remote_server/implementation_remote_server/RemoteServerInternalServiceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/ssh/implementation_ssh/SSHInternalServiceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/connectors/database/UCRDatabaseConnectorTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/database/SSHSessionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/command/Commands.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/command/LinuxCommands.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/command/OperativeSystem$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/command/OperativeSystem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/command/WindowsCommands.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/login/LoginSession.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/server/RemoteServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/ssh/SSHConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/ssh/SSHSession$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/ssh/SSHSession$MyUserInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/ssh/SSHSession.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/ssh_command/CommandType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/ssh_command/ResponseCommandType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/ssh_command/SSHCommandRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/user/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/server/JettyServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/ErrorCodes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/ServiceException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/database/exception_database/DatabaseServiceException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/database/implementation_database/UCRDatabaseService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/database/interface_database/DatabaseService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/login/exception/LoginServiceException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/login/implementation_login/LoginInternalService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/login/implementation_login/LoginPersistenceService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/login/interface_login/LoginService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/remote_server/exception_remote_server/RemoteServerServiceException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/remote_server/implementation_remote_server/RemoteServerInternalService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/remote_server/implementation_remote_server/RemoteServerPersistenceService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/remote_server/interface_remote_server/RemoteServerService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/ssh/exception_ssh/SSHServiceException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/ssh/implementation_ssh/SSHInternalService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/ssh/implementation_ssh/SSHPersistenceService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/ssh/interface_ssh/SSHService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/token/TokenService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/user/exception_user/UserServiceException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/user/implementation_user/ServerAdministratorPersistenceService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/user/implementation_user/ServerAdministratorService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/user/interface_user/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/login/ChangeUserEmailServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/login/ChangeUserNameServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/login/ChangeUserPasswordServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/login/LoginServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/login/LogoutServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/login/RegisterServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/remote_server/RemoteServerServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/ssh_connection/ExecuteSSHCommandServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/ssh_connection/FinishSSHServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/ssh_connection/InitializeSSHServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/util/AuthorizationServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/util/HeadersKeys.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/util/HttpMethodsKeys.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/servlet/util/ResponseTemplates.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/JSONUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/Utility.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/Utility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/builder/RemoteServerBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/builder/ResponseBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/builder/SSHConfigurationBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/builder/UserBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/connectors/database/DatabaseConnector.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/connectors/database/MSQLSConnector.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/connectors/database/UCRDatabaseConnector.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/domain/RemoteServerTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/login/implementation_login/LoginInternalServiceTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/remote_server/implementation_remote_server/RemoteServerInternalServiceTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/services/ssh/implementation_ssh/SSHInternalServiceTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/connectors/database/UCRDatabaseConnectorTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/ucr/recinto_paraiso/sistemas_operativos/g_21/proyecto/server_manager/util/database/SSHSessionTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../models/db-query/if4001_b90514_database.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../models/db-query/if4001_b90514_database.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/CallServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/CallServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/LineCustomerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/LineCustomerServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/LineServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/LineServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/ServiceServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/ServiceServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/domain/builders/ServiceBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/domain/builders/ServiceBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/persistence/transformation/ServicePersistenceServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/persistence/transformation/ServicePersistenceServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/util/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/util/Utility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/CallServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/CallServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/LineCustomerServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/LineCustomerServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/LineServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/LineServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/ProcessCallRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/ProcessCallRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/ProcessLineCustomerRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/ProcessLineCustomerRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/ProcessLineRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/ProcessLineRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/ProcessServiceRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/ProcessServiceRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/ServiceServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/api_rest/servlets/ServiceServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/domain/builders/ServiceBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/domain/builders/ServiceBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/persistence/transformation/CallColumnLabel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/persistence/transformation/CallColumnLabel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/persistence/transformation/CallPersistenceService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/persistence/transformation/CallPersistenceService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/persistence/transformation/ServicePersistenceServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/persistence/transformation/ServicePersistenceServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/util/Utility.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/ucr/recinto_paraiso/bases_datos/proyecto/telephone_api/util/Utility.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +80,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+        <option name="mavenHome" value="C:\Users\Jeison\AppData\Local\JetBrains\IntelliJ IDEA 2020.2.4\plugins\maven\lib\maven3" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -219,7 +101,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../models/db-query" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -227,7 +109,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -259,7 +141,7 @@
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="edu.ucr.recinto_paraiso.sistemas_operativos.g_21.proyecto.server_manager.main.Main" />
+      <option name="MAIN_CLASS_NAME" value="edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.main.Main" />
       <module name="ServerManagerAPI" />
       <extension name="coverage">
         <pattern>
@@ -267,19 +149,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -348,6 +217,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.LoginInternalServiceTest.logout" />
+      <item itemvalue="JUnit.RemoteServerTest.main" />
+      <item itemvalue="JUnit.RemoteServerTest.pruebaEjercicio" />
+      <item itemvalue="JUnit.SSHInternalServiceTest.executeCommand" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -412,6 +288,8 @@
       <workItem from="1606666257682" duration="16133000" />
       <workItem from="1606715793679" duration="10765000" />
       <workItem from="1606749228985" duration="9437000" />
+      <workItem from="1606852682149" duration="8514000" />
+      <workItem from="1606880021385" duration="2170000" />
     </task>
     <servers />
   </component>
@@ -431,9 +309,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="443" y="117" width="1024" height="852" key="#Project_Structure" timestamp="1603862655583">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state x="443" y="89" width="1024" height="852" key="#Project_Structure" timestamp="1606852696059">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="443" y="89" key="#Project_Structure/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1606852696059" />
     <state x="443" y="117" width="1024" height="852" key="#Project_Structure/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1603862655583" />
     <state x="271" y="393" width="1367" height="301" key="#SQL_Dialects" timestamp="1603868991809">
       <screen x="0" y="27" width="1920" height="1053" />
@@ -443,9 +322,11 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2470" y="184" width="800" height="684" key="#Template/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1604904580691" />
-    <state x="2475" y="178" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606758706466">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="-1365" y="171" width="800" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606860510666">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state x="-1365" y="171" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1606860510666" />
+    <state x="555" y="171" width="800" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1606852888996" />
     <state x="555" y="201" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1606691837001" />
     <state x="2475" y="178" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606758706466" />
     <state x="2595" y="355" width="631" height="403" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606383264644">
@@ -457,6 +338,10 @@
     </state>
     <state x="768" y="259" width="565" height="576" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1603934962014" />
     <state x="2688" y="238" width="565" height="569" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606750566591" />
+    <state x="-1236" y="318" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1606860505320">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1236" y="318" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1606860505320" />
     <state x="1920" y="478" width="1920" height="173" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1606383215688">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -498,9 +383,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="254" height="195" key="DatabaseViewActions_Filter/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606683506592" />
-    <state x="2632" y="139" width="557" height="835" key="Diagram.Print.Preview.Dialog" timestamp="1606682440869">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="712" y="134" width="557" height="835" key="Diagram.Print.Preview.Dialog" timestamp="1606880603787">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="712" y="134" key="Diagram.Print.Preview.Dialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1606880603787" />
     <state x="2632" y="139" width="557" height="835" key="Diagram.Print.Preview.Dialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606682440869" />
     <state x="2699" y="311" width="424" height="491" key="FileChooserDialogImpl" timestamp="1606682463174">
       <screen x="1920" y="0" width="1920" height="1080" />
@@ -523,41 +409,57 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1874" height="351" key="GridCell.Tab.-1.right/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1603876919809" />
-    <state width="878" height="253" key="GridCell.Tab.0.bottom" timestamp="1606758948387">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1606882716334">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="255" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1606870207569" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1606882716334" />
     <state width="1874" height="246" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1606466711012" />
     <state width="878" height="253" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606758948387" />
-    <state width="878" height="253" key="GridCell.Tab.0.center" timestamp="1606758948387">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1606882716334">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="255" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1606870207569" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1606882716334" />
     <state width="1874" height="246" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1606466711012" />
     <state width="878" height="253" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606758948387" />
-    <state width="878" height="253" key="GridCell.Tab.0.left" timestamp="1606758948386">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1606882716334">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="255" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1606870207569" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1606882716334" />
     <state width="1874" height="246" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1606466711012" />
     <state width="878" height="253" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606758948386" />
-    <state width="878" height="253" key="GridCell.Tab.0.right" timestamp="1606758948387">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1606882716334">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="255" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1606870207569" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1606882716334" />
     <state width="1874" height="246" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1606466711012" />
     <state width="878" height="253" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606758948387" />
-    <state width="1874" height="351" key="GridCell.Tab.1.bottom" timestamp="1603876896447">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state width="1877" height="255" key="GridCell.Tab.1.bottom" timestamp="1606870207570">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="255" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1606870207570" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1606853655206" />
     <state width="1874" height="351" key="GridCell.Tab.1.bottom/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1603876896447" />
-    <state width="1874" height="351" key="GridCell.Tab.1.center" timestamp="1603876896447">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state width="1877" height="255" key="GridCell.Tab.1.center" timestamp="1606870207570">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="255" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1606870207570" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1606853655206" />
     <state width="1874" height="351" key="GridCell.Tab.1.center/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1603876896447" />
-    <state width="1874" height="351" key="GridCell.Tab.1.left" timestamp="1603876896447">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state width="1877" height="255" key="GridCell.Tab.1.left" timestamp="1606870207569">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="255" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1606870207569" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1606853655206" />
     <state width="1874" height="351" key="GridCell.Tab.1.left/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1603876896447" />
-    <state width="1874" height="351" key="GridCell.Tab.1.right" timestamp="1603876896447">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state width="1877" height="255" key="GridCell.Tab.1.right" timestamp="1606870207570">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="255" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1606870207570" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1606853655206" />
     <state width="1874" height="351" key="GridCell.Tab.1.right/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1603876896447" />
     <state width="327" height="528" key="HiddenNamespacesPopup" timestamp="1606758731373">
       <screen x="1920" y="0" width="1920" height="1080" />

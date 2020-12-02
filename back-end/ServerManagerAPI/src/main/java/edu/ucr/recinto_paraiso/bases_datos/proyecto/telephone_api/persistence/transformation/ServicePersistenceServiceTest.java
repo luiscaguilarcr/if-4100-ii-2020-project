@@ -1,12 +1,6 @@
 package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.transformation;
 
 
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Line;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.LineBuilder;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.exceptions.PersistenceException;
-
-import java.util.List;
-
 public class ServicePersistenceServiceTest {
 
    public static void main(String...args){

@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.HeadersKeys.Content_type;
 import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.HeadersKeys.getInformation_headers;
@@ -36,7 +35,7 @@ public class CallServlet extends HttpServlet {
         final ResponseBuilder responseBuilder = new ResponseBuilder(resp);
         try {
             /* Body */
-            final Map<String, String> body = Utility.getBodyMap(req.getReader());
+            final String body = Utility.getBody(req.getReader());
             /* Create Call */
             final Call call = ProcessCallRequest.createCall(body);
             /* Try insert */
@@ -64,7 +63,7 @@ public class CallServlet extends HttpServlet {
         final ResponseBuilder responseBuilder = new ResponseBuilder(resp);
         try {
             /* Body */
-            final Map<String, String> body = Utility.getBodyMap(req.getReader());
+            final String body = Utility.getBody(req.getReader());
             /* Create Call */
             final Call call = ProcessCallRequest.createCall(body);
             /* Try update */
@@ -150,6 +149,7 @@ public class CallServlet extends HttpServlet {
 }
 
 class ProcessCallRequest{
+    private static final JsonUtil jsonUtil = new JsonUtil();
     /* Call Headers */
     static final String telephoneNumber = "telephoneNumber";
     static final String destinationTelephoneNumber = "destinationTelephoneNumber";
@@ -159,18 +159,7 @@ class ProcessCallRequest{
         return String.join(",", ProcessCallRequest.telephoneNumber, ProcessCallRequest.destinationTelephoneNumber, ProcessCallRequest.startDate, ProcessCallRequest.endDate);
     }
 
-    static Call createCall(final Map<String, String> body){
-        /* Attributes */
-        int telephoneNumber= -1; try {  telephoneNumber = Integer.parseInt(body.get(ProcessCallRequest.telephoneNumber)); } catch (Exception ignored){}
-        int destinationTelephone = -1; try {  destinationTelephone = Integer.parseInt(body.get(ProcessCallRequest.destinationTelephoneNumber)); } catch (Exception ignored){}
-        final String startDate = body.get(ProcessCallRequest.startDate);
-        final String endDate = body.get(ProcessCallRequest.endDate);
-        /* Build */
-        return new CallBuilder()
-                .setTelephone_Number(telephoneNumber)
-                .setDestination_Telephone_Number(destinationTelephone)
-                .setStart_Date(startDate)
-                .setEnd_Date(endDate)
-                .build();
+    static Call createCall(final String body){
+        return jsonUtil.asObject(body, Call.class);
     }
 }

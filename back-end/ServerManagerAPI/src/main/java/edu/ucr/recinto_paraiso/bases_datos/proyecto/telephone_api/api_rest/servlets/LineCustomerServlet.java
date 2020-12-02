@@ -4,6 +4,7 @@ import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.trans
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseBuilder;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseTemplates;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.LineCustomer;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Service;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.LineCustomerBuilder;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.bussiness.LineCustomerBusinessService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException;
@@ -36,7 +37,7 @@ public class LineCustomerServlet extends HttpServlet {
         final ResponseBuilder responseBuilder = new ResponseBuilder(resp);
         try {
             /* Body */
-            final Map<String, String> body = Utility.getBodyMap(req.getReader());
+            final String body = Utility.getBody(req.getReader());
             /* Create LineCustomer */
             final LineCustomer lineCustomer = ProcessLineCustomerRequest.createLineCustomer(body);
             /* Try insert */
@@ -64,7 +65,7 @@ public class LineCustomerServlet extends HttpServlet {
         final ResponseBuilder responseBuilder = new ResponseBuilder(resp);
         try {
             /* Body */
-            final Map<String, String> body = Utility.getBodyMap(req.getReader());
+            final String body = Utility.getBody(req.getReader());
             /* Create LineCustomer */
             final LineCustomer lineCustomer = ProcessLineCustomerRequest.createLineCustomer(body);
             /* Try update */
@@ -153,6 +154,7 @@ public class LineCustomerServlet extends HttpServlet {
 }
 
 class ProcessLineCustomerRequest{
+    private static final JsonUtil jsonUtil = new JsonUtil();
     /* LineCustomer Headers */
     static final String telephoneNumber = "telephoneNumber";
     static final String id = "id";
@@ -164,22 +166,7 @@ class ProcessLineCustomerRequest{
         return String.join(",", ProcessLineCustomerRequest.telephoneNumber, ProcessLineCustomerRequest.id, ProcessLineCustomerRequest.firstName, ProcessLineCustomerRequest.lastName, ProcessLineCustomerRequest.address, ProcessLineCustomerRequest.email);
     }
 
-    static LineCustomer createLineCustomer(final Map<String, String> body){
-        /* Attributes */
-        int telephoneNumber = -1; try { telephoneNumber = Integer.parseInt(body.get(ProcessLineCustomerRequest.telephoneNumber)); }catch (Exception ignored){}
-        int id = -1; try { id = Integer.parseInt(body.get(ProcessLineCustomerRequest.id)); }catch (Exception ignored){}
-        final String firstName = body.get(ProcessLineCustomerRequest.firstName);
-        final String lastName = body.get(ProcessLineCustomerRequest.lastName);
-        final String address = body.get(ProcessLineCustomerRequest.address);
-        final String email = body.get(ProcessLineCustomerRequest.email);
-        /* Build */
-        return new LineCustomerBuilder()
-                .setId(id)
-                .setTelephone_Number(telephoneNumber)
-                .setFirst_Name(firstName)
-                .setLast_Name(lastName)
-                .setAddress(address)
-                .setEmail(email)
-                .build();
+    static LineCustomer createLineCustomer(final String body){
+        return jsonUtil.asObject(body, LineCustomer.class);
     }
 }
