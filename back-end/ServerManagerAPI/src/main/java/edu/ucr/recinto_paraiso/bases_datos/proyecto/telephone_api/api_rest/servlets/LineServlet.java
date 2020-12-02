@@ -5,7 +5,7 @@ import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.trans
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseTemplates;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Line;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.LineBuilder;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.bussiness.LineBusinessService;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.bussiness.LineBusinessServiceInterface;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.exceptions.PersistenceException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.util.Utility;
@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-import java.util.jar.JarEntry;
 
 import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.HeadersKeys.*;
 import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.HttpMethodsKeys.*;
@@ -42,7 +40,7 @@ public class LineServlet extends HttpServlet {
             /* Create line */
             final Line line = ProcessLineRequest.createLine(body);
             /* Try insert */
-            LineBusinessService.getInstance().insert(line);
+            LineBusinessServiceInterface.getInstance().insert(line);
             /* Line created */
             resourceCreatedResponse(responseBuilder);
         } catch (IOException ioException) {
@@ -70,7 +68,7 @@ public class LineServlet extends HttpServlet {
             /* Create line */
             final Line line = ProcessLineRequest.createLine(body);
             /* Try update */
-            LineBusinessService.getInstance().update(line);
+            LineBusinessServiceInterface.getInstance().update(line);
             okResponse(responseBuilder);
         } catch (IOException ioException) {
             /* JSON FORMAT EXCEPTION */
@@ -94,7 +92,7 @@ public class LineServlet extends HttpServlet {
         try {
             JsonUtil jsonUtil = new JsonUtil();
             /* Get list */
-            List<Line> list = LineBusinessService.getInstance().get();
+            List<Line> list = LineBusinessServiceInterface.getInstance().get();
             /* Parse response */
             responseBuilder.setBody(jsonUtil.asJson(list));
             okResponse(responseBuilder);
@@ -118,7 +116,7 @@ public class LineServlet extends HttpServlet {
             /* Headers */
             final String telephoneNumber = req.getHeader(ProcessLineRequest.telephoneNumber);
             /* try delete */
-            if (LineBusinessService.getInstance().delete(new LineBuilder()
+            if (LineBusinessServiceInterface.getInstance().delete(new LineBuilder()
                     .setTelephone_Number(Integer.parseInt(telephoneNumber))
                     .build())) {
                 okResponse(responseBuilder);

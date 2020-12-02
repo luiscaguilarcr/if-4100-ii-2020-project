@@ -360,9 +360,9 @@ SELECT * FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS where CONSTRAINT_TYPE = 'CHEC
 
 -- Add View --
 -- Call, Service and Line -- 
-CREATE VIEW Service_Line_Call 
+CREATE VIEW Line_Call_Service_Customer 
 AS 
-SELECT L.[Telephone_Number] AS 'Telephone Number', LC.Customer_Id AS 'Customer ID', LC.Customer_First_Name+' '+LC.Customer_Last_Name AS 'Customer name', L.[Status] AS 'Status', S.[Name] AS 'Service Name'
+SELECT L.[Telephone_Number] AS 'Telephone Number', LC.[Customer_Id] AS 'Customer ID', LC.[Customer_First_Name]+' '+LC.[Customer_Last_Name] AS 'Customer name', L.[Status] AS 'Status', S.[Name] AS 'Service Name'
 FROM [dbo].[Line] L, [dbo].[Call] C , [dbo].[Service] S, [dbo].[Line_Customer] LC
 WHERE L.[Telephone_Number] = C.[Telephone_Number]
 AND L.[Telephone_Number] = LC.[Telephone_Number]
@@ -371,3 +371,6 @@ GO
 SELECT * FROM [dbo].[Service_Line_Call]
 WHERE [Service Name] = 'contestador'
 AND [Status] = 'A'
+
+
+DROP VIEW Service_Line_Call

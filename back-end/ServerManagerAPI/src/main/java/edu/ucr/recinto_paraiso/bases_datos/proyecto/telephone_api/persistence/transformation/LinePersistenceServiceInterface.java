@@ -1,13 +1,15 @@
 package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.transformation;
 
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Line;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.LineCallServiceCustomer;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.LineBuilder;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.LineCallServiceCustomerBuilder;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.conectors.DatabaseService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.conectors.UCRDatabaseService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.exceptions.PersistenceException;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.services.interfaces.LineService;
-
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.services.interfaces.LineCallServiceCustomerInterface;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.services.interfaces.LineServiceInterface;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,9 +22,9 @@ import java.util.List;
  * <p>
  * Implements the Singleton Pattern.
  */
-public class LinePersistenceService implements LineService<Line> {
+public class LinePersistenceServiceInterface implements LineServiceInterface<Line> {
     /* Instance */
-    private static LinePersistenceService instance;
+    private static LinePersistenceServiceInterface instance;
     private final DatabaseService databaseService;
     /**
      * Constructor of the class. Receives an injection of the database connector that manages the data of the
@@ -30,7 +32,7 @@ public class LinePersistenceService implements LineService<Line> {
      *
      * @param databaseService Database service.
      */
-    private LinePersistenceService(DatabaseService databaseService) {
+    private LinePersistenceServiceInterface(DatabaseService databaseService) {
         this.databaseService = databaseService;
     }
     /**
@@ -38,9 +40,9 @@ public class LinePersistenceService implements LineService<Line> {
      *
      * @return {@code UserPersistenceService} instance of the service.
      */
-    public static LinePersistenceService getInstance() {
+    public static LinePersistenceServiceInterface getInstance() {
         if (instance == null) {
-            instance = new LinePersistenceService(new UCRDatabaseService(false));//TODO Try generate connector
+            instance = new LinePersistenceServiceInterface(new UCRDatabaseService(false));//TODO Try generate connector
         }
         return instance;
     }
@@ -161,6 +163,83 @@ public class LinePersistenceService implements LineService<Line> {
             throw new PersistenceException("Error during delete execution. Details: " + e.getMessage(), 0);
         }
     }
+
+    @Override
+    public List<LineCallServiceCustomer> getAll() throws BusinessException, PersistenceException {
+        ResultSet resultSet;
+        final List<LineCallServiceCustomer> list = new ArrayList<>();
+        try {
+            /* Create statement */
+            final String getStatement = "SELECT [Telephone_Number], [Customer_Id], [Customer_First_Name], [Customer_Last_Name], [Status], [Name] FROM [Service_Line_Call];";
+            /* Establish connection */
+            databaseService.connect();
+            final PreparedStatement preparedStatement = databaseService.getConnection().prepareStatement(getStatement);
+            /* Execute statement */
+            resultSet = preparedStatement.executeQuery();
+            /* Read all rows (prevent null) */
+            while (resultSet.next()) {
+                /* Create a User */
+                final LineCallServiceCustomer line = new LineCallServiceCustomerBuilder()
+                        .setTelephoneNumber(resultSet.getInt(LineCallServiceCustomerColumnLabel.telephone_Number))
+                        .setCustomerId(resultSet.getString(LineCallServiceCustomerColumnLabel.customer_Id))
+                        .setCustomerFirstName(resultSet.getString(LineCallServiceCustomerColumnLabel.customer_First_Name))
+                        .setCustomerLastName(resultSet.getString(LineCallServiceCustomerColumnLabel.customer_Last_Name))
+                        .setStatus(resultSet.getString(LineCallServiceCustomerColumnLabel.status))
+                        .setName(resultSet.getString(LineCallServiceCustomerColumnLabel.name))
+                        .build();
+                list.add(line);
+            }
+            return list;
+        } catch (SQLException e) {
+            throw new PersistenceException("Can't get the user information from database. Details: " + e.getMessage(), PersistenceException.DATABASE_CONNECTION_FAILED);
+        }
+    }
+
+    @Override
+    public List<LineCallServiceCustomer> get(String serviceName, String status) throws BusinessException, PersistenceException {
+        ResultSet resultSet;
+        final List<LineCallServiceCustomer> list = new ArrayList<>();
+        try {
+            /* Create statement */
+            final String getStatement = "SELECT [Telephone_Number], [Customer_Id], [Customer_First_Name], [Customer_Last_Name], [Status], [Name] FROM [Service_Line_Call] WHERE [Name] = ? AND [Status] = ?;";
+            /* Establish connection */
+            databaseService.connect();
+            final PreparedStatement preparedStatement = databaseService.getConnection().prepareStatement(getStatement);
+            preparedStatement.setString(1, serviceName);
+            preparedStatement.setString(2, status);
+            /* Execute statement */
+            resultSet = preparedStatement.executeQuery();
+            /* Read all rows (prevent null) */
+            while (resultSet.next()) {
+                /* Create a User */
+                final LineCallServiceCustomer line = new LineCallServiceCustomerBuilder()
+                        .setTelephoneNumber(resultSet.getInt(LineCallServiceCustomerColumnLabel.telephone_Number))
+                        .setCustomerId(resultSet.getString(LineCallServiceCustomerColumnLabel.customer_Id))
+                        .setCustomerFirstName(resultSet.getString(LineCallServiceCustomerColumnLabel.customer_First_Name))
+                        .setCustomerLastName(resultSet.getString(LineCallServiceCustomerColumnLabel.customer_Last_Name))
+                        .setStatus(resultSet.getString(LineCallServiceCustomerColumnLabel.status))
+                        .setName(resultSet.getString(LineCallServiceCustomerColumnLabel.name))
+                        .build();
+                list.add(line);
+            }
+            return list;
+        } catch (SQLException e) {
+            throw new PersistenceException("Can't get the user information from database. Details: " + e.getMessage(), PersistenceException.DATABASE_CONNECTION_FAILED);
+        }
+    }
+}
+
+/**
+ * Names of the columns in database.
+ */
+class LineCallServiceCustomerColumnLabel {
+    /* Columns */
+    static final String telephone_Number = "Telephone_Number";
+    static final String customer_Id = "Customer_Id";
+    static final String customer_First_Name = "Customer_First_Name";
+    static final String customer_Last_Name = "Customer_Last_Name";
+    static final String status = "Status";
+    static final String name = "Name";
 }
 
 /**

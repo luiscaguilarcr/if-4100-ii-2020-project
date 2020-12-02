@@ -1,24 +1,27 @@
 package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.bussiness;
 
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Line;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.LineCallServiceCustomer;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.exceptions.PersistenceException;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.transformation.LinePersistenceService;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.services.interfaces.LineService;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.transformation.LinePersistenceServiceInterface;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.services.interfaces.LineCallServiceCustomerInterface;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.services.interfaces.LineServiceInterface;
 
 import java.util.List;
 
 import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException.*;
 
-public class LineBusinessService implements LineService<Line> {
+public class LineBusinessServiceInterface implements LineServiceInterface<Line> {
     /* Instance */
-    private static LineBusinessService instance;
-    private LineService<Line> linePersistenceService;
+    private static LineBusinessServiceInterface instance;
+    private LineServiceInterface<Line> linePersistenceService;
+    private LineCallServiceCustomerInterface<LineCallServiceCustomer, String, String> lineCallServiceCustomerInterface;
     /**
      * Constructor of the class. Receives an injection of the database connector that manages the data of the
      * ServerAdministrator.
      */
-    private LineBusinessService( final LineService<Line> linePersistenceService) {
+    private LineBusinessServiceInterface(final LineServiceInterface<Line> linePersistenceService) {
         this.linePersistenceService = linePersistenceService;
     }
     /**
@@ -26,9 +29,9 @@ public class LineBusinessService implements LineService<Line> {
      *
      * @return {@code UserPersistenceService} instance of the service.
      */
-    public static LineBusinessService getInstance() {
+    public static LineBusinessServiceInterface getInstance() {
         if (instance == null) {
-            instance = new LineBusinessService(LinePersistenceService.getInstance());
+            instance = new LineBusinessServiceInterface(LinePersistenceServiceInterface.getInstance());
         }
         return instance;
     }
@@ -95,5 +98,23 @@ public class LineBusinessService implements LineService<Line> {
             throw new BusinessException("Telephone number not valid.", LINE_TELEPHONE_NUMBER_NOT_VALID);
         }
         return linePersistenceService.delete(line);
+    }
+
+    @Override
+    public List<LineCallServiceCustomer> getAll() throws BusinessException, PersistenceException {
+        return lineCallServiceCustomerInterface.getAll();
+    }
+
+    @Override
+    public List<LineCallServiceCustomer> get(String serviceName, String status) throws BusinessException, PersistenceException {
+        if(serviceName == null) {
+            throw new BusinessException("Service name is empty.", LINE_CALL_SERVICE_CUSTOMER_SERVICE_IS_EMPTY);
+        }else if(status == null){
+            throw new BusinessException("Status is empty.", LINE_CALL_SERVICE_CUSTOMER_STATUS_IS_EMPTY);
+        }
+        else if(!status.equals('A') || !status.equals('I')){
+            throw new BusinessException("Status not valid.", LINE_CALL_SERVICE_CUSTOMER_STATUS_NOT_VALID);
+        }
+        return lineCallServiceCustomerInterface.get(serviceName, status);
     }
 }
