@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Service } from '../../models/service.model';
 import { ServiceService } from '../../services/service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-service-add',
@@ -69,7 +70,7 @@ export class ServiceAddComponent implements OnInit {
   /**
    * Summit action.
    */
-  submit(): void {
+  submit(): any {
     /* Validate inputs */
     if (this.form.invalid) {
       return Object.values(this.form.controls)
@@ -78,8 +79,18 @@ export class ServiceAddComponent implements OnInit {
     /* Get values */
     this.loadServiceModel();
     console.log(this.service);
+    this.service.status = 'A';
     /* try add */
-    this.serviceService.add(this.service);
+    return this.serviceService.add(this.service).subscribe(response => {
+      console.log(response);
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Servicio creado exitosamente',
+        showConfirmButton: false,
+        timer: 1500
+      });
+     });
   }
 
   /**

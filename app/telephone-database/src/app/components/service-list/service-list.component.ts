@@ -14,7 +14,7 @@ export class ServiceListComponent implements OnInit {
   list: Service[] = [];
   faEdit = faEdit;
   faTrash = faTrash;
-  constructor( private ServiceService: ServiceService) {
+  constructor( private serviceService: ServiceService) {
   }
 
   ngOnInit(): void {
@@ -26,7 +26,7 @@ export class ServiceListComponent implements OnInit {
   }
 
   deleteService(service: Service){
-    return this.ServiceService.delete(service).toPromise()
+    return this.serviceService.delete(service).toPromise()
     .then(result => {
       console.log(result);
       this.refreshList();
@@ -35,7 +35,7 @@ export class ServiceListComponent implements OnInit {
   }
 
   refreshList(){
-    return this.ServiceService.getList().toPromise()
+    return this.serviceService.getList().toPromise()
     .then( result => {
       return this.list = result;
     })

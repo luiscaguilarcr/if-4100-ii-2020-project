@@ -46,9 +46,10 @@ export class LineListComponent implements OnInit {
       cancelButtonColor: '#3085d6',
       confirmButtonText: 'Eliminar',
       cancelButtonText: 'Cancelar'
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        return this.lineService.delete(line).toPromise().then(response => {
+        try {
+          const response = await this.lineService.delete(line).toPromise();
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -58,32 +59,30 @@ export class LineListComponent implements OnInit {
           });
           console.log(response);
           this.refreshList();
-        })
-        .catch(msg => {
+        } catch (msg) {
           console.log(msg);
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'Hubo un problema al eliminar la línea. Intenta más tarde!',
           });
-        });
+        }
       }
     });
   }
 
-  refreshList(){
-    return this.lineService.getList().toPromise()
-    .then( result => {
+  async refreshList(){
+    try {
+      const result = await this.lineService.getList().toPromise();
       Swal.close();
       return this.list = result;
-    })
-    .catch(msg => {
+    } catch (msg) {
       console.log(msg);
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'Hubo un problema al obtener la información. Intenta más tarde!',
       });
-    });
+    }
   }
 }

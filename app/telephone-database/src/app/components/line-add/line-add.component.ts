@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Line } from '../../models/line.model';
 import { LineService } from '../../services/line.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-line-add',
@@ -16,7 +17,7 @@ export class LineAddComponent implements OnInit {
   line: Line;
   private list = ['ADSL', 'Básica', 'RDSI'];
 
-  constructor( private formBuilder: FormBuilder, private lineService: LineService) {
+  constructor( private formBuilder: FormBuilder, private lineService: LineService, private router: Router) {
     this. line = this.buildLine();
     this.form = this.createForm();
   }
@@ -74,6 +75,7 @@ export class LineAddComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       });
+      this.router.navigateByUrl('/line/list');
      });
   }
   /**
