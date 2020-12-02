@@ -4,7 +4,7 @@ import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Line;
 
 public class LineBuilder {
     private int telephone_Number;
-    private int points_Quantity;
+    private int pointsQuantity;
     private int type;
     private String status;
 
@@ -13,8 +13,8 @@ public class LineBuilder {
         return this;
     }
 
-    public LineBuilder setPoints_Quantity(int points_Quantity) {
-        this.points_Quantity = points_Quantity;
+    public LineBuilder setPointsQuantity(int pointsQuantity) {
+        this.pointsQuantity = pointsQuantity;
         return this;
     }
 
@@ -29,6 +29,6 @@ public class LineBuilder {
     }
 
     public Line build(){
-        return new Line(this.telephone_Number, this.points_Quantity, this.type, this.status);
+        return new Line(this.telephone_Number, this.pointsQuantity, this.type, this.status);
     }
 }

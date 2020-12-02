@@ -68,7 +68,7 @@ public class ServicePersistenceService implements ServiceService<Service> {
             while (resultSet.next()) {
                 /* Create a User */
                 final Service service = new ServiceBuilder()
-                        .setService_Code(resultSet.getInt(ServiceColumnLabel.service_Code))
+                        .setServiceCode(resultSet.getInt(ServiceColumnLabel.service_Code))
                         .setName(resultSet.getString(ServiceColumnLabel.name))
                         .setDescription(resultSet.getString(ServiceColumnLabel.description))
                         .setCost(resultSet.getInt(ServiceColumnLabel.cost))

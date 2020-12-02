@@ -17,9 +17,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ServiceAddComponent } from './components/service-add/service-add.component';
 import { ServiceListComponent } from './components/service-list/service-list.component';
 import { ServiceUpdateComponent } from './components/service-update/service-update.component';
-import { CallAddComponent } from './components/call-add/call-add.component';
-import { CallDeleteComponent } from './components/call-delete/call-delete.component';
-import { CallUpdateComponent } from './components/call-update/call-update.component';
 import { CallListComponent } from './components/call-list/call-list.component';
 import { LineUpdateComponent } from './components/line-update/line-update.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -37,9 +34,6 @@ import { StatusLabelPipe } from './pipes/status-label.pipe';
     ServiceAddComponent,
     ServiceListComponent,
     ServiceUpdateComponent,
-    CallAddComponent,
-    CallDeleteComponent,
-    CallUpdateComponent,
     CallListComponent,
     LineUpdateComponent,
     LineCodePipe,

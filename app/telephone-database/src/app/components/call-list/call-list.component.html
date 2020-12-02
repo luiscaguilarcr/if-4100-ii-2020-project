@@ -11,34 +11,15 @@
                         <th scope="col">Teléfono de destino</th>
                         <th scope="col">Fecha inicio</th>
                         <th scope="col">Fecha de fin</th>
-                        <th scope="col">Configuración</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let i of list">
                         <td class="m-2 mr-md-5">{{ i.noCall }}</td>
-
                         <td class="m-2 mr-md-5">{{ i.telephoneNumber }}</td>
                         <td class="m-2 mr-md-2">{{ i.destinationTelephoneNumber }}</td>
-                      
-                      
-                      
-
-
-                        <td class="m-2 mr-5">
-                            <div class="row">
-                                <div class="col-4">
-                                    <a (click)="updateCall(i)">
-                                        <fa-icon [icon]="faEdit"></fa-icon>
-                                    </a>
-                                </div>
-                                <div class="col-4">
-                                    <a (click)="deleteCall(i)">
-                                        <fa-icon [icon]="faTrash"></fa-icon>
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
+                        <td class="m-2 mr-md-2">{{ i.startDate }}</td>
+                        <td class="m-2 mr-md-2">{{ i.endDate }}</td>
                     </tr>
                 </tbody>
             </table>

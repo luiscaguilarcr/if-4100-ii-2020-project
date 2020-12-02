@@ -84,7 +84,7 @@ public class CallBusinessService implements CallService<Call> {
         if (Call == null) {
             throw new BusinessException("Call not provided.", BusinessException.CALL_OBJECT_NOT_PROVIDED);
         }
-        if (Call.getTelephone_Number() < 0) {
+        if (Call.getTelephoneNumber() < 0) {
             throw new BusinessException("Call's email not provided.", BusinessException.CALL_TELEPHONE_NUMBER_NOT_PROVIDED);
         }
         return callPersistenceService.delete(Call);
@@ -100,7 +100,7 @@ public class CallBusinessService implements CallService<Call> {
         if (Call == null) {
             throw new BusinessException("Call not provided.", BusinessException.CALL_OBJECT_NOT_PROVIDED);
         }
-        if (Call.getTelephone_Number() < 0) {
+        if (Call.getTelephoneNumber() < 0) {
             throw new BusinessException("Call's email not provided.", BusinessException.CALL_TELEPHONE_NUMBER_NOT_PROVIDED);
         }
         if (Call.getDestinationTelephoneNumber() < 0) {

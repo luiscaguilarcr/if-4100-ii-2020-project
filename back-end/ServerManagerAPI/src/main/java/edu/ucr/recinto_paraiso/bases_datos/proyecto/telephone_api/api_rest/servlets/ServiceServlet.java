@@ -3,7 +3,6 @@ package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.serv
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.JsonUtil;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseBuilder;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseTemplates;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Line;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Service;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.ServiceBuilder;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.bussiness.ServiceBusinessService;
@@ -16,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.HeadersKeys.Content_type;
 import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.HeadersKeys.getInformation_headers;
@@ -27,7 +25,7 @@ import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_res
  * URI end-point: /service/
  */
 public class ServiceServlet extends HttpServlet {
-    final String headersKeys = String.join(",", getInformation_headers(),ProcessServiceRequest.getHeaders());
+    final String headersKeys = String.join(",", getInformation_headers(), ProcessServiceRequest.getHeaders());
     /**
      * Use to insert a new remote server.
      * @param req  request.
@@ -116,10 +114,10 @@ public class ServiceServlet extends HttpServlet {
         final ResponseBuilder responseBuilder = new ResponseBuilder(resp);
         try {
             /* Headers */
-            final String serviceCode = req.getHeader(ProcessServiceRequest.serviceCode);
+            final int serviceCode = req.getIntHeader(ProcessServiceRequest.serviceCode);
             /* try delete */
             if (ServiceBusinessService.getInstance().delete(new ServiceBuilder()
-                    .setService_Code(Integer.parseInt(serviceCode))
+                    .setServiceCode(serviceCode)
                     .build())) {
                 okResponse(responseBuilder);
             } else {
@@ -144,7 +142,7 @@ public class ServiceServlet extends HttpServlet {
         final ResponseBuilder responseBuilder = new ResponseBuilder(resp);
         responseBuilder.setStatus(HttpServletResponse.SC_NO_CONTENT);
         responseBuilder.setAllowMethods(POST, OPTIONS, GET, PUT, DELETE);
-        responseBuilder.setAllowHeaders(String.join(",", Content_type, ProcessLineRequest.getHeaders()));
+        responseBuilder.setAllowHeaders(String.join(",", Content_type, ProcessServiceRequest.getHeaders()));
         responseBuilder.setExposeHeaders(headersKeys);
         responseBuilder.build();
     }
@@ -159,8 +157,8 @@ class ProcessServiceRequest{
     static final  String cost = "cost" ;
     static final  String status = "status" ;
     static String getHeaders(){
-        return String.join(",", ProcessServiceRequest.serviceCode,ProcessServiceRequest.name,ProcessServiceRequest.description,
-                ProcessServiceRequest.cost,ProcessServiceRequest.status);
+        return String.join(",", ProcessServiceRequest.serviceCode, ProcessServiceRequest.name, ProcessServiceRequest.description,
+                ProcessServiceRequest.cost, ProcessServiceRequest.status);
     }
     static Service createService(final String body){
         return jsonUtil.asObject(body, Service.class);

@@ -3,18 +3,24 @@ package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builde
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Call;
 
 public class CallBuilder {
-    private int telephone_Number;
-    private int destination_Telephone_Number;
+    private int id;
+    private int telephoneNumber;
+    private int destinationTelephoneNumber;
     private String start_Date;
     private String end_Date;
 
-    public CallBuilder setTelephone_Number(int telephone_Number) {
-        this.telephone_Number = telephone_Number;
+    public CallBuilder setId(int id) {
+        this.id = id;
         return this;
     }
 
-    public CallBuilder setDestination_Telephone_Number(int destination_Telephone_Number) {
-        this.destination_Telephone_Number = destination_Telephone_Number;
+    public CallBuilder setTelephoneNumber(int telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
+        return this;
+    }
+
+    public CallBuilder setDestinationTelephoneNumber(int destinationTelephoneNumber) {
+        this.destinationTelephoneNumber = destinationTelephoneNumber;
         return this;
     }
 
@@ -29,7 +35,7 @@ public class CallBuilder {
     }
 
     public Call build(){
-        return new Call(this.telephone_Number, this.destination_Telephone_Number, this.start_Date, this.end_Date);
+        return new Call(this.id, this.telephoneNumber, this.destinationTelephoneNumber, this.start_Date, this.end_Date);
     }
 
 }

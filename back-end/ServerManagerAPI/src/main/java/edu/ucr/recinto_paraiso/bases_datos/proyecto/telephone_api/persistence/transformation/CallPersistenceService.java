@@ -57,7 +57,7 @@ public class CallPersistenceService implements CallService<Call> {
         final List<Call> list = new ArrayList<>();
         try {
             /* Create statement */
-            final String getStatement = "SELECT [Telephone_Number], [Destination_Telephone_Number], [Start_Date], [End_Date] FROM [Call];";
+            final String getStatement = "SELECT [No_Call], [Telephone_Number], [Destination_Telephone_Number], [Start_Date], [End_Date] FROM [Call];";
             /* Establish connection */
             databaseService.connect();
             final PreparedStatement preparedStatement = databaseService.getConnection().prepareStatement(getStatement);
@@ -67,8 +67,9 @@ public class CallPersistenceService implements CallService<Call> {
             while (resultSet.next()) {
                 /* Create a User */
                 final Call newCall = new CallBuilder()
-                        .setTelephone_Number(resultSet.getInt(CallColumnLabel.telephone_Number))
-                        .setDestination_Telephone_Number(resultSet.getInt(CallColumnLabel.destination_Telephone_Number))
+                        .setId(resultSet.getInt(CallColumnLabel.noCall))
+                        .setTelephoneNumber(resultSet.getInt(CallColumnLabel.telephone_Number))
+                        .setDestinationTelephoneNumber(resultSet.getInt(CallColumnLabel.destination_Telephone_Number))
                         .setStart_Date(resultSet.getString(CallColumnLabel.start_Date))
                         .setEnd_Date(resultSet.getString(CallColumnLabel.end_Date))
                         .build();
@@ -96,7 +97,7 @@ public class CallPersistenceService implements CallService<Call> {
             databaseService.connect();
             final PreparedStatement preparedStatement = databaseService.getConnection().prepareStatement(insertStatement);
             /* Add parameters */
-            preparedStatement.setInt(1, call.getTelephone_Number());
+            preparedStatement.setInt(1, call.getTelephoneNumber());
             preparedStatement.setInt(2, call.getDestinationTelephoneNumber());
             preparedStatement.setDate(3, Date.valueOf(call.getStartDate())); // TODO verify transformation. Exception generated here!
             preparedStatement.setDate(4, Date.valueOf(call.getEndDate())); // TODO verify transformation. Exception generated here!
@@ -124,7 +125,7 @@ public class CallPersistenceService implements CallService<Call> {
             preparedStatement.setInt(1, call.getDestinationTelephoneNumber());
             preparedStatement.setString(2, call.getStartDate());// TODO verify transformation. Exception generated here!
             preparedStatement.setString(3, call.getEndDate());// TODO verify transformation. Exception generated here!
-            preparedStatement.setInt(4, call.getTelephone_Number());// TODO verify transformation. Exception generated here!
+            preparedStatement.setInt(4, call.getTelephoneNumber());// TODO verify transformation. Exception generated here!
             /* Execute statement */
             preparedStatement.execute();
         } catch (SQLException e) {
@@ -149,7 +150,7 @@ public class CallPersistenceService implements CallService<Call> {
             databaseService.connect();
             final PreparedStatement preparedStatement = databaseService.getConnection().prepareStatement(deleteStatement);
             /* Add parameters */
-            preparedStatement.setInt(1, call.getTelephone_Number());
+            preparedStatement.setInt(1, call.getTelephoneNumber());
             return preparedStatement.executeUpdate() == 1;
         } catch (SQLException e) {
             throw new PersistenceException("Error during delete execution. Details: " + e.getMessage(), PersistenceException.DATABASE_EXECUTION_FAILED);
@@ -163,6 +164,7 @@ public class CallPersistenceService implements CallService<Call> {
  */
 class CallColumnLabel {
     /* Columns */
+    static final String noCall = "No_Call";
     static final String telephone_Number = "Telephone_Number";
     static final String destination_Telephone_Number = "Destination_Telephone_Number";
     static final String start_Date = "Start_Date";

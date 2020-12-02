@@ -4,14 +4,14 @@ import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Service
 
 public class ServiceBuilder {
 
-    private  int service_Code ;
+    private  int serviceCode;
     private  String name ;
     private  String description ;
     private  int cost ;
     private  String status;
 
-    public ServiceBuilder setService_Code(int service_Code) {
-        this.service_Code = service_Code;
+    public ServiceBuilder setServiceCode(int serviceCode) {
+        this.serviceCode = serviceCode;
         return this;
     }
 
@@ -36,6 +36,6 @@ public class ServiceBuilder {
     }
 
     public Service build(){
-        return new Service(this.service_Code, this.name, this.description, this.cost, this.status);
+        return new Service(this.serviceCode, this.name, this.description, this.cost, this.status);
     }
 }

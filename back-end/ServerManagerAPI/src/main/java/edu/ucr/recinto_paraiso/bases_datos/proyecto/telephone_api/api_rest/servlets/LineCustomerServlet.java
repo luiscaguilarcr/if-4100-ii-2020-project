@@ -4,7 +4,6 @@ import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.trans
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseBuilder;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseTemplates;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.LineCustomer;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Service;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.LineCustomerBuilder;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.bussiness.LineCustomerBusinessService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException;
@@ -16,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.HeadersKeys.Content_type;
 import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.HeadersKeys.getInformation_headers;
@@ -119,7 +117,7 @@ public class LineCustomerServlet extends HttpServlet {
             /* try delete */
             try {
                 if (LineCustomerBusinessService.getInstance().deleteByTelephoneNumber(new LineCustomerBuilder()
-                        .setTelephone_Number(Integer.parseInt(telephoneNumber))
+                        .setTelephoneNumber(Integer.parseInt(telephoneNumber))
                         .build())) {
                     okResponse(responseBuilder);
                 } else {

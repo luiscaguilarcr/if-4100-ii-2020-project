@@ -3,7 +3,8 @@ package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain;
 import java.util.Objects;
 
 public class Call {
-    private int telephone_Number;
+    private int noCall;
+    private int telephoneNumber;
     private int destinationTelephoneNumber;
     private String startDate;
     private String endDate;
@@ -11,19 +12,20 @@ public class Call {
     public Call() {
     }
 
-    public Call(int telephone_Number, int destinationTelephoneNumber, String startDate, String endDate) {
-        this.telephone_Number = telephone_Number;
+    public Call(int noCall, int telephoneNumber, int destinationTelephoneNumber, String startDate, String endDate) {
+        this.noCall = noCall;
+        this.telephoneNumber = telephoneNumber;
         this.destinationTelephoneNumber = destinationTelephoneNumber;
         this.startDate = startDate;
         this.endDate = endDate;
     }
 
-    public int getTelephone_Number() {
-        return telephone_Number;
+    public int getTelephoneNumber() {
+        return telephoneNumber;
     }
 
-    public void setTelephone_Number(int telephone_Number) {
-        this.telephone_Number = telephone_Number;
+    public void setTelephoneNumber(int telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
     }
 
     public int getDestinationTelephoneNumber() {
@@ -46,8 +48,16 @@ public class Call {
         return endDate;
     }
 
-    public void setEnd_tDate(String end_tDate) {
+    public void setEndDate(String end_tDate) {
         this.endDate = end_tDate;
+    }
+
+    public void setNoCall(int noCall) {
+        this.noCall = noCall;
+    }
+
+    public int getNoCall() {
+        return noCall;
     }
 
     @Override
@@ -55,24 +65,11 @@ public class Call {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Call call = (Call) o;
-        return telephone_Number == call.telephone_Number &&
-                destinationTelephoneNumber == call.destinationTelephoneNumber &&
-                Objects.equals(startDate, call.startDate) &&
-                Objects.equals(endDate, call.endDate);
+        return noCall == call.noCall;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(telephone_Number, destinationTelephoneNumber, startDate, endDate);
-    }
-
-    @Override
-    public String toString() {
-        return "Call{" +
-                "telephone_Number=" + telephone_Number +
-                ", destination_Telephone_Number=" + destinationTelephoneNumber +
-                ", start_Date='" + startDate + '\'' +
-                ", end_tDate='" + endDate + '\'' +
-                '}';
+        return Objects.hash(noCall);
     }
 }

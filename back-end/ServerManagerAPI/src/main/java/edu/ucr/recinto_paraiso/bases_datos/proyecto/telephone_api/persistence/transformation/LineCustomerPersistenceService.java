@@ -71,10 +71,10 @@ public class LineCustomerPersistenceService implements LineCustomerService<LineC
             while (resultSet.next()) {
                 /* Create a User */
                 final LineCustomer lineCustomer = new LineCustomerBuilder()
-                        .setTelephone_Number(resultSet.getInt(LineCustomerColumnLabel.telephoneNumber))
+                        .setTelephoneNumber(resultSet.getInt(LineCustomerColumnLabel.telephoneNumber))
                         .setId(resultSet.getInt(LineCustomerColumnLabel.id))
-                        .setFirst_Name(resultSet.getString(LineCustomerColumnLabel.firstName))
-                        .setLast_Name(resultSet.getString(LineCustomerColumnLabel.lastName))
+                        .setFirstName(resultSet.getString(LineCustomerColumnLabel.firstName))
+                        .setLastName(resultSet.getString(LineCustomerColumnLabel.lastName))
                         .setAddress(resultSet.getString(LineCustomerColumnLabel.address))
                         .setEmail(resultSet.getString(LineCustomerColumnLabel.email))
                         .build();
@@ -111,10 +111,10 @@ public class LineCustomerPersistenceService implements LineCustomerService<LineC
             while (resultSet.next()) {
                 /* Create a User */
                  lineCustomer = new LineCustomerBuilder()
-                        .setTelephone_Number(resultSet.getInt(LineCustomerColumnLabel.telephoneNumber))
+                        .setTelephoneNumber(resultSet.getInt(LineCustomerColumnLabel.telephoneNumber))
                         .setId(resultSet.getInt(LineCustomerColumnLabel.id))
-                        .setFirst_Name(resultSet.getString(LineCustomerColumnLabel.firstName))
-                        .setLast_Name(resultSet.getString(LineCustomerColumnLabel.lastName))
+                        .setFirstName(resultSet.getString(LineCustomerColumnLabel.firstName))
+                        .setLastName(resultSet.getString(LineCustomerColumnLabel.lastName))
                         .setAddress(resultSet.getString(LineCustomerColumnLabel.address))
                         .setEmail(resultSet.getString(LineCustomerColumnLabel.email))
                         .build();

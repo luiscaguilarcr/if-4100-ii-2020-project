@@ -69,7 +69,7 @@ public class LinePersistenceService implements LineService<Line> {
                 /* Create a User */
                 final Line line = new LineBuilder()
                         .setTelephone_Number(resultSet.getInt(LineColumnLabel.telephone_Number))
-                        .setPoints_Quantity(resultSet.getInt(LineColumnLabel.points_Quantity))
+                        .setPointsQuantity(resultSet.getInt(LineColumnLabel.points_Quantity))
                         .setType(resultSet.getInt(LineColumnLabel.type))
                         .setStatus(resultSet.getString(LineColumnLabel.status))
                         .build();

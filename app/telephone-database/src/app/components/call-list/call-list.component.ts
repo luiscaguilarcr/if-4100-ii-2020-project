@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CallService } from '../../services/call.service';
 import { Call } from '../../models/call.model';
 import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-call-list',
@@ -18,6 +19,13 @@ export class CallListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    Swal.fire({
+      icon: 'info',
+      title: 'Espera, unos momentos...',
+      text: 'Se están cargando los registros de líneas!',
+      showConfirmButton: false,
+      allowOutsideClick: false,
+    });
     this.refreshList();
   }
 
@@ -34,12 +42,19 @@ export class CallListComponent implements OnInit {
     .catch(msg => console.log(msg));
   }
 
-  refreshList(){
-    return this.callService.getList().toPromise()
-    .then( result => {
+  async refreshList(){
+    try {
+      const result = await this.callService.getList().toPromise();
+      Swal.close();
       return this.list = result;
-    })
-    .catch(msg => console.log(msg));
+    } catch (msg) {
+      console.log(msg);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Hubo un problema al obtener la información. Intenta más tarde!',
+      });
+    }
   }
 }
 

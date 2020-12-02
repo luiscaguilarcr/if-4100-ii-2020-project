@@ -23,7 +23,7 @@ import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_res
 import static edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseTemplates.okResponse;
 
 public class CallServlet extends HttpServlet {
-    final String headersKeys = String.join(",", getInformation_headers(), ProcessLineRequest.getHeaders());
+    final String headersKeys = String.join(",", getInformation_headers(), ProcessCallRequest.getHeaders());
     /**
      * Use to insert a new remote server.
      *
@@ -117,7 +117,7 @@ public class CallServlet extends HttpServlet {
             /* try delete */
 
             if (CallBusinessService.getInstance().delete(new CallBuilder()
-                    .setTelephone_Number(Integer.parseInt(telephoneNumber))
+                    .setTelephoneNumber(Integer.parseInt(telephoneNumber))
                     .build())) {
                 okResponse(responseBuilder);
             } else {
@@ -151,12 +151,13 @@ public class CallServlet extends HttpServlet {
 class ProcessCallRequest{
     private static final JsonUtil jsonUtil = new JsonUtil();
     /* Call Headers */
+    static final String noCall = "noCall";
     static final String telephoneNumber = "telephoneNumber";
     static final String destinationTelephoneNumber = "destinationTelephoneNumber";
     static final String startDate = "startDate";
     static final String endDate = "endDate";
     static String getHeaders(){
-        return String.join(",", ProcessCallRequest.telephoneNumber, ProcessCallRequest.destinationTelephoneNumber, ProcessCallRequest.startDate, ProcessCallRequest.endDate);
+        return String.join(",",ProcessCallRequest.noCall, ProcessCallRequest.telephoneNumber, ProcessCallRequest.destinationTelephoneNumber, ProcessCallRequest.startDate, ProcessCallRequest.endDate);
     }
 
     static Call createCall(final String body){
