@@ -23,6 +23,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LineCodePipe } from './line-code.pipe';
 import { StatusLabelPipe } from './pipes/status-label.pipe';
 
+import { ViewComponent } from './components/view/view.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +40,7 @@ import { StatusLabelPipe } from './pipes/status-label.pipe';
     CallListComponent,
     LineUpdateComponent,
     LineCodePipe,
+    ViewComponent,
     StatusLabelPipe
   ],
   imports: [
