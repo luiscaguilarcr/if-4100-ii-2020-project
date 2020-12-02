@@ -4,6 +4,7 @@ import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.trans
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseBuilder;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.api_rest.transformation.ResponseTemplates;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.LineCustomer;
+import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Service;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.LineCustomerBuilder;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.bussiness.LineCustomerBusinessService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException;
@@ -36,7 +37,7 @@ public class LineCustomerServlet extends HttpServlet {
         final ResponseBuilder responseBuilder = new ResponseBuilder(resp);
         try {
             /* Body */
-            final Map<String, String> body = Utility.getBodyMap(req.getReader());
+            final String body = Utility.getBody(req.getReader());
             /* Create LineCustomer */
             final LineCustomer lineCustomer = ProcessLineCustomerRequest.createLineCustomer(body);
             /* Try insert */
@@ -64,7 +65,7 @@ public class LineCustomerServlet extends HttpServlet {
         final ResponseBuilder responseBuilder = new ResponseBuilder(resp);
         try {
             /* Body */
-            final Map<String, String> body = Utility.getBodyMap(req.getReader());
+            final String body = Utility.getBody(req.getReader());
             /* Create LineCustomer */
             final LineCustomer lineCustomer = ProcessLineCustomerRequest.createLineCustomer(body);
             /* Try update */
@@ -116,13 +117,17 @@ public class LineCustomerServlet extends HttpServlet {
             /* Headers */
             final String telephoneNumber = req.getHeader(ProcessLineCustomerRequest.telephoneNumber);
             /* try delete */
-            if (LineCustomerBusinessService.getInstance().delete(new LineCustomerBuilder()
-                    .setTelephone_Number(Integer.parseInt(telephoneNumber))
-                    .build())) {
-                okResponse(responseBuilder);
-            } else {
-                throw new BusinessException("LineCustomer with telephone number " + telephoneNumber +
-                        " haven't been deleted. Verify the telephone number.", BusinessException.LINE_CUSTOMER_NOT_DELETED);
+            try {
+                if (LineCustomerBusinessService.getInstance().deleteByTelephoneNumber(new LineCustomerBuilder()
+                        .setTelephone_Number(Integer.parseInt(telephoneNumber))
+                        .build())) {
+                    okResponse(responseBuilder);
+                } else {
+                    throw new BusinessException("LineCustomer with telephone number " + telephoneNumber +
+                            " haven't been deleted. Verify the telephone number.", BusinessException.LINE_CUSTOMER_NOT_DELETED);
+                }
+            }catch (NullPointerException exception){
+                throw new BusinessException("Line customer telephone number not provided", BusinessException.LINE_CUSTOMER_TELEPHONE_NUMBER_NOT_PROVIDED);
             }
         } catch (BusinessException exception) {
             /* Business Exception */
@@ -131,7 +136,7 @@ public class LineCustomerServlet extends HttpServlet {
             /* Persistence Exception */
             ResponseTemplates.persistenceExceptionResponse(responseBuilder, exception);
         } finally {
-            responseBuilder.setAllowMethods(GET);
+            responseBuilder.setAllowMethods(DELETE);
             responseBuilder.setAllowHeaders(headersKeys);
             responseBuilder.setExposeHeaders(headersKeys);
             responseBuilder.build();
@@ -149,33 +154,19 @@ public class LineCustomerServlet extends HttpServlet {
 }
 
 class ProcessLineCustomerRequest{
+    private static final JsonUtil jsonUtil = new JsonUtil();
     /* LineCustomer Headers */
     static final String telephoneNumber = "telephoneNumber";
-    static final String destinationTelephoneNumber = "destinationTelephoneNumber";
+    static final String id = "id";
     static final String firstName = "firstName";
     static final String lastName = "lastName";
     static final String address = "address";
     static final String email = "email";
     static String getHeaders(){
-        return String.join(",", ProcessLineCustomerRequest.telephoneNumber, ProcessLineCustomerRequest.destinationTelephoneNumber, ProcessLineCustomerRequest.firstName, ProcessLineCustomerRequest.lastName, ProcessLineCustomerRequest.address, ProcessLineCustomerRequest.email);
+        return String.join(",", ProcessLineCustomerRequest.telephoneNumber, ProcessLineCustomerRequest.id, ProcessLineCustomerRequest.firstName, ProcessLineCustomerRequest.lastName, ProcessLineCustomerRequest.address, ProcessLineCustomerRequest.email);
     }
 
-    static LineCustomer createLineCustomer(final Map<String, String> body){
-        /* Attributes */
-        final int telephoneNumber = Integer.parseInt(body.get(ProcessLineCustomerRequest.telephoneNumber));
-        final int destinationTelephoneNumber = Integer.parseInt(body.get(ProcessLineCustomerRequest.destinationTelephoneNumber));
-        final String firstName = body.get(ProcessLineCustomerRequest.firstName);
-        final String lastName = body.get(ProcessLineCustomerRequest.lastName);
-        final String address = body.get(ProcessLineCustomerRequest.address);
-        final String email = body.get(ProcessLineCustomerRequest.email);
-        /* Build */
-        return new LineCustomerBuilder()
-                .setTelephone_Number(telephoneNumber)
-                .setId(destinationTelephoneNumber)
-                .setFirst_Name(firstName)
-                .setLast_Name(lastName)
-                .setAddress(address)
-                .setEmail(email)
-                .build();
+    static LineCustomer createLineCustomer(final String body){
+        return jsonUtil.asObject(body, LineCustomer.class);
     }
 }

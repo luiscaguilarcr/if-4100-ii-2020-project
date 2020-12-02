@@ -4,18 +4,18 @@ import java.util.Objects;
 
 public class Call {
     private int telephone_Number;
-    private int destination_Telephone_Number;
-    private String start_Date;
-    private String end_Date;
+    private int destinationTelephoneNumber;
+    private String startDate;
+    private String endDate;
 
     public Call() {
     }
 
-    public Call(int telephone_Number, int destination_Telephone_Number, String start_Date, String end_Date) {
+    public Call(int telephone_Number, int destinationTelephoneNumber, String startDate, String endDate) {
         this.telephone_Number = telephone_Number;
-        this.destination_Telephone_Number = destination_Telephone_Number;
-        this.start_Date = start_Date;
-        this.end_Date = end_Date;
+        this.destinationTelephoneNumber = destinationTelephoneNumber;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public int getTelephone_Number() {
@@ -26,28 +26,28 @@ public class Call {
         this.telephone_Number = telephone_Number;
     }
 
-    public int getDestination_Telephone_Number() {
-        return destination_Telephone_Number;
+    public int getDestinationTelephoneNumber() {
+        return destinationTelephoneNumber;
     }
 
-    public void setDestination_Telephone_Number(int destination_Telephone_Number) {
-        this.destination_Telephone_Number = destination_Telephone_Number;
+    public void setDestinationTelephoneNumber(int destinationTelephoneNumber) {
+        this.destinationTelephoneNumber = destinationTelephoneNumber;
     }
 
-    public String getStart_Date() {
-        return start_Date;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setStart_Date(String start_Date) {
-        this.start_Date = start_Date;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
-    public String getEnd_Date() {
-        return end_Date;
+    public String getEndDate() {
+        return endDate;
     }
 
     public void setEnd_tDate(String end_tDate) {
-        this.end_Date = end_tDate;
+        this.endDate = end_tDate;
     }
 
     @Override
@@ -56,23 +56,23 @@ public class Call {
         if (o == null || getClass() != o.getClass()) return false;
         Call call = (Call) o;
         return telephone_Number == call.telephone_Number &&
-                destination_Telephone_Number == call.destination_Telephone_Number &&
-                Objects.equals(start_Date, call.start_Date) &&
-                Objects.equals(end_Date, call.end_Date);
+                destinationTelephoneNumber == call.destinationTelephoneNumber &&
+                Objects.equals(startDate, call.startDate) &&
+                Objects.equals(endDate, call.endDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(telephone_Number, destination_Telephone_Number, start_Date, end_Date);
+        return Objects.hash(telephone_Number, destinationTelephoneNumber, startDate, endDate);
     }
 
     @Override
     public String toString() {
         return "Call{" +
                 "telephone_Number=" + telephone_Number +
-                ", destination_Telephone_Number=" + destination_Telephone_Number +
-                ", start_Date='" + start_Date + '\'' +
-                ", end_tDate='" + end_Date + '\'' +
+                ", destination_Telephone_Number=" + destinationTelephoneNumber +
+                ", start_Date='" + startDate + '\'' +
+                ", end_tDate='" + endDate + '\'' +
                 '}';
     }
 }

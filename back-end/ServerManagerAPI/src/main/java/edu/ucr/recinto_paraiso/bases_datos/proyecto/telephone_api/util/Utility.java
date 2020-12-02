@@ -26,13 +26,15 @@ public class Utility {
 
     }
 
-    public static Map<String, String> getBodyMap(final BufferedReader bufferedReader) throws IOException {
+    public static Map<String, Object> getBodyMap(final BufferedReader bufferedReader) throws IOException {
         final String json = bufferedReader.readLine();
         final ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(json, Map.class);
 
     }
-
+    public static String getBody(final BufferedReader bufferedReader) throws IOException {
+        return bufferedReader.readLine();
+    }
 
 
 }

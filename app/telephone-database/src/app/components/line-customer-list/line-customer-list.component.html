@@ -7,36 +7,34 @@
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">Número telefónico</th>
-                        <th scope="col">Tipo de línea</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col">Puntos almacenados</th>
+                        <th scope="col">Identificación</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Correo electrónico</th>
+                        <th scope="col">Dirección</th>
                         <th scope="col">Configuración</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let i of list">
                         <td class="m-2 mr-md-5">{{ i.telephoneNumber }}</td>
-                        <td class="m-2 mr-md-2">{{ i.type | lineCode }}</td>
-                        <td class="m-2 ml-xl-5">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div [ngSwitch]="i.status">
-                                        <span *ngSwitchCase="'A'" class="badge badge-pill badge-success">Activa</span>
-                                        <span *ngSwitchCase="'I'" class="badge badge-pill badge-danger">Inactiva</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="m-2 mr-md-2">{{ i.pointsQuantity }}</td>
+                        <td class="m-2 mr-md-2">{{ i.customerId}}</td>
+                        
+                        <td class="m-2 mr-md-2">{{ i.customerFirstName }}</td>
+                        <td class="m-2 mr-md-2">{{ i.customerLastName }}</td>
+                        <td class="m-2 mr-md-2">{{ i.customerAddress }}</td>
+                        <td class="m-2 mr-md-2">{{ i.customerEmail }}</td>
+
+
                         <td class="m-2 mr-5">
                             <div class="row">
                                 <div class="col-4">
-                                    <a (click)="updateLine(i)">
+                                    <a (click)="updateLineCustomer(i)">
                                         <fa-icon [icon]="faEdit"></fa-icon>
                                     </a>
                                 </div>
                                 <div class="col-4">
-                                    <a (click)="deleteLine(i)">
+                                    <a (click)="deleteLineCustomer(i)">
                                         <fa-icon [icon]="faTrash"></fa-icon>
                                     </a>
                                 </div>

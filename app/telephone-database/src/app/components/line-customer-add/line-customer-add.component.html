@@ -3,16 +3,33 @@
     <hr class="mb-5">
     <!-- Form -->
     <form autocomplete="off" (ngSubmit)="submit()" [formGroup]="form">
-      
-        <hr class="mt-5 mb-5">
-        <!-- Customer Id -->
-        <div class="form-group row mb-4">
-            <label class="col-2 col-form-label">Identificación</label>
-            <div class="col">
 
-                <input class="form-control" type="text" formControlName="customerId" [class.is-invalid]="invalidInput('customerId')">
+        <hr class="mt-5 mb-5">
+
+        <!-- Customer Id -->
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Identificación</label>
+            <div class="form-row col">
+
+                <div class="col">
+                    <input class="form-control" type="text" formControlName="customerId" [class.is-invalid]="invalidInput('customerId')">
+                </div>
+                <label class="col-3 col-form-label pl-5 pr-5">Línea</label>
+
+                <div class="col">
+                    <!-- telepnone number -->
+                    <select class="form-control" formControlName="telephoneNumber" [class.is-invalid]="invalidInput('telephoneNumber')">
+                        <option value="" disabled>Seleccione una opción</option>
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                    </select>
+                </div>
             </div>
         </div>
+
+
+        <hr class="mt-5 mb-5">
 
         <!-- Customer First_Name -->
         <div class="form-group row mb-4">

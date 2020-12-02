@@ -1,12 +1,9 @@
 package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.bussiness;
 
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Line;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Service;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.exceptions.PersistenceException;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.transformation.LinePersistenceService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.transformation.ServicePersistenceService;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.services.interfaces.LineService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.services.interfaces.ServiceService;
 
 import java.util.List;
@@ -54,7 +51,7 @@ public class ServiceBusinessService implements ServiceService<Service> {
      */
     @Override
     public void insert(Service service) throws BusinessException, PersistenceException {
-        validateLine(service);
+        validateService(service);
         servicePersistenceService.insert(service);
     }
 
@@ -67,15 +64,15 @@ public class ServiceBusinessService implements ServiceService<Service> {
      */
     @Override
     public void update(Service service) throws BusinessException, PersistenceException {
-        validateLine(service);
+        if (service.getServiceCode() <= 0){
+            throw new BusinessException("Code number not valid.", SERVICE_CODE_NOT_VALID);
+        }
+        validateService(service);
         servicePersistenceService.update(service);
     }
 
-    private void validateLine(Service service) throws BusinessException{
-        if (service.getService_Code() <= 0){
-            throw new BusinessException("Code number not valid.", SERVICE_CODE_NOT_VALID);
-        }
-        if (service.getCost() < 0){
+    private void validateService(Service service) throws BusinessException{
+        if (service.getCost() <= 0){
             throw new BusinessException("Cost not valid.", SERVICE_COST_NOT_PROVIDED);
         }
         if (!(service.getStatus().equals("A") || service.getStatus().equals("I"))){
@@ -92,7 +89,7 @@ public class ServiceBusinessService implements ServiceService<Service> {
      */
     @Override
     public boolean delete(Service service) throws BusinessException, PersistenceException {
-        if(service.getService_Code() <= 0){
+        if(service.getServiceCode() <= 0){
             throw new BusinessException("Code number not valid.", SERVICE_CODE_NOT_VALID);
         }
         return servicePersistenceService.delete(service);

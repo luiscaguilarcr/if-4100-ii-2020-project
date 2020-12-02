@@ -46,5 +46,5 @@ public interface LineCustomerService<E> {
      * @param line User to be deleted.
      * @return {@code true} if the User have been deleted, {@code false} otherwise.
      */
-    boolean delete(E line) throws BusinessException, PersistenceException;
+    boolean deleteByTelephoneNumber(E line) throws BusinessException, PersistenceException;
 }

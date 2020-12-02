@@ -1,34 +1,35 @@
 import { Injectable } from '@angular/core';
 import { LineCustomer } from '../models/line_customer.model';
-import { DatabaseService } from './database.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LineCustomerService {
-  variableTypes : any;
+  url = 'http://186.176.127.9:2525/line_customer';
 
-  constructor(private databaseService: DatabaseService) {this.variableTypes = databaseService.util()}
+  constructor(private http: HttpClient) {}
 
-  public addLine(lineCustomer: LineCustomer) {
-    
-    return this.databaseService.getPool().then((pool: any) => {
-      const insertStatement = 'INSERT INTO [Line_Customer] (Telephone_Number, Customer_Id, Customer_First_Name, Customer_Last_Name, Customer_Address, Customer_Email) VALUES (@Telephone_Number, @Customer_Id, @Customer_First_Name, @Customer_LastName_Name, @Customer_Address, @Customer_Email);'
+  add(LineCustomer: LineCustomer): Observable<any> {
+    return this.http.post(this.url, LineCustomer);
+  }
+  update(LineCustomer: LineCustomer): Observable<any> {
+    return this.http.put(this.url, LineCustomer);
+  }
 
-      return pool.request()
-        .input('Telephone_Number', this.variableTypes.Int, lineCustomer.telephoneNumber)
-        .input('Customer_Id', this.variableTypes.Int, lineCustomer.customerId)
-        .input('Customer_First_Name', this.variableTypes.tinyint, lineCustomer.customerFirstName)
-        .input('Customer_Last_Name', this.variableTypes.tinyint, lineCustomer.customerLastName)
-        .input('Customer_Address', this.variableTypes.tinyint, lineCustomer.customerAddress)
-        .input('Customer_Email', this.variableTypes.tinyint, lineCustomer.customerEmail)
-
-        .query(insertStatement)
-    })
-    .catch ((error: any) => {
-        console.log(error);
+  getList(): Observable<any>{
+    return this.http.get(this.url);
+  }
+  delete(lineCustomer: LineCustomer): Observable<any>{
+    return this.http.delete(this.url, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json; charset=utf-8',
+      })
+      .append('telephoneNumber', lineCustomer.telephoneNumber.toString()),
+      observe: 'response',
+      responseType: 'json'
     });
-    
   }
 
 }

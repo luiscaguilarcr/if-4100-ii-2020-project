@@ -111,10 +111,10 @@ public class LineCustomerBusinessService implements LineCustomerService<LineCust
      * @return {@code true} if the User have been deleted, {@code false} otherwise.
      */
     @Override
-    public boolean delete(LineCustomer lineCustomer) throws BusinessException, PersistenceException {
+    public boolean deleteByTelephoneNumber(LineCustomer lineCustomer) throws BusinessException, PersistenceException {
         if(lineCustomer.getTelephoneNumber() <= 0){
             throw new BusinessException("Customer id not valid.", LINE_CUSTOMER_TELEPHONE_NUMBER_NOT_VALID);
         }
-        return persistenceService.delete(lineCustomer);
+        return persistenceService.deleteByTelephoneNumber(lineCustomer);
     }
 }

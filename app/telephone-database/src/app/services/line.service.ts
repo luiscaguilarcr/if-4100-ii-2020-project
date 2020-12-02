@@ -1,43 +1,43 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Line } from '../models/line.model';
-import { DatabaseService } from './database.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LineService {
-  variableTypes : any;
+  url = 'http://186.176.127.9:2525/line';
+  private lineSelected: Line = new Line();
+  constructor(private http: HttpClient) {}
 
-  constructor(private databaseService: DatabaseService) {this.variableTypes = databaseService.util()}
-
-  public addLine(line: Line) {
-    
-    return this.databaseService.getPool().then((pool: any) => {
-      const insertStatement = 'INSERT INTO [Line] (Telephone_Number, Points_Quantity, Type) VALUES (@Telephone_Number, @Points_Quantity, @Type);'
-
-      return pool.request()
-        .input('Telephone_Number', this.variableTypes.Int, line.telephoneNumber)
-        .input('Points_Quantity', this.variableTypes.Int, line.pointsQuantity)
-        .input('Type', this.variableTypes.tinyint, line.type)
-        .query(insertStatement)
-    })
-    .catch ((error: any) => {
-        console.log(error);
-    });
-    
+  add(line: Line): Observable<any> {
+    return this.http.post(this.url, JSON.stringify(line));
+  }
+  update(line: Line): Observable<any> {
+    return this.http.put(this.url, line);
   }
 
-  public getLine(): Line{
-    return this.databaseService.getPool().then((pool: any) => {
-      const request = new this.variableTypes.Request()
-     
-      return pool.request().query('SELECT * FROM mytable;');
-      
-    })
-    .catch ((error: any) => {
-        console.log(error);
-    });
+  getList(): Observable<any>{
+    return this.http.get(this.url);
   }
 
+  getLineSelected(): Line{
+    return this.lineSelected;
+  }
+  setLineSelected(line: Line): void{
+    this.lineSelected = line;
+  }
+
+  delete(line: Line): Observable<any>{
+      return this.http.delete(this.url, {
+        headers: new HttpHeaders({
+        'Content-Type': 'application/json; charset=utf-8',
+      })
+      .append('telephoneNumber', line.telephoneNumber.toString()),
+      observe: 'response',
+      responseType: 'json'
+    });
+  }
 
 }

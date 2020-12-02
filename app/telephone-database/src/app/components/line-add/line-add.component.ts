@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Line } from '../../models/line.model';
 import { LineService } from '../../services/line.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-line-add',
@@ -13,21 +15,17 @@ export class LineAddComponent implements OnInit {
   form: FormGroup;
   title = 'Crear una nueva línea';
   line: Line;
+  private list = ['ADSL', 'Básica', 'RDSI'];
 
-  constructor( private formBuilder: FormBuilder, private lineService : LineService) {
+  constructor( private formBuilder: FormBuilder, private lineService: LineService, private router: Router) {
     this. line = this.buildLine();
     this.form = this.createForm();
   }
-
   createForm(): FormGroup {
     /* Create form */
     return this.formBuilder.group({
-      telephoneNumber:   [this.line.telephoneNumber,   [Validators.required]],
-      //pointsQuantity:  [this.line.pointsQuantity,   [Validators.required]],
-      pointsQuantity: '0',
-
+      telephoneNumber:   [this.line.telephoneNumber,   [Validators.required, Validators.minLength(8), Validators.maxLength(8)]],
       type:  [this.line.type,   [Validators.required]],
-
     });
   }
   /**
@@ -35,30 +33,12 @@ export class LineAddComponent implements OnInit {
    */
   private buildLine(): Line {
     const line = new Line();
-    line.telephoneNumber   = '';
-    line.pointsQuantity   = '0';
-    line.type   = '';
-
-
+    line.telephoneNumber = undefined;
+    line.type   = 0;
+    line.status = 'A';
     return line;
   }
-  /**
-   * Load from fields with the server model's values.
-   */
-  private loadForm(): void {
-    this.form.patchValue({
-      telephoneNumber: this.line.telephoneNumber,
-     // pointsQuantity: this.line.pointsQuantity,
-      pointsQuantity: '0',
-
-      type: this.line.type,
-    });
-  }
-
-  ngOnInit(): void {
-    this.loadForm();
-  }
-
+  ngOnInit(): void { }
   /**
    * Return if the input is valid or not.
    * @param input input's name.
@@ -71,41 +51,57 @@ export class LineAddComponent implements OnInit {
       return true;
     }
   }
-
-
   /**
    * Summit action.
    */
-  submit(): void {
+  submit() {
     /* Validate inputs */
     if (this.form.invalid) {
       return Object.values(this.form.controls)
         .forEach(control => control.markAsTouched());
     }
-
     /* Get values */
     this.loadLineModel();
+    this.line.status = 'A';
+    this.line.pointsQuantity = 0;
     console.log(this.line);
-    /* Call service */
-
-    return this.lineService.addLine(this.line).then(response => console.log(response))
-    .catch ((error: any) => {
-      console.log(error);
-    });
+    /* Do request */
+    return this.lineService.add(this.line).subscribe(response => {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Línea creada exitosamente',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      this.router.navigateByUrl('/line/list');
+     }, err => {
+      if (err.status === 400 ){
+        /* Bad request */
+        console.log(err.headers.get('error_code'));
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `Hubo un problema al agregar la línea. Código de error: ${err.headers.get('error_code') }!`,
+        });
+      } else if (err.status >= 500){
+        /* Server error */
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Hubo un problema al agregar la línea. Intenta más tarde!',
+        });
+      }
+     });
   }
-
   /**
    * Load the line model with form's values.
    */
   private loadLineModel(): void {
     let control;
     control = this.form.get('telephoneNumber');
-    if ( control ) { this.line.telephoneNumber = control.value; }
-    control = this.form.get('pointsQuantity');
-    if ( control ) { this.line.pointsQuantity ='0'; }
+    if ( control ) { this.line.telephoneNumber = control.value; } else { console.log('Telephone Number value not loaded.'); }
     control = this.form.get('type');
-    if ( control ) { this.line.type = control.value; }
-
+    if ( control ) { this.line.type = this.list.indexOf(control.value); } else { console.log('Line value not loaded.'); }
   }
-
 }

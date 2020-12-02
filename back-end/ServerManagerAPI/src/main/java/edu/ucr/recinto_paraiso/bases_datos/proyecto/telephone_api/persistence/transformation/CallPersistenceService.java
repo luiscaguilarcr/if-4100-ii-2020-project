@@ -2,12 +2,12 @@ package edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.t
 
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.Call;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.domain.builders.CallBuilder;
-import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.logic.exceptions.BusinessException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.conectors.DatabaseService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.conectors.UCRDatabaseService;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.persistence.exceptions.PersistenceException;
 import edu.ucr.recinto_paraiso.bases_datos.proyecto.telephone_api.services.interfaces.CallService;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -97,9 +97,9 @@ public class CallPersistenceService implements CallService<Call> {
             final PreparedStatement preparedStatement = databaseService.getConnection().prepareStatement(insertStatement);
             /* Add parameters */
             preparedStatement.setInt(1, call.getTelephone_Number());
-            preparedStatement.setInt(2, call.getDestination_Telephone_Number());
-            preparedStatement.setString(3, String.valueOf(call.getStart_Date()));
-            preparedStatement.setString(4, String.valueOf(call.getEnd_Date()));
+            preparedStatement.setInt(2, call.getDestinationTelephoneNumber());
+            preparedStatement.setDate(3, Date.valueOf(call.getStartDate())); // TODO verify transformation. Exception generated here!
+            preparedStatement.setDate(4, Date.valueOf(call.getEndDate())); // TODO verify transformation. Exception generated here!
             /* Execute statement */
             preparedStatement.execute();
         } catch (SQLException e) {
@@ -117,13 +117,14 @@ public class CallPersistenceService implements CallService<Call> {
     @Override
     public boolean update(Call call) throws PersistenceException {
         try {
-            final String insertStatement = "UPDATE [Call] SET [Destination_Telephone_Number] = ?, [Start_Date] = ?, [End_Date] = ? WHERE [Telephone_Number] = ?";
+            final String insertStatement = "UPDATE [Call] SET [Destination_Telephone_Number] = ?, [Start_Date] = ?, [End_Date] = ? WHERE [No_Call] = ?"; // TODO Change to id
             databaseService.connect();
             final PreparedStatement preparedStatement = databaseService.getConnection().prepareStatement(insertStatement);
             /* Add parameters */
-            preparedStatement.setInt(1, call.getDestination_Telephone_Number());
-            preparedStatement.setString(2, call.getStart_Date());
-            preparedStatement.setString(3, call.getEnd_Date());
+            preparedStatement.setInt(1, call.getDestinationTelephoneNumber());
+            preparedStatement.setString(2, call.getStartDate());// TODO verify transformation. Exception generated here!
+            preparedStatement.setString(3, call.getEndDate());// TODO verify transformation. Exception generated here!
+            preparedStatement.setInt(4, call.getTelephone_Number());// TODO verify transformation. Exception generated here!
             /* Execute statement */
             preparedStatement.execute();
         } catch (SQLException e) {

@@ -1,30 +1,42 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Call } from '../models/call.model';
-import { DatabaseService } from './database.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class CallService {
-  variableTypes : any;
+  // url = 'http://localhost:2525/call';
+  url = 'http://186.176.127.9:2525/call';
+  constructor(private http: HttpClient) {}
 
-  constructor(private databaseService: DatabaseService) {this.variableTypes = databaseService.util()}
-
-  public addCall(call: Call) {
-    
-    return this.databaseService.getPool().then((pool: any) => {
-      const insertStatement = 'INSERT INTO [Call] (Telephone_Number, Destination_Telephone_Number, Start_Date, End_Date) VALUES (@Telephone_Number, @Destination_Telephone_Number, @Start_Date, @End_Date);'
-
-      return pool.request()
-        .input('Telephone_Number', this.variableTypes.Int, call.telephoneNumber)
-        .input('Destination_Telephone_Number', this.variableTypes.Int, call.destinationTelephoneNumber)
-        .input('Start_Date', this.variableTypes.DateTime, call.startDate)
-        .input('End_Date', this.variableTypes.DateTime, call.endDate)
-        .query(insertStatement)
-    })
-    .catch ((error: any) => {
-        console.log(error);
-    });
-    
+  add(call: Call): Observable<any> {
+    return this.http.post(this.url, call);
   }
-}
+  update(call: Call): Observable<any> {
+    return this.http.put(this.url, call);
+  }
+
+  getList(): Observable<any>{
+    return this.http.get(this.url);
+  }
+  
+  
+  delete(call: Call): Observable<any>{
+    return this.http.delete(this.url, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json; charset=utf-8',
+      })
+      .append('noCall', call.noCall.toString()),
+      observe: 'response',
+      responseType: 'json'
+    });
+  }
+
+
+  }
+
+ 
