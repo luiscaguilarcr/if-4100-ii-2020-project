@@ -11,6 +11,8 @@ import { LineListComponent } from './components/line-list/line-list.component';
 import { LineAddComponent } from './components/line-add/line-add.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { LineCustomerAddComponent } from './components/line-customer-add/line-customer-add.component';
+import { LineCustomerListComponent } from './components/line-customer-list/line-customer-list.component';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { ServiceAddComponent } from './components/service-add/service-add.component';
 import { ServiceListComponent } from './components/service-list/service-list.component';
@@ -29,6 +31,7 @@ import { LineCodePipe } from './line-code.pipe';
     LineListComponent,
     LineAddComponent,
     LineCustomerAddComponent,
+    LineCustomerListComponent,
     NavbarComponent,
     ServiceAddComponent,
     ServiceListComponent,
