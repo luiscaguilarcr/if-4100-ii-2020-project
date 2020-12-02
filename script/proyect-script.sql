@@ -209,6 +209,121 @@ CREATE TABLE [Discount_Plan]
     [Last_Update_User] NVARCHAR(128) DEFAULT SYSTEM_USER NOT NULL
 )
 GO
+
+-- Add FKs --
+-- Bonus, Discount_Rate ---
+ALTER TABLE [dbo].[Bonus]  WITH CHECK ADD  CONSTRAINT [Bonus_Discount_Rate_Discount_Rate_Id_fk] FOREIGN KEY([Discount_Rate_Id])
+REFERENCES [dbo].[Discount_Rate] ([Discount_Rate_Id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [dbo].[Bonus] CHECK CONSTRAINT [Bonus_Discount_Rate_Discount_Rate_Id_fk]
+GO
+-- Call, Line --
+ALTER TABLE [dbo].[Call]  WITH CHECK ADD  CONSTRAINT [Call_Line_Telephone_Number_fk] FOREIGN KEY([Telephone_Number])
+REFERENCES [dbo].[Line] ([Telephone_Number])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Call] CHECK CONSTRAINT [Call_Line_Telephone_Number_fk]
+GO
+-- Discount_Plan, Discount_Rate --
+ALTER TABLE [dbo].[Discount_Plan]  WITH CHECK ADD  CONSTRAINT [Discount_Plan_Discount_Rate_Discount_Rate_Id_fk] FOREIGN KEY([Discount_Rate_Id])
+REFERENCES [dbo].[Discount_Rate] ([Discount_Rate_Id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [dbo].[Discount_Plan] CHECK CONSTRAINT [Discount_Plan_Discount_Rate_Discount_Rate_Id_fk]
+GO
+-- Dsicount_Rate_Field, Discount_Rate --
+ALTER TABLE [dbo].[Discount_Rate_Field]  WITH CHECK ADD  CONSTRAINT [Discount_Rate_Field_Discount_Rate_Discount_Rate_Id_fk] FOREIGN KEY([Discount_Rate_Id])
+REFERENCES [dbo].[Discount_Rate] ([Discount_Rate_Id])
+GO
+ALTER TABLE [dbo].[Discount_Rate_Field] CHECK CONSTRAINT [Discount_Rate_Field_Discount_Rate_Discount_Rate_Id_fk]
+GO
+-- Dsicount_Rate_Field, Field --
+ALTER TABLE [dbo].[Discount_Rate_Field]  WITH CHECK ADD  CONSTRAINT [Discount_Rate_Field_Field_Field_Code_fk] FOREIGN KEY([Field_Code])
+REFERENCES [dbo].[Field] ([Field_Code])
+GO
+ALTER TABLE [dbo].[Discount_Rate_Field] CHECK CONSTRAINT [Discount_Rate_Field_Field_Field_Code_fk]
+GO
+-- Discount_Rate_Range_Time_Zone, Discount_Rate --
+ALTER TABLE [dbo].[Discount_Rate_Range_Time_Zone]  WITH CHECK ADD  CONSTRAINT [Discount_Rate_Range_Time_Zone_Discount_Rate_Discount_Rate_Id_fk] FOREIGN KEY([Discount_Rate_Id])
+REFERENCES [dbo].[Discount_Rate] ([Discount_Rate_Id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [dbo].[Discount_Rate_Range_Time_Zone] CHECK CONSTRAINT [Discount_Rate_Range_Time_Zone_Discount_Rate_Discount_Rate_Id_fk]
+GO
+-- Discount_Rate_Range_Time_Zone, Duration_Range --
+ALTER TABLE [dbo].[Discount_Rate_Range_Time_Zone]  WITH CHECK ADD  CONSTRAINT [Discount_Rate_Range_Time_Zone_Duration_Range_Range_Id_fk] FOREIGN KEY([Discount_Range_Id])
+REFERENCES [dbo].[Duration_Range] ([Range_Id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [dbo].[Discount_Rate_Range_Time_Zone] CHECK CONSTRAINT [Discount_Rate_Range_Time_Zone_Duration_Range_Range_Id_fk]
+GO
+-- Discount_Rate_Range_Time_Zone, Time_Zone --
+ALTER TABLE [dbo].[Discount_Rate_Range_Time_Zone]  WITH CHECK ADD  CONSTRAINT [Discount_Rate_Range_Time_Zone_Time_Zone_Time_Zone_Id_fk] FOREIGN KEY([Time_Zone_Id])
+REFERENCES [dbo].[Time_Zone] ([Time_Zone_Id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [dbo].[Discount_Rate_Range_Time_Zone] CHECK CONSTRAINT [Discount_Rate_Range_Time_Zone_Time_Zone_Time_Zone_Id_fk]
+GO
+-- Incompatible_Discount_Rate, Discount_Rate --
+ALTER TABLE [dbo].[Incompatible_Discount_Rate]  WITH CHECK ADD  CONSTRAINT [Incompatible_Discount_Rate_Discount_Rate_Discount_Rate_Id_fk] FOREIGN KEY([Discount_Rate_Id])
+REFERENCES [dbo].[Discount_Rate] ([Discount_Rate_Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Incompatible_Discount_Rate] CHECK CONSTRAINT [Incompatible_Discount_Rate_Discount_Rate_Discount_Rate_Id_fk]
+GO
+ALTER TABLE [dbo].[Incompatible_Discount_Rate]  WITH CHECK ADD  CONSTRAINT [Incompatible_Discount_Rate_Discount_Rate_Discount_Rate_Id_fk_2] FOREIGN KEY([Discount_Rate_Id_C])
+REFERENCES [dbo].[Discount_Rate] ([Discount_Rate_Id])
+GO
+ALTER TABLE [dbo].[Incompatible_Discount_Rate] CHECK CONSTRAINT [Incompatible_Discount_Rate_Discount_Rate_Discount_Rate_Id_fk_2]
+GO
+-- Invoice, Line --
+ALTER TABLE [dbo].[Invoice]  WITH CHECK ADD  CONSTRAINT [Invoice_Line_Telephone_Number_fk] FOREIGN KEY([Telephone_Number])
+REFERENCES [dbo].[Line] ([Telephone_Number])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Invoice] CHECK CONSTRAINT [Invoice_Line_Telephone_Number_fk]
+GO
+-- Line_Customer], Line --
+ALTER TABLE [dbo].[Line_Customer]  WITH CHECK ADD  CONSTRAINT [Line_Customer_Line_Telephone_Number_fk] FOREIGN KEY([Telephone_Number])
+REFERENCES [dbo].[Line] ([Telephone_Number])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Line_Customer] CHECK CONSTRAINT [Line_Customer_Line_Telephone_Number_fk]
+GO
+-- Line_Discount_Rate], Discount_Rate --
+ALTER TABLE [dbo].[Line_Discount_Rate]  WITH CHECK ADD  CONSTRAINT [Line_Discount_Rate_Discount_Rate_Discount_Rate_Id_fk] FOREIGN KEY([Discount_Rate_Id])
+REFERENCES [dbo].[Discount_Rate] ([Discount_Rate_Id])
+GO
+ALTER TABLE [dbo].[Line_Discount_Rate] CHECK CONSTRAINT [Line_Discount_Rate_Discount_Rate_Discount_Rate_Id_fk]
+GO
+-- Line_Discount_Rate, Line --
+ALTER TABLE [dbo].[Line_Discount_Rate]  WITH CHECK ADD  CONSTRAINT [Line_Discount_Rate_Line_Telephone_Number_fk] FOREIGN KEY([Telephone_Number])
+REFERENCES [dbo].[Line] ([Telephone_Number])
+GO
+ALTER TABLE [dbo].[Line_Discount_Rate] CHECK CONSTRAINT [Line_Discount_Rate_Line_Telephone_Number_fk]
+GO
+-- Line_Service, Line --
+ALTER TABLE [dbo].[Line_Service]  WITH CHECK ADD  CONSTRAINT [Line_Service_Line_Telephone_Number_fk] FOREIGN KEY([Telephone_Number])
+REFERENCES [dbo].[Line] ([Telephone_Number])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Line_Service] CHECK CONSTRAINT [Line_Service_Line_Telephone_Number_fk]
+GO
+-- Line_Service, Service --
+ALTER TABLE [dbo].[Line_Service]  WITH CHECK ADD  CONSTRAINT [Line_Service_Service_Service_Code_fk] FOREIGN KEY([Service_Code])
+REFERENCES [dbo].[Service] ([Service_Code])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Line_Service] CHECK CONSTRAINT [Line_Service_Service_Service_Code_fk]
+GO
+
 -- Add Checks --
 -- Line --
 ALTER TABLE [Line] ADD CHECK([Status] = 'A' OR [Status] = 'I');
@@ -242,3 +357,17 @@ ALTER TABLE [Discount_Rate] ADD CHECK([High_Rate] >= 0);
 ALTER TABLE [Discount_Plan] ADD CHECK([Discount_Percentage] >= 0);
 -- Show checks --
 SELECT * FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS where CONSTRAINT_TYPE = 'CHECK'
+
+-- Add View --
+-- Call, Service and Line -- 
+CREATE VIEW Service_Line_Call 
+AS 
+SELECT L.[Telephone_Number] AS 'Telephone Number', LC.Customer_Id AS 'Customer ID', LC.Customer_First_Name+' '+LC.Customer_Last_Name AS 'Customer name', L.[Status] AS 'Status', S.[Name] AS 'Service Name'
+FROM [dbo].[Line] L, [dbo].[Call] C , [dbo].[Service] S, [dbo].[Line_Customer] LC
+WHERE L.[Telephone_Number] = C.[Telephone_Number]
+AND L.[Telephone_Number] = LC.[Telephone_Number]
+GO
+
+SELECT * FROM [dbo].[Service_Line_Call]
+WHERE [Service Name] = 'contestador'
+AND [Status] = 'A'
